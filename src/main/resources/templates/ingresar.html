@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head">
+	</head>
+
+<body>
+    <header th:replace="/fragments/header :: header">
+    	</header>
+
+    <nav th:replace="/fragments/navbar :: nav">
+    	</nav>
+
+    <section>
+    	<div>
+    		<div th:text="${error}" th:if="${error != null}" style="color: red"></div>
+
+    		<form action="/logincheck" method="POST">
+	    		<input type="mail" placeholder="Ingrese su correo" name="correo">
+	    		<input type="password" placeholder="Ingrese su contraseña" name="contrasena">
+	    		<a class="btn btn-light" href="/"> Volver </a>
+	    		<button class="btn btn-light"> Aceptar </button>
+    		</form>
+    	</div>
+    </section>
+	
+	<footer th:replace="/fragments/footer :: footer">
+		</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+		</script>
+</body>
+
+</html>

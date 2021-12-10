@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head">
+	</head>
+
+<body>
+	 <header th:replace="/fragments/header :: header">
+   		</header>
+	
+	<nav th:replace="/fragments/navbar :: nav">
+		</nav>
+
+	<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div>
+	
+	<section>
+		<div class="card" style="width: 18rem;">
+  			<img src="img/usuarios.jpg" class="card-img-top" alt="No se encuentra la imagen"/>
+  			<div class="card-body">
+    			<h5 class="card-title"> Gestión de usuarios </h5>
+    			<a href="/usuario/agregar" class="btn btn-primary"> Alta </a>
+    			<a href="/usuario/borrar" class="btn btn-primary"> Baja </a>
+    			<a href="/usuario/editar" class="btn btn-primary"> Editar </a>
+  			</div>
+		</div>
+	</section>
+	
+	<footer th:replace="/fragments/footer :: footer">
+		</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+		</script>
+</body>
+</html>

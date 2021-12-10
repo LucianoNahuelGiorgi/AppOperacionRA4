@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="/fragments/head :: head">
+	</head>
+
+<body>
+	<header th:replace="/fragments/header :: header">
+   		</header> 
+
+	<nav th:replace="/fragments/navbar :: nav">
+		</nav>
+	
+	<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div> 
+	
+	<footer th:replace="/fragments/footer :: footer">
+		</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+		</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<header>
+
+	<a class="nav-link active" href ="/" >
+    	<h1> RA 4 </h1>
+    </a>
+    
+	<div th:if="${session.usersession == null}" style="text-align: right">
+    	<a class="btn btn-light" href="/login"> Ingresar </a>
+    </div>
+    
+    <div th:if="${session.usersession != null}" style="text-align: right">
+		<h2 th:if="${session.usersession != null}" th:text="${session.usersession.nombre + ' ' + session.usersession.apellido}"></h2>
+    	<!--<img th:if="${perfil.foto != null}" alt="No se encontró la foto">-->
+		<a class="btn btn-light" href="/logout"> Cerrar sesión </a>
+	</div>
+</header>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="/fragments/head :: head">
+	</head>
+
+<body>
+	<header th:replace="/fragments/header :: header">
+   		</header>
+
+	<nav th:replace="/fragments/navbar :: nav">
+		</nav>
+   		
+   	<section>
+   		<form>
+			<select class="select" name="buscador">
+            	<option value="barra-busqueda" text="Buscar por..." > </option>
+ 			</select>
+			<input name="titulo" type="text" class="buscador">
+        </form>
+   	</section>
+	
+	<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div> 
+	
+	<footer th:replace="/fragments/footer :: footer">
+		</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+		</script>
+</body>
+</html>

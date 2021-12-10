@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head">
+	</head>
+
+<body>
+   	<header th:replace="/fragments/header :: header">
+   		</header>
+
+	<nav th:replace="/fragments/navbar :: nav">
+		</nav>
+
+	<section>
+    	<div style="margin-top: 1%" class="text-center">
+        	<form action="/usuario/agregar-usuario" enctype="multipart/form-data" method="POST">
+                <input type="text" placeholder="Nombres" name="nombre">
+                <br>
+                <input type="text" placeholder="Apellidos" name="apellido">
+                <br>
+                <input type="number" placeholder="Documento Nacional de Identidad" name="dni">
+                <br>
+                <input type="text" placeholder="Nombre de usuario" name="nombreUsuario">
+                <br>
+                <input type="text" placeholder="Correo electrónico" name="correo">
+                <br>
+                <input type="text" placeholder="Contraseña" name="contrasena">
+                <br>
+                <input type="text" placeholder="Repetir contraseña" name="verificarContrasena">
+                <br>
+                <input type="file" placeholder="Ingrese una foto" name="archivo">
+                <select class="form-select" aria-label="Default select example" name="puesto">
+  					<option th:value="${seleccion}" th:text="@{Seleccione un puesto}" selected> </option>
+  					<option th:each="puesto : ${puesto}" th:value="${puesto}" th:text="${puesto}"></option> 
+				</select>
+				<select class="form-select" aria-label="Default select example" name="rol">
+  					<option value="vacio" text="Seleccione un rol" selected> </option>
+  					<option value="administrador" text="Administrador"> Administrador </option>
+  					<option value="usuario" text="Usuario"> Usuario </option> 
+				</select>
+                <div style="margin-top: 1%"></div>
+            	<div class="btn-group" role="group" aria-label="Basic example">
+					<a class="btn btn-light" href="/inicio"> Volver </a>
+                	<input type="submit" class="btn btn-light" value="Agregar">
+				</div>
+            </form>
+	    </div>
+	</section>
+
+	<footer th:replace="/fragments/footer :: footer">
+		</footer>
+		
+	<script th:replace="/fragments/boostjs :: script">
+		</script>
+</body>
+
+</html>
