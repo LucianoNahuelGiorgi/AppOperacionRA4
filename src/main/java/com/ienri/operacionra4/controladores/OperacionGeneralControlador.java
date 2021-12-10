@@ -26,7 +26,7 @@ public class OperacionGeneralControlador {
 	}
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
-	@GetMapping("/procedimiento-encendido")
+	@GetMapping("/encendido")
 	public ModelAndView encendido() {
 		ModelAndView mav = new ModelAndView("procedimiento-encendido");
 		
@@ -34,7 +34,7 @@ public class OperacionGeneralControlador {
 	}
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
-	@GetMapping("/procedimiento-apagado")
+	@GetMapping("/apagado")
 	public ModelAndView apagado() {
 		ModelAndView mav = new ModelAndView("procedimiento-apagado");
 		
