@@ -14,36 +14,42 @@
 	<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div>
 
 	<section>
-		<form>
+		<form action="/operacion-general/procedimiento-encendido" method="POST">
 			<div class="container">
-				<input type="checkbox" id="cbox1" value="cbox1"> <label for="cbox1"> 1. Energizar el sistema de control desde el tablero eléctrico </label><br>
-	  			<input type="checkbox" id="cbox2" value="cbox2"> <label for="cbox2"> 2. Verificar que ninguno de los puentes de anulación se encuentre colocado </label><br>
-	  			<input type="checkbox" id="cbox3" value="cbox3"> <label for="cbox3"> 3. Ajuste fino de la FAT canal de potencia en 0 V </label><br>
-	  			<input type="checkbox" id="cbox4" value="cbox4"> <label for="cbox4"> 4. Verificar que este apagada la FAT canal de potencia </label><br>
-	  			<input type="checkbox" id="cbox5" value="cbox5"> <label for="cbox5"> 5. Selector de tensión de la FAT del canal de potencia en 0,6 kV </label><br>
-	  			<input type="checkbox" id="cbox6" value="cbox6"> <label for="cbox6"> 6. Selector de tensión de la FAT del monitor gamma en 650 V </label><br>
-	  			<input type="checkbox" id="cbox7" value="cbox7"> <label for="cbox7"> 7. Selector de la FC de control en 1x10-12 A </label><br>
-	  			<input type="checkbox" id="cbox8" value="cbox8"> <label for="cbox8"> 8. Ajuste fino de FC de control en 0 % </label><br>
-	  			<input type="checkbox" id="cbox9" value="cbox9"> <label for="cbox9"> 9. Llave selectora en posición "OPERACION" </label><br>
-	  			<input type="checkbox" id="cbox10" value="cbox10"> <label for="cbox10"> 10. Selectora desactivada </label><br>
-	  			<input type="checkbox" id="cbox11" value="cbox11"> <label for="cbox11"> 11. Verificar que esten apagados los registradores </label><br>
-	  			<input type="checkbox" id="cbox12" value="cbox12"> <label for="cbox12"> 12. Selector conmutador canal lineal en 3x10-8 A </label><br>
-	  			<input type="checkbox" id="cbox13" value="cbox13"> <label for="cbox13"> 13. Selector Integrador Canal Lineal de Arranque en 5x10+1 pulsos/seg </label><br>
-	  			<input type="checkbox" id="cbox14" value="cbox14"> <label for="cbox14"> 14. Selector Base de Tiempo Integrador Canal Lineal de Arranque en 4 seg </label><br>
-	  			<input type="checkbox" id="cbox15" value="cbox15"> <label for="cbox15"> 15. Selector posicionado en "Mess operate" Integrador Logaritmico Canal de Arranque </label><br>
-	  			<input type="checkbox" id="cbox16" value="cbox16"> <label for="cbox16"> 16. Selector "Oszilloskop" en 2 </label><br>
-	  			<input type="checkbox" id="cbox17" value="cbox17"> <label for="cbox17"> 17. Verificar que la FATCA este apagada </label><br>
-	  			<input type="checkbox" id="cbox18" value="cbox18"> <label for="cbox18"> 18. Selector "preset time" en x2x10+2 </label><br>
-	  			<input type="checkbox" id="cbox19" value="cbox19"> <label for="cbox19"> 19. Selector "Escalimetro" en "Betrieb operation" </label><br>
-	  			<input type="checkbox" id="cbox20" value="cbox20"> <label for="cbox20"> 20. Selector "preset count" x2 infinito </label><br>
-	  			<input type="checkbox" id="cbox21" value="cbox21"> <label for="cbox21"> 21. Encender consola de control </label><br>
-	  			<input type="checkbox" id="cbox22" value="cbox22"> <label for="cbox22"> 22. Encender Monitores de área </label><br>
-	  			<input type="checkbox" id="cbox23" value="cbox23"> <label for="cbox23"> 23. Encender PC </label><br>
-	  			<input type="checkbox" id="cbox24" value="cbox24"> <label for="cbox24"> 24. Encender FAT Canal de Arranque </label><br>
-	  			<input type="checkbox" id="cbox25" value="cbox25"> <label for="cbox25"> 25. Encender FAT Monitor gamma </label><br>
-	  			<input type="checkbox" id="cbox26" value="cbox26"> <label for="cbox26"> 26. Encender FAT Canal de Potencia </label><br>
-	  			<input type="checkbox" id="cbox27" value="cbox27"> <label for="cbox27"> 27. Espera de al menos 30 minutos para que ingrese en regimen la instrumetnal de la consola </label><br>
+				<input type="checkbox" id="cbox1" name="cbox1"> <label for="cbox1"> 1. Energizar el sistema de control desde el tablero eléctrico </label><br>
+	  			<input type="checkbox" id="cbox2" name="cbox2"> <label for="cbox2"> 2. Verificar que ninguno de los puentes de anulación se encuentre colocado </label><br>
+	  			<input type="checkbox" id="cbox3" name="cbox3"> <label for="cbox3"> 3. Ajuste fino de la FAT canal de potencia en 0 V </label><br>
+	  			<input type="checkbox" id="cbox4" name="cbox4"> <label for="cbox4"> 4. Verificar que este apagada la FAT canal de potencia </label><br>
+	  			<input type="checkbox" id="cbox5" name="cbox5"> <label for="cbox5"> 5. Selector de tensión de la FAT del canal de potencia en 0,6 kV </label><br>
+	  			<input type="checkbox" id="cbox6" name="cbox6"> <label for="cbox6"> 6. Selector de tensión de la FAT del monitor gamma en 650 V </label><br>
+	  			<input type="checkbox" id="cbox7" name="cbox7"> <label for="cbox7"> 7. Selector de la FC de control en 1x10-12 A </label><br>
+	  			<input type="checkbox" id="cbox8" name="cbox8"> <label for="cbox8"> 8. Ajuste fino de FC de control en 0 % </label><br>
+	  			<input type="checkbox" id="cbox9" name="cbox9"> <label for="cbox9"> 9. Llave selectora en posición "OPERACION" </label><br>
+	  			<input type="checkbox" id="cbox10" name="cbox10"> <label for="cbox10"> 10. Selectora desactivada </label><br>
+	  			<input type="checkbox" id="cbox11" name="cbox11"> <label for="cbox11"> 11. Verificar que esten apagados los registradores </label><br>
+	  			<input type="checkbox" id="cbox12" name="cbox12"> <label for="cbox12"> 12. Selector conmutador canal lineal en 3x10-8 A </label><br>
+	  			<input type="checkbox" id="cbox13" name="cbox13"> <label for="cbox13"> 13. Selector Integrador Canal Lineal de Arranque en 5x10+1 pulsos/seg </label><br>
+	  			<input type="checkbox" id="cbox14" name="cbox14"> <label for="cbox14"> 14. Selector Base de Tiempo Integrador Canal Lineal de Arranque en 4 seg </label><br>
+	  			<input type="checkbox" id="cbox15" name="cbox15"> <label for="cbox15"> 15. Selector posicionado en "Mess operate" Integrador Logaritmico Canal de Arranque </label><br>
+	  			<input type="checkbox" id="cbox16" name="cbox16"> <label for="cbox16"> 16. Selector "Oszilloskop" en 2 </label><br>
+	  			<input type="checkbox" id="cbox17" name="cbox17"> <label for="cbox17"> 17. Verificar que la FATCA este apagada </label><br>
+	  			<input type="checkbox" id="cbox18" name="cbox18"> <label for="cbox18"> 18. Selector "preset time" en x2x10+2 </label><br>
+	  			<input type="checkbox" id="cbox19" name="cbox19"> <label for="cbox19"> 19. Selector "Escalimetro" en "Betrieb operation" </label><br>
+	  			<input type="checkbox" id="cbox20" name="cbox20"> <label for="cbox20"> 20. Selector "preset count" x2 infinito </label><br>
+	  			<input type="checkbox" id="cbox21" name="cbox21"> <label for="cbox21"> 21. Encender consola de control </label><br>
+	  			<input type="checkbox" id="cbox22" name="cbox22"> <label for="cbox22"> 22. Encender Monitores de área </label><br>
+	  			<input type="checkbox" id="cbox23" name="cbox23"> <label for="cbox23"> 23. Encender PC </label><br>
+	  			<input type="checkbox" id="cbox24" name="cbox24"> <label for="cbox24"> 24. Encender FAT Canal de Arranque </label><br>
+	  			<input type="checkbox" id="cbox25" name="cbox25"> <label for="cbox25"> 25. Encender FAT Monitor gamma </label><br>
+	  			<input type="checkbox" id="cbox26" name="cbox26"> <label for="cbox26"> 26. Encender FAT Canal de Potencia </label><br>
+	  			<input type="checkbox" id="cbox27"> <label for="cbox27"> 27. Espera de al menos 30 minutos para que ingrese en regimen la instrumetnal de la consola </label><br>
 	 		</div>
+	 		<hr>
+            <h2> OBSERVACIONES </h2>
+            <div class="input-group">
+            	<textarea class="form-control" name="observaciones" aria-label="With textarea"></textarea>
+            </div>
+            <hr>
 	 		<div>
 	 			<a class="btn btn-light" href="/"> Volver </a>
 	    		<button class="btn btn-light"> Aceptar </button>

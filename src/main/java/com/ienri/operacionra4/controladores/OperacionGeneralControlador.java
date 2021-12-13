@@ -59,16 +59,16 @@ public class OperacionGeneralControlador {
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@PostMapping("/procedimiento-encendido")
-	public RedirectView checkListEncendido(Boolean check1, Boolean check2, Boolean check3, Boolean check4, Boolean check5, Boolean check6, Boolean check7, Boolean check8,
-											Boolean check9, Boolean check10, Boolean check11, Boolean check12, Boolean check13, Boolean check14, Boolean check15,
-											Boolean check16, Boolean check17, Boolean check18, Boolean check19, Boolean check20, Boolean check21, Boolean check22,
-											Boolean check23, Boolean check24, Boolean check25, Boolean check26, String observacones) {
+	public RedirectView checkListEncendido(Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Boolean cbox5, Boolean cbox6, Boolean cbox7, Boolean cbox8,
+											Boolean cbox9, Boolean cbox10, Boolean cbox11, Boolean cbox12, Boolean cbox13, Boolean cbox14, Boolean cbox15,
+											Boolean cbox16, Boolean cbox17, Boolean cbox18, Boolean cbox19, Boolean cbox20, Boolean cbox21, Boolean cbox22,
+											Boolean cbox23, Boolean cbox24, Boolean cbox25, Boolean cbox26, String observaciones) {
 		
-		procedimientoEncendidoServicio.guardar(check1, check2, check3, check4, check5, check6, check7, check8, check9, check10,
-												check11, check12, check13, check14, check15, check16, check17, check18, check19, check20,
-												check21, check22, check23, check24, check25, check26, observacones);
+		procedimientoEncendidoServicio.guardar(cbox1, cbox2, cbox3, cbox4, cbox5, cbox6, cbox7, cbox8, cbox9, cbox10,
+												cbox11, cbox12, cbox13, cbox14, cbox15, cbox16, cbox17, cbox18, cbox19, cbox20,
+												cbox21, cbox22, cbox23, cbox24, cbox25, cbox26, observaciones);
 		
-		return new RedirectView("/operacion-general/prueba-funcion");
+		return new RedirectView("/operacion-general/operacion");
 	}
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
@@ -77,8 +77,7 @@ public class OperacionGeneralControlador {
 											Boolean check9, Boolean check10, Boolean check11, Boolean check12, Boolean check13, Boolean check14, Boolean check15,
 											Boolean check16, Boolean check17, Boolean check18, Boolean check19, Boolean check20, Boolean check21, Boolean check22,
 											Boolean check23, Boolean check24, Boolean check25, Boolean check27, String observacones) {
-		
-		
+
 		return new RedirectView("/operacion-general/operacion");
 	}
 }
