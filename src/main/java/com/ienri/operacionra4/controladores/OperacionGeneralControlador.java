@@ -1,5 +1,7 @@
 package com.ienri.operacionra4.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -9,12 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.ienri.operacionra4.avisos.ErrorAviso;
 import com.ienri.operacionra4.servicios.ProcedimientoEncendidoServicio;
 import com.ienri.operacionra4.servicios.PruebaFuncionServicio;
+import com.ienri.operacionra4.servicios.UsuarioServicio;
 
 @Controller
 @RequestMapping("/operacion-general")
 public class OperacionGeneralControlador {
+	
+	@Autowired
+	UsuarioServicio usuarioServicio;
+	
 	@Autowired
 	ProcedimientoEncendidoServicio procedimientoEncendidoServicio;
 	
@@ -55,8 +63,16 @@ public class OperacionGeneralControlador {
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/operacion")
-	public ModelAndView operacion() {
+	public ModelAndView operacion() throws ErrorAviso {
 		ModelAndView mav = new ModelAndView("operacion");
+		
+		List<String> jrLista = usuarioServicio.buscarNombreJefeReactorActivo();
+		List<String> opLista = usuarioServicio.buscarNombreOperadorActivo();
+		List<String> ofLista = usuarioServicio.buscarNombreOficialRPActivo();
+
+		mav.addObject("jrLista", jrLista);
+		mav.addObject("opLista", opLista);
+		mav.addObject("ofLista", ofLista);
 		
 		return mav;
 	}

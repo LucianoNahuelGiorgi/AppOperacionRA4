@@ -75,14 +75,32 @@ public class UsuarioServicio implements UserDetailsService {
 		return usuarioRepositorio.buscarJefeReactorActivo();
 	}
 	
+	public List<String> buscarNombreJefeReactorActivo() throws ErrorAviso{
+		List<String> jrLista = usuarioRepositorio.buscarNombreJefeReactorActivo();
+		
+		return separarNombreApellido(jrLista);
+	}
+	
 	public List<Usuario> buscarOperadorActivo() throws ErrorAviso{
 		
 		return usuarioRepositorio.buscarOperadorActivo();
 	}
+	
+	public List<String> buscarNombreOperadorActivo() throws ErrorAviso{
+		List<String> opLista = usuarioRepositorio.buscarNombreOperadorActivo();
+		
+		return separarNombreApellido(opLista);
+	}
 
-	public List<Usuario> buscarOficialRP() throws ErrorAviso{
+	public List<Usuario> buscarOficialRPActivo() throws ErrorAviso{
 		
 		return usuarioRepositorio.buscarOficialRPActivo();
+	}
+	
+	public List<String> buscarNombreOficialRPActivo() throws ErrorAviso{
+		List<String> ofLista = usuarioRepositorio.buscarNombreOficialRPActivo();
+		
+		return separarNombreApellido(ofLista);
 	}
 	/**************/
 
@@ -233,5 +251,15 @@ public class UsuarioServicio implements UserDetailsService {
 		if (rol == null || rol.isEmpty()) {
 			throw new ErrorAviso("El rol de usuario no puede quedar vacío");
 		}
+	}
+	
+	private List<String> separarNombreApellido(List<String> lista){
+		List<String> listaNombre = new ArrayList<>();
+		
+		for (String aux : lista) {
+			listaNombre.add(aux.replace(",", " "));
+		}
+		
+		return listaNombre;
 	}
 }

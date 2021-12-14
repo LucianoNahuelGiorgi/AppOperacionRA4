@@ -22,17 +22,17 @@
 	    				<label> Jefe de Reactor </label>
 		                <select class="form-select" aria-label="Default select example" name="jefe">
 		  					<option th:value="${seleccion}" th:text="@{Seleccionar Jefe de Reactor}" selected> </option>
-		  					<option th:each="jefe : ${jefe}" th:value="${jefe}" th:text="${jefe}"></option> 
+		  					<option th:each="jrLista : ${jrLista}" th:value="${jrLista}" th:text="${jrLista}"></option> 
 						</select>
 						<label> Operador </label>
 		                <select class="form-select" aria-label="Default select example" name="operador">
 		  					<option th:value="${seleccion}" th:text="@{Seleccionar Operador}" selected> </option>
-		  					<option th:each="operador : ${operador}" th:value="${operador}" th:text="${operador}"></option> 
+		  					<option th:each="opLista : ${opLista}" th:value="${opLista}" th:text="${opLista}"></option> 
 						</select>
 						<label> Oficial de Radioprotección </label>
 		                <select class="form-select" aria-label="Default select example" name="oficial">
 		  					<option th:value="${seleccion}" th:text="@{Seleccionar Oficial de Radioprotección}" selected> </option>
-		  					<option th:each="jefe : ${oficial}" th:value="${oficial}" th:text="${oficial}"></option> 
+		  					<option th:each="ofLista : ${ofLista}" th:value="${ofLista}" th:text="${ofLista}"></option> 
 						</select>
 	    			</div>
 	    			<div class="col">

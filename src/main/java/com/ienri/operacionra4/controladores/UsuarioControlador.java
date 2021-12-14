@@ -51,7 +51,7 @@ public class UsuarioControlador {
 	public ModelAndView mostrarOficialRPActivo() throws ErrorAviso {
 		ModelAndView mav = new ModelAndView("usuario");
 		
-		List<Usuario> u = usuarioServicio.buscarOficialRP();
+		List<Usuario> u = usuarioServicio.buscarOficialRPActivo();
 		mav.addObject("u", u);
 		
 		return mav;
