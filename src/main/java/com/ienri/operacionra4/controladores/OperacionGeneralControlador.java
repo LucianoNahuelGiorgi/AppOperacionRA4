@@ -10,12 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.ienri.operacionra4.servicios.ProcedimientoEncendidoServicio;
+import com.ienri.operacionra4.servicios.PruebaFuncionServicio;
 
 @Controller
 @RequestMapping("/operacion-general")
 public class OperacionGeneralControlador {
 	@Autowired
 	ProcedimientoEncendidoServicio procedimientoEncendidoServicio;
+	
+	@Autowired
+	PruebaFuncionServicio pruebaFuncionServicio;
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/general")
@@ -73,10 +77,20 @@ public class OperacionGeneralControlador {
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@PostMapping("/prueba-funcion")
-	public RedirectView valoresPruebaFuncion(Boolean check1, Boolean check2, Boolean check3, Boolean check4, Boolean check5, Boolean check6, Boolean check7, Boolean check8,
-											Boolean check9, Boolean check10, Boolean check11, Boolean check12, Boolean check13, Boolean check14, Boolean check15,
-											Boolean check16, Boolean check17, Boolean check18, Boolean check19, Boolean check20, Boolean check21, Boolean check22,
-											Boolean check23, Boolean check24, Boolean check25, Boolean check27, String observacones) {
+	public RedirectView valoresPruebaFuncion(Integer indicacionFATCA, Integer indicadorFATMG, Integer indicadorFATCP,
+											 Double temperaturaN, Integer escalimetroTCUno, Double indicadorIntLogaritmicoTCUno, Double indicadorIntLinealTCUno,
+											 Integer escalimetroTCDos, Double indicadorIntLogaritmicoTCDos, Double indicadorIntLinealTCDos,
+											 Double indicadorIntensidadFDB, Double indicadorIntensidadFDA,
+											 Double indicadorDesconexionTC, Double registradorDesconexionTC, Double indicadorConexionTC, Double registradorConexionTC,
+											 Double indicadorFDBCanalLog, Double registradorFDBCanalLog, Double indicadorPreAlertaCanalLog, Double registradorPreAlertaCanalLog,
+											 Double indicadorFDACanalLog, Double registradorFDACanalLog,
+											 Double indicadorConmutarCanalLineal, Double registradorCanalLineal,
+											 Double indicadorFDACanalLineal, Double registradorFDACanalLineal,
+											 Boolean fallaEquipoCL, Boolean fallaATCP,
+											 Integer indicadorDGammaAlta, Integer indicadorFallaMG,
+											 String observacones) {
+		
+		pruebaFuncionServicio.guardar(indicacionFATCA, indicadorFATMG, indicadorFATCP, temperaturaN, escalimetroTCUno, indicadorIntLogaritmicoTCUno, indicadorIntLinealTCUno, escalimetroTCDos, indicadorIntLogaritmicoTCDos, indicadorIntLinealTCDos, indicadorIntensidadFDB, indicadorIntensidadFDA, indicadorDesconexionTC, registradorDesconexionTC, indicadorConexionTC, registradorConexionTC, indicadorFDBCanalLog, registradorFDBCanalLog, indicadorPreAlertaCanalLog, registradorPreAlertaCanalLog, indicadorFDACanalLog, registradorFDACanalLog, indicadorConmutarCanalLineal, registradorCanalLineal, indicadorFDACanalLineal, registradorFDACanalLineal, fallaEquipoCL, fallaATCP, indicadorDGammaAlta, indicadorFallaMG, observacones);
 
 		return new RedirectView("/operacion-general/operacion");
 	}

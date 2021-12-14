@@ -25,9 +25,6 @@ public class PruebaFuncion {
 	private Integer indicadorFATCP;
 	/* TEMPERATURA DEL NUCLEO */
 	private Double temperaturaN;
-	/* REGISTRADORES */
-	private Boolean registradorLogaritmico;
-	private Boolean registradorLineal;
 	/* CANAL DE ARRANQUE */
 	private Integer escalimetroTCUno;
 	private Double indicadorIntLogaritmicoTCUno;
@@ -35,9 +32,11 @@ public class PruebaFuncion {
 	private Integer escalimetroTCDos;
 	private Double indicadorIntLogaritmicoTCDos;
 	private Double indicadorIntLinealTCDos;
-	/* DISPAROS CANAL LOG. DE ARRANQUE */
+	/* INTEGRADOR LOGARÍTMICO DE ARRANQUE
+	   PRUEBA DE LOS VALORES LÍMITES */
 	private Double indicadorIntensidadFDB;
 	private Double indicadorIntensidadFDA;
+	/* CANAL DE POTENCIA AMPLIFICADOR LOGARITMICO */
 	private Double indicadorDesconexionTC;
 	private Double registradorDesconexionTC;
 	private Double indicadorConexionTC;
@@ -57,13 +56,58 @@ public class PruebaFuncion {
 	private Boolean fallaEquipoCL;
 	private Boolean fallaATCP;
 	/* DISPAROS MONITORES GAMMA */
-	private String indicadorDGammaAlta;
-	private String indicadorFallaMG;
+	private Integer indicadorDGammaAlta;
+	private Integer indicadorFallaMG;
 
 	private String observaciones;
 
 	/* Constructor */
 	public PruebaFuncion() {
+	}
+	
+	/* Constructor guardar*/
+	public PruebaFuncion(Integer indicadorFATCA, Integer indicadorFATMG, Integer indicadorFATCP, Double temperaturaN,
+						 Integer escalimetroTCUno, Double indicadorIntLogaritmicoTCUno, Double indicadorIntLinealTCUno,
+						 Integer escalimetroTCDos, Double indicadorIntLogaritmicoTCDos, Double indicadorIntLinealTCDos,
+						 Double indicadorIntensidadFDB, Double indicadorIntensidadFDA, Double indicadorDesconexionTC, Double registradorDesconexionTC,
+			Double indicadorConexionTC, Double registradorConexionTC, Double indicadorFDBCanalLog,
+			Double registradorFDBCanalLog, Double indicadorPreAlertaCanalLog, Double registradorPreAlertaCanalLog,
+			Double indicadorFDACanalLog, Double registradorFDACanalLog, Double indicadorConmutarCanalLineal,
+			Double registradorCanalLineal, Double indicadorFDACanalLineal, Double registradorFDACanalLineal,
+			Boolean fallaEquipoCL, Boolean fallaATCP, Integer indicadorDGammaAlta, Integer indicadorFallaMG,
+			String observaciones) {
+		super();
+		this.indicadorFATCA = indicadorFATCA;
+		this.indicadorFATMG = indicadorFATMG;
+		this.indicadorFATCP = indicadorFATCP;
+		this.temperaturaN = temperaturaN;
+		this.escalimetroTCUno = escalimetroTCUno;
+		this.indicadorIntLogaritmicoTCUno = indicadorIntLogaritmicoTCUno;
+		this.indicadorIntLinealTCUno = indicadorIntLinealTCUno;
+		this.escalimetroTCDos = escalimetroTCDos;
+		this.indicadorIntLogaritmicoTCDos = indicadorIntLogaritmicoTCDos;
+		this.indicadorIntLinealTCDos = indicadorIntLinealTCDos;
+		this.indicadorIntensidadFDB = indicadorIntensidadFDB;
+		this.indicadorIntensidadFDA = indicadorIntensidadFDA;
+		this.indicadorDesconexionTC = indicadorDesconexionTC;
+		this.registradorDesconexionTC = registradorDesconexionTC;
+		this.indicadorConexionTC = indicadorConexionTC;
+		this.registradorConexionTC = registradorConexionTC;
+		this.indicadorFDBCanalLog = indicadorFDBCanalLog;
+		this.registradorFDBCanalLog = registradorFDBCanalLog;
+		this.indicadorPreAlertaCanalLog = indicadorPreAlertaCanalLog;
+		this.registradorPreAlertaCanalLog = registradorPreAlertaCanalLog;
+		this.indicadorFDACanalLog = indicadorFDACanalLog;
+		this.registradorFDACanalLog = registradorFDACanalLog;
+		this.indicadorConmutarCanalLineal = indicadorConmutarCanalLineal;
+		this.registradorCanalLineal = registradorCanalLineal;
+		this.indicadorFDACanalLineal = indicadorFDACanalLineal;
+		this.registradorFDACanalLineal = registradorFDACanalLineal;
+		this.fallaEquipoCL = fallaEquipoCL;
+		this.fallaATCP = fallaATCP;
+		this.indicadorDGammaAlta = indicadorDGammaAlta;
+		this.indicadorFallaMG = indicadorFallaMG;
+		this.observaciones = observaciones;
 	}
 
 	/* Getter, Setters y toString() */
@@ -113,22 +157,6 @@ public class PruebaFuncion {
 
 	public void setTemperaturaN(Double temperaturaN) {
 		this.temperaturaN = temperaturaN;
-	}
-
-	public Boolean getRegistradorLogaritmico() {
-		return registradorLogaritmico;
-	}
-
-	public void setRegistradorLogaritmico(Boolean registradorLogaritmico) {
-		this.registradorLogaritmico = registradorLogaritmico;
-	}
-
-	public Boolean getRegistradorLineal() {
-		return registradorLineal;
-	}
-
-	public void setRegistradorLineal(Boolean registradorLineal) {
-		this.registradorLineal = registradorLineal;
 	}
 
 	public Integer getEscalimetroTCUno() {
@@ -323,19 +351,19 @@ public class PruebaFuncion {
 		this.fallaATCP = fallaATCP;
 	}
 
-	public String getIndicadorDGammaAlta() {
+	public Integer getIndicadorDGammaAlta() {
 		return indicadorDGammaAlta;
 	}
 
-	public void setIndicadorDGammaAlta(String indicadorDGammaAlta) {
+	public void setIndicadorDGammaAlta(Integer indicadorDGammaAlta) {
 		this.indicadorDGammaAlta = indicadorDGammaAlta;
 	}
 
-	public String getIndicadorFallaMG() {
+	public Integer getIndicadorFallaMG() {
 		return indicadorFallaMG;
 	}
 
-	public void setIndicadorFallaMG(String indicadorFallaMG) {
+	public void setIndicadorFallaMG(Integer indicadorFallaMG) {
 		this.indicadorFallaMG = indicadorFallaMG;
 	}
 
@@ -351,8 +379,7 @@ public class PruebaFuncion {
 	public String toString() {
 		return "PruebaFuncion [id=" + id + ", usuario=" + usuario + ", indicadorFATCA=" + indicadorFATCA
 				+ ", indicadorFATMG=" + indicadorFATMG + ", indicadorFATCP=" + indicadorFATCP + ", temperaturaN="
-				+ temperaturaN + ", registradorLogaritmico=" + registradorLogaritmico + ", registradorLineal="
-				+ registradorLineal + ", escalimetroTCUno=" + escalimetroTCUno + ", indicadorIntLogaritmicoTCUno="
+				+ temperaturaN + ", escalimetroTCUno=" + escalimetroTCUno + ", indicadorIntLogaritmicoTCUno="
 				+ indicadorIntLogaritmicoTCUno + ", indicadorIntLinealTCUno=" + indicadorIntLinealTCUno
 				+ ", escalimetroTCDos=" + escalimetroTCDos + ", indicadorIntLogaritmicoTCDos="
 				+ indicadorIntLogaritmicoTCDos + ", indicadorIntLinealTCDos=" + indicadorIntLinealTCDos

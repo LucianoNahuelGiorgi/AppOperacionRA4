@@ -62,7 +62,7 @@ public class UsuarioControlador {
 	public ModelAndView agregar() throws ErrorAviso {
 		ModelAndView mav = new ModelAndView("agregar-usuario");
 		/* Usuario administrador */
-		//usuarioServicio.agregar("Luciano Nahuel", "Giorgi", 32908433, "lgiorgi", "lgiorgi@fceia.unr.edu.ar", "123456", "123456", "Operador", "Administrador");
+		//usuarioServicio.agregar(null, "Luciano Nahuel", "Giorgi", 32908433, "lgiorgi", "lgiorgi@fceia.unr.edu.ar", "123456", "123456", "Operador", "Administrador");
 
 		List<String> puestos = puestoEnumeracionServicio.arregloPuesto();
 		mav.addObject("puesto", puestos);
