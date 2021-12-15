@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.ienri.operacionra4.avisos.ErrorAviso;
+import com.ienri.operacionra4.servicios.OperacionServicio;
 import com.ienri.operacionra4.servicios.ProcedimientoEncendidoServicio;
 import com.ienri.operacionra4.servicios.PruebaFuncionServicio;
 import com.ienri.operacionra4.servicios.UsuarioServicio;
@@ -29,6 +30,9 @@ public class OperacionGeneralControlador {
 	@Autowired
 	PruebaFuncionServicio pruebaFuncionServicio;
 
+	@Autowired
+	OperacionServicio operacionServicio;
+	
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/general")
 	public ModelAndView general() {
@@ -104,9 +108,30 @@ public class OperacionGeneralControlador {
 											 Double indicadorFDACanalLineal, Double registradorFDACanalLineal,
 											 Boolean fallaEquipoCL, Boolean fallaATCP,
 											 Integer indicadorDGammaAlta, Integer indicadorFallaMG,
-											 String observacones) {
+											 String observaciones) {
 		
-		pruebaFuncionServicio.guardar(indicacionFATCA, indicadorFATMG, indicadorFATCP, temperaturaN, escalimetroTCUno, indicadorIntLogaritmicoTCUno, indicadorIntLinealTCUno, escalimetroTCDos, indicadorIntLogaritmicoTCDos, indicadorIntLinealTCDos, indicadorIntensidadFDB, indicadorIntensidadFDA, indicadorDesconexionTC, registradorDesconexionTC, indicadorConexionTC, registradorConexionTC, indicadorFDBCanalLog, registradorFDBCanalLog, indicadorPreAlertaCanalLog, registradorPreAlertaCanalLog, indicadorFDACanalLog, registradorFDACanalLog, indicadorConmutarCanalLineal, registradorCanalLineal, indicadorFDACanalLineal, registradorFDACanalLineal, fallaEquipoCL, fallaATCP, indicadorDGammaAlta, indicadorFallaMG, observacones);
+		pruebaFuncionServicio.guardar(indicacionFATCA, indicadorFATMG, indicadorFATCP, temperaturaN, escalimetroTCUno, indicadorIntLogaritmicoTCUno, indicadorIntLinealTCUno, escalimetroTCDos, indicadorIntLogaritmicoTCDos, indicadorIntLinealTCDos, indicadorIntensidadFDB, indicadorIntensidadFDA, indicadorDesconexionTC, registradorDesconexionTC, indicadorConexionTC, registradorConexionTC, indicadorFDBCanalLog, registradorFDBCanalLog, indicadorPreAlertaCanalLog, registradorPreAlertaCanalLog, indicadorFDACanalLog, registradorFDACanalLog, indicadorConmutarCanalLineal, registradorCanalLineal, indicadorFDACanalLineal, registradorFDACanalLineal, fallaEquipoCL, fallaATCP, indicadorDGammaAlta, indicadorFallaMG, observaciones);
+
+		return new RedirectView("/operacion-general/operacion");
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
+	@PostMapping("/operacion")
+	public RedirectView valoresOperacion(String jefeReactor, String operador, String oficialRP,
+											String canalCentralHorizontal, String canalLateralSupHorizontal, String canalLateralInfHorizontal, String canalCentralVertical, String canalLateralVertical,
+											String motivo, String scram, Boolean muestra,
+											Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4,
+											Double tempNucleo,
+											Double posFuente, Double posNucleo, Double posBC1, Double posBC2,
+											Integer escalimetro, Double intLogCA, Double intLinCA,
+											Double intLinCP, Double intLogCP,
+											Double gammaConsola, Double gammaReactor,
+											Double potencia, String regimen,
+											String observaciones) {
+		
+		operacionServicio.guardar(jefeReactor, operador, oficialRP, canalCentralHorizontal, canalLateralSupHorizontal, canalLateralInfHorizontal,
+				canalCentralVertical, canalLateralVertical, motivo, scram, muestra, cbox1, cbox2, cbox3, cbox4, tempNucleo, posFuente, posNucleo, posBC1, posBC2,
+				escalimetro, intLogCA, intLinCA, intLinCP, intLogCP, gammaConsola, gammaReactor, potencia, regimen, observaciones);
 
 		return new RedirectView("/operacion-general/operacion");
 	}

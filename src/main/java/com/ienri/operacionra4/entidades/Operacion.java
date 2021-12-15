@@ -1,11 +1,8 @@
 package com.ienri.operacionra4.entidades;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -16,9 +13,9 @@ public class Operacion {
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
 	
-	@OneToMany
-	private List<Usuario> usuario;
-
+	private String jefeReactor;
+	private String operador;
+	private String oficialRP;
 	private String canalCentralHorizontal;
 	private String canalLateralSupHorizontal;
 	private String canalLateralInfHorizontal;
@@ -28,20 +25,75 @@ public class Operacion {
 	private String scram;
 	private Boolean muestra;
 
-//	@OneToMany
-//	private List<PlanillaIrradiacion> planillaIrradiacion;
-
 	private Boolean puertaConsola;
 	private Boolean puertaReactor;
 	private Boolean expPotenciaCero;
 	private Boolean expNucleo;
 
-//	@OneToMany
-//	List<AdquisicionDatosOperacion> AdquisicionDatosOperacion;
-
+	private Double tempNucleo;
+	
+	private Double posFuente;
+	private Double posNucleo;
+	private Double posBC1;
+	private Double posBC2;
+	
+	private Integer escalimetro;
+	private Double intLogCA;
+	private Double intLinCA;
+	
+	private Double intLinCP;
+	private Double intLogCP;
+	
+	private Double gammaConsola;
+	private Double gammaReactor;
+	
+	private Double potencia;
+	private String regimen;
+	
+	private String observaciones;
+	
 	/* Constructor */
 	public Operacion() {
-		super();
+	}
+	
+	public Operacion(String jefeReactor, String operador, String oficialRP, String canalCentralHorizontal,
+			String canalLateralSupHorizontal, String canalLateralInfHorizontal, String canalCentralVertical,
+			String canalLateralVertical, String motivo, String scram, Boolean muestra, Boolean puertaConsola,
+			Boolean puertaReactor, Boolean expPotenciaCero, Boolean expNucleo, Double tempNucleo, Double posFuente,
+			Double posNucleo, Double posBC1, Double posBC2, Integer escalimetro, Double intLogCA, Double intLinCA,
+			Double intLinCP, Double intLogCP, Double gammaConsola, Double gammaReactor, Double potencia, String regimen,
+			String observaciones) {
+		
+		this.jefeReactor = jefeReactor;
+		this.operador = operador;
+		this.oficialRP = oficialRP;
+		this.canalCentralHorizontal = canalCentralHorizontal;
+		this.canalLateralSupHorizontal = canalLateralSupHorizontal;
+		this.canalLateralInfHorizontal = canalLateralInfHorizontal;
+		this.canalCentralVertical = canalCentralVertical;
+		this.canalLateralVertical = canalLateralVertical;
+		this.motivo = motivo;
+		this.scram = scram;
+		this.muestra = muestra;
+		this.puertaConsola = puertaConsola;
+		this.puertaReactor = puertaReactor;
+		this.expPotenciaCero = expPotenciaCero;
+		this.expNucleo = expNucleo;
+		this.tempNucleo = tempNucleo;
+		this.posFuente = posFuente;
+		this.posNucleo = posNucleo;
+		this.posBC1 = posBC1;
+		this.posBC2 = posBC2;
+		this.escalimetro = escalimetro;
+		this.intLogCA = intLogCA;
+		this.intLinCA = intLinCA;
+		this.intLinCP = intLinCP;
+		this.intLogCP = intLogCP;
+		this.gammaConsola = gammaConsola;
+		this.gammaReactor = gammaReactor;
+		this.potencia = potencia;
+		this.regimen = regimen;
+		this.observaciones = observaciones;
 	}
 
 	/* Getter, Setters y toString() */
@@ -53,12 +105,28 @@ public class Operacion {
 		this.id = id;
 	}
 
-	public List<Usuario> getUsuario() {
-		return usuario;
+	public String getJefeReactor() {
+		return jefeReactor;
 	}
 
-	public void setUsuario(List<Usuario> usuario) {
-		this.usuario = usuario;
+	public void setJefeReactor(String jefeReactor) {
+		this.jefeReactor = jefeReactor;
+	}
+
+	public String getOperador() {
+		return operador;
+	}
+
+	public void setOperador(String operador) {
+		this.operador = operador;
+	}
+
+	public String getOficialRP() {
+		return oficialRP;
+	}
+
+	public void setOficialRP(String oficialRP) {
+		this.oficialRP = oficialRP;
 	}
 
 	public String getCanalCentralHorizontal() {
@@ -157,13 +225,138 @@ public class Operacion {
 		this.expNucleo = expNucleo;
 	}
 
+	public Double getTempNucleo() {
+		return tempNucleo;
+	}
+
+	public void setTempNucleo(Double tempNucleo) {
+		this.tempNucleo = tempNucleo;
+	}
+
+	public Double getPosFuente() {
+		return posFuente;
+	}
+
+	public void setPosFuente(Double posFuente) {
+		this.posFuente = posFuente;
+	}
+
+	public Double getPosNucleo() {
+		return posNucleo;
+	}
+
+	public void setPosNucleo(Double posNucleo) {
+		this.posNucleo = posNucleo;
+	}
+
+	public Double getPosBC1() {
+		return posBC1;
+	}
+
+	public void setPosBC1(Double posBC1) {
+		this.posBC1 = posBC1;
+	}
+
+	public Double getPosBC2() {
+		return posBC2;
+	}
+
+	public void setPosBC2(Double posBC2) {
+		this.posBC2 = posBC2;
+	}
+
+	public Integer getEscalimetro() {
+		return escalimetro;
+	}
+
+	public void setEscalimetro(Integer escalimetro) {
+		this.escalimetro = escalimetro;
+	}
+
+	public Double getIntLogCA() {
+		return intLogCA;
+	}
+
+	public void setIntLogCA(Double intLogCA) {
+		this.intLogCA = intLogCA;
+	}
+
+	public Double getIntLinCA() {
+		return intLinCA;
+	}
+
+	public void setIntLinCA(Double intLinCA) {
+		this.intLinCA = intLinCA;
+	}
+
+	public Double getIntLinCP() {
+		return intLinCP;
+	}
+
+	public void setIntLinCP(Double intLinCP) {
+		this.intLinCP = intLinCP;
+	}
+
+	public Double getIntLogCP() {
+		return intLogCP;
+	}
+
+	public void setIntLogCP(Double intLogCP) {
+		this.intLogCP = intLogCP;
+	}
+
+	public Double getGammaConsola() {
+		return gammaConsola;
+	}
+
+	public void setGammaConsola(Double gammaConsola) {
+		this.gammaConsola = gammaConsola;
+	}
+
+	public Double getGammaReactor() {
+		return gammaReactor;
+	}
+
+	public void setGammaReactor(Double gammaReactor) {
+		this.gammaReactor = gammaReactor;
+	}
+
+	public Double getPotencia() {
+		return potencia;
+	}
+
+	public void setPotencia(Double potencia) {
+		this.potencia = potencia;
+	}
+
+	public String getRegimen() {
+		return regimen;
+	}
+
+	public void setRegimen(String regimen) {
+		this.regimen = regimen;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
 	@Override
 	public String toString() {
-		return "Operacion [id=" + id + ", usuario=" + usuario + ", canalCentralHorizontal=" + canalCentralHorizontal
-				+ ", canalLateralSupHorizontal=" + canalLateralSupHorizontal + ", canalLateralInfHorizontal="
-				+ canalLateralInfHorizontal + ", canalCentralVertical=" + canalCentralVertical
-				+ ", canalLateralVertical=" + canalLateralVertical + ", motivo=" + motivo + ", scram=" + scram
-				+ ", muestra=" + muestra + ", puertaConsola=" + puertaConsola + ", puertaReactor=" + puertaReactor
-				+ ", expPotenciaCero=" + expPotenciaCero + ", expNucleo=" + expNucleo + "]";
-	}	
+		return "Operacion [id=" + id + ", jefeReactor=" + jefeReactor + ", operador=" + operador + ", oficialRP="
+				+ oficialRP + ", canalCentralHorizontal=" + canalCentralHorizontal + ", canalLateralSupHorizontal="
+				+ canalLateralSupHorizontal + ", canalLateralInfHorizontal=" + canalLateralInfHorizontal
+				+ ", canalCentralVertical=" + canalCentralVertical + ", canalLateralVertical=" + canalLateralVertical
+				+ ", motivo=" + motivo + ", scram=" + scram + ", muestra=" + muestra + ", puertaConsola="
+				+ puertaConsola + ", puertaReactor=" + puertaReactor + ", expPotenciaCero=" + expPotenciaCero
+				+ ", expNucleo=" + expNucleo + ", tempNucleo=" + tempNucleo + ", posFuente=" + posFuente + ", posNucleo="
+				+ posNucleo + ", posBC1=" + posBC1 + ", posBC2=" + posBC2 + ", escalimetro=" + escalimetro
+				+ ", intLogCA=" + intLogCA + ", intLinCA=" + intLinCA + ", intLinCP=" + intLinCP + ", intLogCP="
+				+ intLogCP + ", gammaConsola=" + gammaConsola + ", gammaReactor=" + gammaReactor + ", potencia="
+				+ potencia + ", regimen=" + regimen + ", observaciones=" + observaciones + "]";
+	}
 }
