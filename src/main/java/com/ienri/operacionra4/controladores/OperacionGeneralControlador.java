@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.ienri.operacionra4.avisos.ErrorAviso;
 import com.ienri.operacionra4.servicios.OperacionServicio;
+import com.ienri.operacionra4.servicios.ProcedimientoApagadoServicio;
 import com.ienri.operacionra4.servicios.ProcedimientoEncendidoServicio;
 import com.ienri.operacionra4.servicios.PruebaFuncionServicio;
 import com.ienri.operacionra4.servicios.UsuarioServicio;
@@ -26,6 +27,9 @@ public class OperacionGeneralControlador {
 	
 	@Autowired
 	ProcedimientoEncendidoServicio procedimientoEncendidoServicio;
+	
+	@Autowired
+	ProcedimientoApagadoServicio procedimientoApagadoServicio;
 	
 	@Autowired
 	PruebaFuncionServicio pruebaFuncionServicio;
@@ -91,6 +95,16 @@ public class OperacionGeneralControlador {
 		procedimientoEncendidoServicio.guardar(cbox1, cbox2, cbox3, cbox4, cbox5, cbox6, cbox7, cbox8, cbox9, cbox10,
 												cbox11, cbox12, cbox13, cbox14, cbox15, cbox16, cbox17, cbox18, cbox19, cbox20,
 												cbox21, cbox22, cbox23, cbox24, cbox25, cbox26, observaciones);
+		
+		return new RedirectView("/operacion-general/operacion");
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
+	@PostMapping("/procedimiento-apagado")
+	public RedirectView checkListApagado(Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Boolean cbox5, Boolean cbox6, Boolean cbox7, Boolean cbox8,
+										 String observaciones) {
+		
+		procedimientoApagadoServicio.guardar(cbox1, cbox2, cbox3, cbox4, cbox5, cbox6, cbox7, cbox8, observaciones);
 		
 		return new RedirectView("/operacion-general/operacion");
 	}

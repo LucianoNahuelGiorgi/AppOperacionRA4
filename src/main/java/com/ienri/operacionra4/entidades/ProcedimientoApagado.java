@@ -33,6 +33,21 @@ public class ProcedimientoApagado {
 	/* Constructor */
 	public ProcedimientoApagado() {
 	}
+	
+	public ProcedimientoApagado(Boolean apagadoFATCP, Boolean apagadoFATMG,
+			Boolean apagadoRegistradores, Boolean apagadoFATCA, Boolean apagadoConsola, Boolean apagadoMA,
+			Boolean apagadoPC, Boolean desenergizarConsola, String observaciones) {
+
+		this.apagadoFATCP = apagadoFATCP;
+		this.apagadoFATMG = apagadoFATMG;
+		this.apagadoRegistradores = apagadoRegistradores;
+		this.apagadoFATCA = apagadoFATCA;
+		this.apagadoConsola = apagadoConsola;
+		this.apagadoMA = apagadoMA;
+		this.apagadoPC = apagadoPC;
+		this.desenergizarConsola = desenergizarConsola;
+		this.observaciones = observaciones;
+	}
 
 	/* Getter, Setters y toString() */
 	public String getId() {
