@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.ienri.operacionra4.avisos.ErrorAviso;
+import com.ienri.operacionra4.entidades.Operacion;
 import com.ienri.operacionra4.servicios.OperacionServicio;
 import com.ienri.operacionra4.servicios.ProcedimientoApagadoServicio;
 import com.ienri.operacionra4.servicios.ProcedimientoEncendidoServicio;
@@ -77,10 +78,13 @@ public class OperacionGeneralControlador {
 		List<String> jrLista = usuarioServicio.buscarNombreJefeReactorActivo();
 		List<String> opLista = usuarioServicio.buscarNombreOperadorActivo();
 		List<String> ofLista = usuarioServicio.buscarNombreOficialRPActivo();
-
+		List<Operacion> o = operacionServicio.operacionFechaDesc();
+		
 		mav.addObject("jrLista", jrLista);
 		mav.addObject("opLista", opLista);
 		mav.addObject("ofLista", ofLista);
+		
+		mav.addObject("o", o);
 		
 		return mav;
 	}

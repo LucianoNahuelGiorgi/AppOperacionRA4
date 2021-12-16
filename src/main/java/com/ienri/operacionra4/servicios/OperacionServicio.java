@@ -1,5 +1,9 @@
 package com.ienri.operacionra4.servicios;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +29,7 @@ public class OperacionServicio {
 						String observaciones) {
 		
 		Operacion op = new Operacion(jefeReactor, operador, oficialRP, canalCentralHorizontal, canalLateralSupHorizontal, canalLateralInfHorizontal, canalCentralVertical,
-									 canalLateralVertical, motivo, scram, muestra, cbox1, cbox2, cbox3, cbox4, tempNucleo, posFuente, posNucleo, posBC1, posBC2,
+									 canalLateralVertical, motivo, scram, muestra, cbox1, cbox2, cbox3, cbox4, new Date(), tempNucleo, posFuente, posNucleo, posBC1, posBC2,
 									 escalimetro, intLogCA, intLinCA, intLinCP, intLogCP, gammaConsola, gammaReactor, potencia, regimen, observaciones);
 		try {
 			operacionRepositorio.save(op);			
@@ -33,4 +37,15 @@ public class OperacionServicio {
 			System.out.println("No se pudo guardar la operación");
 		}
 	}
+	
+	public List<Operacion> operacionFechaDesc(){
+		List<Operacion> opLista = new ArrayList<>(); 
+		try {
+			opLista = operacionRepositorio.operacionFechaDesc();
+		} catch (Exception e) {
+			System.out.println("No se pudo realizar la operación solicitada");
+		}
+		
+		return opLista;
+	}	
 }

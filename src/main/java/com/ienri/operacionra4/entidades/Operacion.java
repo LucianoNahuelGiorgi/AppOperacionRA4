@@ -1,8 +1,12 @@
 package com.ienri.operacionra4.entidades;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -29,6 +33,17 @@ public class Operacion {
 	private Boolean puertaReactor;
 	private Boolean expPotenciaCero;
 	private Boolean expNucleo;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaHora;
+	
+	public Date getFechaHora() {
+		return fechaHora;
+	}
+
+	public void setFechaHora(Date fechaHora) {
+		this.fechaHora = fechaHora;
+	}
 
 	private Double tempNucleo;
 	
@@ -59,7 +74,7 @@ public class Operacion {
 	public Operacion(String jefeReactor, String operador, String oficialRP, String canalCentralHorizontal,
 			String canalLateralSupHorizontal, String canalLateralInfHorizontal, String canalCentralVertical,
 			String canalLateralVertical, String motivo, String scram, Boolean muestra, Boolean puertaConsola,
-			Boolean puertaReactor, Boolean expPotenciaCero, Boolean expNucleo, Double tempNucleo, Double posFuente,
+			Boolean puertaReactor, Boolean expPotenciaCero, Boolean expNucleo, Date fechaHora, Double tempNucleo, Double posFuente,
 			Double posNucleo, Double posBC1, Double posBC2, Integer escalimetro, Double intLogCA, Double intLinCA,
 			Double intLinCP, Double intLogCP, Double gammaConsola, Double gammaReactor, Double potencia, String regimen,
 			String observaciones) {
@@ -79,6 +94,7 @@ public class Operacion {
 		this.puertaReactor = puertaReactor;
 		this.expPotenciaCero = expPotenciaCero;
 		this.expNucleo = expNucleo;
+		this.fechaHora = fechaHora;
 		this.tempNucleo = tempNucleo;
 		this.posFuente = posFuente;
 		this.posNucleo = posNucleo;
@@ -97,6 +113,7 @@ public class Operacion {
 	}
 
 	/* Getter, Setters y toString() */
+	
 	public String getId() {
 		return id;
 	}
@@ -353,10 +370,11 @@ public class Operacion {
 				+ ", canalCentralVertical=" + canalCentralVertical + ", canalLateralVertical=" + canalLateralVertical
 				+ ", motivo=" + motivo + ", scram=" + scram + ", muestra=" + muestra + ", puertaConsola="
 				+ puertaConsola + ", puertaReactor=" + puertaReactor + ", expPotenciaCero=" + expPotenciaCero
-				+ ", expNucleo=" + expNucleo + ", tempNucleo=" + tempNucleo + ", posFuente=" + posFuente + ", posNucleo="
-				+ posNucleo + ", posBC1=" + posBC1 + ", posBC2=" + posBC2 + ", escalimetro=" + escalimetro
-				+ ", intLogCA=" + intLogCA + ", intLinCA=" + intLinCA + ", intLinCP=" + intLinCP + ", intLogCP="
-				+ intLogCP + ", gammaConsola=" + gammaConsola + ", gammaReactor=" + gammaReactor + ", potencia="
-				+ potencia + ", regimen=" + regimen + ", observaciones=" + observaciones + "]";
+				+ ", expNucleo=" + expNucleo + ", fechaHora=" + fechaHora + ", tempNucleo=" + tempNucleo
+				+ ", posFuente=" + posFuente + ", posNucleo=" + posNucleo + ", posBC1=" + posBC1 + ", posBC2=" + posBC2
+				+ ", escalimetro=" + escalimetro + ", intLogCA=" + intLogCA + ", intLinCA=" + intLinCA + ", intLinCP="
+				+ intLinCP + ", intLogCP=" + intLogCP + ", gammaConsola=" + gammaConsola + ", gammaReactor="
+				+ gammaReactor + ", potencia=" + potencia + ", regimen=" + regimen + ", observaciones=" + observaciones
+				+ "]";
 	}
 }
