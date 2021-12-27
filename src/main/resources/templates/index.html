@@ -2,21 +2,25 @@
 <html lang="es">
 
 <head th:replace="/fragments/head :: head">
-	</head>
+</head>
 
 <body>
 	<header th:replace="/fragments/header :: header">
-   		</header> 
+	</header>
 
 	<nav th:replace="/fragments/navbar :: nav">
-		</nav>
-	
-	<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div> 
-	
+	</nav>
+
+	<section>
+		<div th:replace="fragments/login :: div">
+		</div>
+	</section>
+
 	<footer th:replace="/fragments/footer :: footer">
-		</footer>
+	</footer>
 
 	<script th:replace="/fragments/boostjs :: script">
-		</script>
+	</script>
 </body>
+
 </html>

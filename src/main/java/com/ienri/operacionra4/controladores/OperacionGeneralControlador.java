@@ -1,5 +1,6 @@
 package com.ienri.operacionra4.controladores;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.ienri.operacionra4.avisos.ErrorAviso;
 import com.ienri.operacionra4.entidades.Operacion;
+import com.ienri.operacionra4.servicios.OperacionGeneralServicio;
 import com.ienri.operacionra4.servicios.OperacionServicio;
 import com.ienri.operacionra4.servicios.ProcedimientoApagadoServicio;
 import com.ienri.operacionra4.servicios.ProcedimientoEncendidoServicio;
@@ -25,6 +27,9 @@ public class OperacionGeneralControlador {
 	
 	@Autowired
 	UsuarioServicio usuarioServicio;
+	
+	@Autowired
+	OperacionGeneralServicio operacionGeneralServicio;
 	
 	@Autowired
 	ProcedimientoEncendidoServicio procedimientoEncendidoServicio;
@@ -45,11 +50,34 @@ public class OperacionGeneralControlador {
 		
 		return mav;
 	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
+	@GetMapping("/nueva")
+	public ModelAndView nuevaOperacionGeneral() {
+		ModelAndView mav = new ModelAndView("nueva-operacion-general");
+		
+		operacionGeneralServicio.inicioNuevaOperacionGeneral();
+		
+		return mav;
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
+	@GetMapping("/busca")
+	public ModelAndView buescaOperacionGeneral() {
+		ModelAndView mav = new ModelAndView("busca-operacion-general");
+		
+		return mav;
+	}
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/encendido")
 	public ModelAndView encendido() {
 		ModelAndView mav = new ModelAndView("procedimiento-encendido");
+		Integer num = operacionGeneralServicio.ultimaOperacionGeneral();
+		Date fechaHoraInicio = operacionGeneralServicio.fechaInicioOpGeneral();
+		
+		mav.addObject("num", num);
+		mav.addObject("fechaHoraInicio", fechaHoraInicio);
 		
 		return mav;
 	}
@@ -59,6 +87,10 @@ public class OperacionGeneralControlador {
 	public ModelAndView apagado() {
 		ModelAndView mav = new ModelAndView("procedimiento-apagado");
 		
+		Integer num = operacionGeneralServicio.ultimaOperacionGeneral();
+				
+		mav.addObject("num", num);
+		
 		return mav;
 	}
 
@@ -66,6 +98,9 @@ public class OperacionGeneralControlador {
 	@GetMapping("/prueba-funcion")
 	public ModelAndView pruebaFuncion() {
 		ModelAndView mav = new ModelAndView("prueba-funcion");
+		Integer num = operacionGeneralServicio.ultimaOperacionGeneral();
+		
+		mav.addObject("num", num);
 		
 		return mav;
 	}
@@ -74,6 +109,7 @@ public class OperacionGeneralControlador {
 	@GetMapping("/operacion")
 	public ModelAndView operacion() throws ErrorAviso {
 		ModelAndView mav = new ModelAndView("operacion");
+		Integer num = operacionGeneralServicio.ultimaOperacionGeneral();
 		
 		List<String> jrLista = usuarioServicio.buscarNombreJefeReactorActivo();
 		List<String> opLista = usuarioServicio.buscarNombreOperadorActivo();
@@ -83,6 +119,7 @@ public class OperacionGeneralControlador {
 		mav.addObject("jrLista", jrLista);
 		mav.addObject("opLista", opLista);
 		mav.addObject("ofLista", ofLista);
+		mav.addObject("num", num);
 		
 		mav.addObject("o", o);
 		

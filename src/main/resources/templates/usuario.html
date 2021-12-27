@@ -1,71 +1,78 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-	
-	<head th:replace="/fragments/head :: head">
-		</head>
-	
-	<body>
-		
-		<header th:replace="/fragments/header :: header">
-	   		</header>
-		
-		<nav th:replace="/fragments/navbar :: nav">
-			</nav>
-		
-		<div class="row justify-content-center">
-			<div class="col-auto">
-				<form action="..." method="GET">
-					<input id="buscarUsuario" type="text" placeholder="Buscar por nombre" name="nombreUsuario"/>
-					<button type="submit" class="btn btn-light"> Buscar </button>
-				</form>
+
+<head th:replace="/fragments/head :: head">
+</head>
+
+<body>
+
+	<header th:replace="/fragments/header :: header">
+	</header>
+
+	<nav th:replace="/fragments/navbar :: nav">
+	</nav>
+
+	<section >
+		<div th:replace="fragments/login :: div">
+		</div>
+	</section>
+
+	<!-- Barra buscadora -->
+	<div class="row justify-content-center">
+		<div class="col-auto">
+			<form action="/usuario/buscar">
+				<input id="porNombre" type="text" placeholder="Buscar por nombre" name="nombre"/>
+				<button type="submit" class="btn btn-light"> Buscar </button>
+			</form>
+		</div>
+	</div>
+
+	<div class="row justify-content-center">
+		<div class="col-auto">
+			<table class="table table-striped table-responsive" enctype="multipart/form-data">
+				<thead>
+					<tr>
+						<th hidden>ID</th>
+						<th>Foto</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>D.N.I.</th>
+						<th>Nombre de usuario</th>
+						<th>Correo</th>
+						<th>Puesto</th>
+						<th>Rol</th>
+						<th>Fecha de alta</th>
+					</tr>
+				</thead>
+				<tbody enctype="multipart/form-data">
+					<tr th:each="u : ${u}" enctype="multipart/form-data">
+						<td hidden th:text="${u.id}" class="text-white font-weight-bold text-left"></td>
+						<td class="font-weight-bold text-left" enctype="multipart/form-data">
+							<img th:src="${u.foto}" alt="Not found">
+						</td>
+						<td th:text="${u.nombre}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.apellido}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.dni}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.nombreUsuario}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.correo}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.puesto}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.rol}" class="font-weight-bold text-left"></td>
+						<td th:text="${#dates.format(u.fechaAlta, 'dd-MM-yyyy')}" class="font-weight-bold text-left">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn-group" role="group" aria-label="Basic example">
+				<a class="btn btn-light" href="/"> Volver </a>
 			</div>
 		</div>
-		
-		<div class="row justify-content-center">
-			<div class="col-auto">
-				<table class="table table-striped table-responsive" enctype="multipart/form-data">
-					<thead>
-						<tr>
-							<th hidden>ID</th>
-							<th>Foto</th>
-							<th>Nombre</th>
-							<th>Apellido</th>
-							<th>D.N.I.</th>
-							<th>Nombre de usuario</th>
-							<th>Correo</th>
-							<th>Puesto</th>
-							<th>Rol</th>
-							<th>Fecha de alta</th>
-						</tr>
-					</thead>
-					<tbody enctype="multipart/form-data">
-						<tr th:each="u : ${u}" enctype="multipart/form-data">
-							<td hidden th:text="${u.id}" class="text-white font-weight-bold text-left"></td>
-							<td class="font-weight-bold text-left" enctype="multipart/form-data">
-								<img th:src="${u.foto}" alt="Not found">
-							</td>
-							<td th:text="${u.nombre}" class="font-weight-bold text-left"></td>
-							<td th:text="${u.apellido}" class="font-weight-bold text-left"></td>
-							<td th:text="${u.dni}" class="font-weight-bold text-left"></td>
-							<td th:text="${u.nombreUsuario}" class="font-weight-bold text-left"></td>
-							<td th:text="${u.correo}" class="font-weight-bold text-left"></td>
-							<td th:text="${u.puesto}" class="font-weight-bold text-left"></td>
-							<td th:text="${u.rol}" class="font-weight-bold text-left"></td>
-							<td th:text="${#dates.format(u.fechaAlta, 'dd-MM-yyyy')}" class="font-weight-bold text-left"></td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn btn-light" href="/"> Volver </a> 
-				</div>
-			</div>
-		</div>
-	
-		<footer th:replace="/fragments/footer :: footer">
-			</footer>
-	
-		<script th:replace="/fragments/boostjs :: script">
-			</script>
-	</body>
+	</div>
+
+	<footer th:replace="/fragments/footer :: footer">
+	</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+	</script>
+</body>
 
 </html>

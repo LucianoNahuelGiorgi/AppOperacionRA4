@@ -1,0 +1,6 @@
+<div th:if="${session.usersession != null}" style="text-align: right">
+	<h2 th:if="${session.usersession != null}"
+		th:text="${session.usersession.nombre + ' ' + session.usersession.apellido}"></h2>
+	<!--<img th:if="${perfil.foto != null}" alt="No se encontró la foto">-->
+	<a class="btn btn-light" href="/logout"> Cerrar sesión </a>
+</div>

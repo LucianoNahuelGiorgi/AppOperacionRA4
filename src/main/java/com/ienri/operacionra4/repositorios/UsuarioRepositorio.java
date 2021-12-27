@@ -15,7 +15,7 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {
 	@Query(value="SELECT u FROM Usuario u WHERE u.correo LIKE :correo")
 	public Usuario buscarPorCorreo(@Param("correo") String correo);
 	
-	@Query(value="SELECT u FROM Usuario u WHERE u.correo LIKE :nombreUsuario")
+	@Query(value="SELECT u FROM Usuario u WHERE u.nombreUsuario LIKE :nombreUsuario")
 	public Usuario buscarPorNombreUsuario(@Param("nombreUsuario") String nombreUsuario);
 
 	@Query(value="SELECT u FROM Usuario u WHERE u.puesto LIKE 'Jefe de Reactor' AND u.alta = TRUE")
@@ -35,7 +35,9 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {
 	
 	@Query(value="SELECT u.nombre, u.apellido FROM Usuario u WHERE u.puesto LIKE 'Oficial de RP' AND u.alta = TRUE")
 	public List<String> buscarNombreOficialRPActivo();
-	
+
+	@Query(value="SELECT u FROM Usuario u WHERE u.nombre LIKE :nombre%")
+	public List<Usuario> buscarPorNombre(@Param("nombre") String nombre);
 	/*
 	@Query("SELECT a FROM Administrador a WHERE a.alta = TRUE")
 	public List<Administrador> listarActivos();

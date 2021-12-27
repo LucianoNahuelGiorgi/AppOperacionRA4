@@ -26,7 +26,7 @@ public class IndexControlador {
 	}
 
 	@GetMapping("/login")
-	public String sesion(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
+	public String sesionIn(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap modelo) {
 //		administradorServicio.agregar("Luciano Nahuel", "Giorgi", 32908433, "lGiorgi", "lgiorgi@fceia.unr.edu.ar", "123456");
 
 		if (error != null) {
@@ -34,9 +34,9 @@ public class IndexControlador {
 		}
 
 		if (logout != null) {
-			modelo.put("logout", "Cierre de sesión exitoso");
+			modelo.put("logout", "Ha cerrado sesión exitosamente");
 		}
-
+		
 		return "ingresar.html";
 	}
 	

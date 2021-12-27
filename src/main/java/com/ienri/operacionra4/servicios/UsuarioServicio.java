@@ -30,7 +30,7 @@ import com.ienri.operacionra4.repositorios.UsuarioRepositorio;
 public class UsuarioServicio implements UserDetailsService {
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
-	
+
 	@Autowired
 	private FotoServicio fotoServicio;
 
@@ -52,56 +52,70 @@ public class UsuarioServicio implements UserDetailsService {
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 			HttpSession session = attr.getRequest().getSession(true);
 			session.setAttribute("usersession", a);
-
 			return user;
 		} else {
 			throw new UsernameNotFoundException("El usuario no fue encontrado");
 		}
 	}
-	
+
 	/* Buscadores */
+	@Transactional(readOnly = true)
 	public Usuario buscarPorId(String id) throws ErrorAviso {
-		
+
 		return usuarioRepositorio.findById(id).orElseThrow();
 	}
-	
-	public Usuario buscarPorCorreo(String correo) throws ErrorAviso{
-		
+
+	@Transactional(readOnly = true)
+	public Usuario buscarPorCorreo(String correo) throws ErrorAviso {
+
 		return usuarioRepositorio.buscarPorCorreo(correo);
 	}
-	
-	public List<Usuario> buscarJefeReactorActivo() throws ErrorAviso{
-		
+
+	@Transactional(readOnly = true)
+	public List<Usuario> buscarJefeReactorActivo() throws ErrorAviso {
+
 		return usuarioRepositorio.buscarJefeReactorActivo();
 	}
-	
-	public List<String> buscarNombreJefeReactorActivo() throws ErrorAviso{
+
+	@Transactional(readOnly = true)
+	public List<String> buscarNombreJefeReactorActivo() throws ErrorAviso {
 		List<String> jrLista = usuarioRepositorio.buscarNombreJefeReactorActivo();
-		
+
 		return separarNombreApellido(jrLista);
 	}
-	
-	public List<Usuario> buscarOperadorActivo() throws ErrorAviso{
-		
+
+	@Transactional(readOnly = true)
+	public List<Usuario> buscarOperadorActivo() throws ErrorAviso {
+
 		return usuarioRepositorio.buscarOperadorActivo();
 	}
-	
-	public List<String> buscarNombreOperadorActivo() throws ErrorAviso{
+
+	@Transactional(readOnly = true)
+	public List<String> buscarNombreOperadorActivo() throws ErrorAviso {
 		List<String> opLista = usuarioRepositorio.buscarNombreOperadorActivo();
-		
+
 		return separarNombreApellido(opLista);
 	}
 
-	public List<Usuario> buscarOficialRPActivo() throws ErrorAviso{
-		
+	@Transactional(readOnly = true)
+	public List<Usuario> buscarOficialRPActivo() throws ErrorAviso {
+
 		return usuarioRepositorio.buscarOficialRPActivo();
 	}
-	
-	public List<String> buscarNombreOficialRPActivo() throws ErrorAviso{
+
+	@Transactional(readOnly = true)
+	public List<String> buscarNombreOficialRPActivo() throws ErrorAviso {
 		List<String> ofLista = usuarioRepositorio.buscarNombreOficialRPActivo();
-		
+
 		return separarNombreApellido(ofLista);
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Usuario> buscarPorNombre(String nombre) throws ErrorAviso {
+		
+		return usuarioRepositorio.buscarPorNombre(nombre);
+	}
+
 	/**************/
 
 	/***************************************************************************************/
@@ -126,12 +140,11 @@ public class UsuarioServicio implements UserDetailsService {
 	 */
 
 	@Transactional
-	public void agregar(MultipartFile archivo, String nombre, String apellido, Integer dni,
-						String nombreUsuario, String correo, String contrasena, String verificarContrasena,
-						String puesto, String rol) throws ErrorAviso {
-		
+	public void agregar(MultipartFile archivo, String nombre, String apellido, Integer dni, String nombreUsuario,
+			String correo, String contrasena, String verificarContrasena, String puesto, String rol) throws ErrorAviso {
+
 		validar(nombre, apellido, dni, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);
-		
+
 		try {
 			Usuario u = new Usuario();
 			u.setNombre(nombre);
@@ -148,7 +161,7 @@ public class UsuarioServicio implements UserDetailsService {
 
 			Foto foto = fotoServicio.guardar(archivo);
 			u.setFoto(foto);
-			
+
 			usuarioRepositorio.save(u);
 		} catch (Exception e) {
 			System.out.println("No se pudo agregar un usuario");
@@ -157,24 +170,25 @@ public class UsuarioServicio implements UserDetailsService {
 
 	@Transactional
 	public void editar(MultipartFile archivo, String id, String nombre, String apellido, Integer dni,
-						String nombreUsuario, String correo, String contrasena, String verificarContrasena,
-						String puesto, String rol) throws ErrorAviso {
-		
+			String nombreUsuario, String correo, String contrasena, String verificarContrasena, String puesto,
+			String rol) throws ErrorAviso {
+
 		validar(nombre, apellido, dni, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);
-		
+
 		try {
 			Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
 			if (respuesta.isPresent()) {
-				Usuario u = new Usuario(id, nombre, apellido, dni, nombreUsuario, correo, contrasena, puesto, rol, true);
-				
+				Usuario u = new Usuario(id, nombre, apellido, dni, nombreUsuario, correo, contrasena, puesto, rol,
+						true);
+
 				String idFoto = null;
 				if (u.getFoto() != null) {
 					idFoto = u.getFoto().getId();
 				}
-				
+
 				Foto foto = fotoServicio.editar(idFoto, archivo);
 				u.setFoto(foto);
-				
+
 				usuarioRepositorio.save(u);
 			}
 		} catch (Exception e) {
@@ -206,35 +220,34 @@ public class UsuarioServicio implements UserDetailsService {
 			System.out.println("No se pudo dar de baja el usuario");
 		}
 	}
-	
-	public void validar(String nombre, String apellido, Integer dni,
-						String nombreUsuario, String correo, String contrasena, String verificarContrasena,
-						String puesto, String rol) throws ErrorAviso {
+
+	public void validar(String nombre, String apellido, Integer dni, String nombreUsuario, String correo,
+			String contrasena, String verificarContrasena, String puesto, String rol) throws ErrorAviso {
 
 		if (usuarioRepositorio.buscarPorCorreo(correo) != null) {
 			throw new ErrorAviso("El mail ya fue utilizado.");
 		}
-		
+
 		if (usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario) != null) {
 			throw new ErrorAviso("El nombre de usuario ya existe");
 		}
-		
+
 		if (nombre == null || nombre.isEmpty()) {
 			throw new ErrorAviso("El nombre de usuario no puede quedar vacío");
 		}
-		
+
 		if (apellido == null || apellido.isEmpty()) {
 			throw new ErrorAviso("El apellido de usuario no puede quedar vacío");
 		}
-		
+
 		if (dni == null) {
 			throw new ErrorAviso("El DNI de usuario no puede quedar vacío");
 		}
-		
+
 		if (nombreUsuario == null || nombreUsuario.isEmpty()) {
 			throw new ErrorAviso("El nombre de usuario no puede quedar vacío");
 		}
-		
+
 		if (correo == null || correo.isEmpty()) {
 			throw new ErrorAviso("El correo de usuario no puede quedar vacío");
 		}
@@ -243,23 +256,23 @@ public class UsuarioServicio implements UserDetailsService {
 		if (!contrasena.equals(verificarContrasena)) {
 			throw new ErrorAviso("Las contraseñas no coinciden");
 		}
-		
+
 		if (puesto == null || puesto.isEmpty()) {
 			throw new ErrorAviso("El puedto de usuario no puede quedar vacío");
 		}
-		
+
 		if (rol == null || rol.isEmpty()) {
 			throw new ErrorAviso("El rol de usuario no puede quedar vacío");
 		}
 	}
-	
-	private List<String> separarNombreApellido(List<String> lista){
+
+	private List<String> separarNombreApellido(List<String> lista) {
 		List<String> listaNombre = new ArrayList<>();
-		
+
 		for (String aux : lista) {
 			listaNombre.add(aux.replace(",", " "));
 		}
-		
+
 		return listaNombre;
 	}
 }

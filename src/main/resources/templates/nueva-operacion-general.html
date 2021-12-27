@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head">
+</head>
+
+<body>
+	<header th:replace="/fragments/header :: header">
+	</header>
+
+	<nav th:replace="/fragments/navbar :: nav">
+	</nav>
+
+	<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div>
+
+	<section>
+		<div class="container">
+			<div class="row align-items-start">
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img src="img/usuarios.jpg" class="card-img-top" alt="No se encuentra la imagen" />
+						<div class="card-body">
+							<h5 class="card-title"> Procedimiento de encendido </h5>
+							<a href="/operacion-general/encendido" class="btn btn-primary"> Ir </a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img src="img/usuarios.jpg" class="card-img-top" alt="No se encuentra la imagen" />
+						<div class="card-body">
+							<h5 class="card-title"> Prueba de función </h5>
+							<a href="/operacion-general/prueba-funcion" class="btn btn-primary"> Ir </a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img src="img/usuarios.jpg" class="card-img-top" alt="No se encuentra la imagen" />
+						<div class="card-body">
+							<h5 class="card-title"> Operación </h5>
+							<a href="/operacion-general/operacion" class="btn btn-primary"> Ir </a>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img src="img/usuarios.jpg" class="card-img-top" alt="No se encuentra la imagen" />
+						<div class="card-body">
+							<h5 class="card-title"> Procedimiento de apagado </h5>
+							<a href="/operacion-general/apagado" class="btn btn-primary"> Ir </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<hr>
+		<div>
+			<a class="btn btn-light" href="/operacion-general/general"> Volver </a>
+			<button class="btn btn-light"> Aceptar </button>
+		</div>
+	</section>
+
+	<footer th:replace="/fragments/footer :: footer">
+	</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+	</script>
+</body>
+
+</html>

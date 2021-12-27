@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ienri.operacionra4.avisos.ErrorAviso;
@@ -16,6 +17,7 @@ public class FotoServicio {
 	@Autowired
 	private FotoRepositorio fotoRepositorio;
 	
+	@Transactional
 	public Foto guardar(MultipartFile archivo) throws ErrorAviso {
 		if (archivo != null) {
 			try {
@@ -35,6 +37,7 @@ public class FotoServicio {
 		}
 	}
 	
+	@Transactional
 	public Foto editar(String id, MultipartFile archivo) throws ErrorAviso {
 		if (archivo != null) {
 			try {

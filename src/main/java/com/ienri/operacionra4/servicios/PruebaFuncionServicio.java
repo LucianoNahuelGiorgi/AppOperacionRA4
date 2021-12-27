@@ -2,6 +2,7 @@ package com.ienri.operacionra4.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ienri.operacionra4.entidades.PruebaFuncion;
 import com.ienri.operacionra4.repositorios.PruebaFuncionRepositorio;
@@ -12,6 +13,7 @@ public class PruebaFuncionServicio {
 	@Autowired
 	PruebaFuncionRepositorio pruebaFuncionRepositorio;
 	
+	@Transactional
 	public void guardar(Integer indicacionFATCA, Integer indicadorFATMG, Integer indicadorFATCP,
 			 Double temperaturaN, Integer escalimetroTCUno, Double indicadorIntLogaritmicoTCUno, Double indicadorIntLinealTCUno,
 			 Integer escalimetroTCDos, Double indicadorIntLogaritmicoTCDos, Double indicadorIntLinealTCDos,

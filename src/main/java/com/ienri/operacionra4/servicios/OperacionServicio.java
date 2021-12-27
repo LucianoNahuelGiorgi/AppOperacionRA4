@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ienri.operacionra4.entidades.Operacion;
 import com.ienri.operacionra4.repositorios.OperacionRepositorio;
@@ -16,6 +17,7 @@ public class OperacionServicio {
 	@Autowired
 	OperacionRepositorio operacionRepositorio;
 	
+	@Transactional
 	public void guardar(String jefeReactor, String operador, String oficialRP,
 						String canalCentralHorizontal, String canalLateralSupHorizontal, String canalLateralInfHorizontal, String canalCentralVertical, String canalLateralVertical,
 						String motivo, String scram, Boolean muestra,
@@ -38,6 +40,7 @@ public class OperacionServicio {
 		}
 	}
 	
+	@Transactional(readOnly = true)
 	public List<Operacion> operacionFechaDesc(){
 		List<Operacion> opLista = new ArrayList<>(); 
 		try {

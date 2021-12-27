@@ -1,4 +1,4 @@
-package com.ienri.operacionra4.controladores;
+	package com.ienri.operacionra4.controladores;
 
 import java.util.List;
 
@@ -57,6 +57,16 @@ public class UsuarioControlador {
 		return mav;
 	}
 	
+	@GetMapping("/buscar")
+	public ModelAndView buscarPorNombre(@RequestParam String nombre) throws ErrorAviso {
+		ModelAndView mav = new ModelAndView("usuario");
+		
+		List<Usuario> u = usuarioServicio.buscarPorNombre(nombre);
+		mav.addObject("u", u);
+		
+		return mav;
+	}
+	
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/agregar")
 	public ModelAndView agregar() throws ErrorAviso {
@@ -98,4 +108,14 @@ public class UsuarioControlador {
 		
 		return new RedirectView("/inicio");
 	}
+	
+//	@PostMapping("/buscar")
+//	public ModelAndView buscarPorNombre(@RequestParam String nombre) throws ErrorAviso {
+//		ModelAndView mav = new ModelAndView("usuario");
+//		
+//		List<Usuario> u = usuarioServicio.buscarPorNombre(nombre);
+//		mav.addObject("u", u);
+//		
+//		return mav;
+//	}
 }

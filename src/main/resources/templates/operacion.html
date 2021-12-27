@@ -15,6 +15,7 @@
 
 	<section>
 		<h1 class="text-center"> DATOS DE OPERACIÓN </h1>
+		<h2 th:text="@{N°: } + ${num}"></h2>
 		<form action="/operacion-general/operacion" method="POST">
 			<div class="container">
 				<div class="row align-items-start">
@@ -252,7 +253,7 @@
 				</tbody>
 			</table>
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<a class="btn btn-light" href="/"> Volver </a>
+				<a class="btn btn-light" href="/operacion-general/nueva"> Volver </a>
 			</div>
 		</div>
 	</div>

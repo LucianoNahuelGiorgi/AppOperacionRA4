@@ -16,6 +16,8 @@
 	<section>
 		<form action="/operacion-general/procedimiento-encendido" method="POST">
 			<div class="container">
+				<h2 th:text="@{Procedimiento encendido N°: } + ${num}"></h2>
+				<h2 th:text="@{Fecha y hora: } + ${#dates.format(fechaHoraInicio, 'dd-MM-yyyy h:mm')}"></h2>
 				<input type="checkbox" id="cbox1" name="cbox1"> <label for="cbox1"> 1. Energizar el sistema de control
 					desde el tablero eléctrico </label><br>
 				<input type="checkbox" id="cbox2" name="cbox2"> <label for="cbox2"> 2. Verificar que ninguno de los
@@ -77,7 +79,7 @@
 			</div>
 			<hr>
 			<div>
-				<a class="btn btn-light" href="/"> Volver </a>
+				<a class="btn btn-light" href="/operacion-general/nueva"> Volver </a>
 				<button class="btn btn-light"> Aceptar </button>
 			</div>
 		</form>

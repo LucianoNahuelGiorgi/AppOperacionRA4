@@ -2,6 +2,7 @@ package com.ienri.operacionra4.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ienri.operacionra4.entidades.ProcedimientoEncendido;
 import com.ienri.operacionra4.repositorios.ProcedimientoEncendidoRepositorio;
@@ -11,6 +12,7 @@ public class ProcedimientoEncendidoServicio {
 	@Autowired
 	ProcedimientoEncendidoRepositorio procedimientoEncendidoRepositorio;
 	
+	@Transactional
 	public void guardar(Boolean check1, Boolean check2, Boolean check3, Boolean check4, Boolean check5, Boolean check6, Boolean check7, Boolean check8,
 			Boolean check9, Boolean check10, Boolean check11, Boolean check12, Boolean check13, Boolean check14, Boolean check15,
 			Boolean check16, Boolean check17, Boolean check18, Boolean check19, Boolean check20, Boolean check21, Boolean check22,
