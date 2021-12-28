@@ -137,7 +137,7 @@ public class OperacionGeneralControlador {
 												cbox11, cbox12, cbox13, cbox14, cbox15, cbox16, cbox17, cbox18, cbox19, cbox20,
 												cbox21, cbox22, cbox23, cbox24, cbox25, cbox26, observaciones);
 		
-		return new RedirectView("/operacion-general/operacion");
+		return new RedirectView("/operacion-general/prueba-funcion");
 	}
 	
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")

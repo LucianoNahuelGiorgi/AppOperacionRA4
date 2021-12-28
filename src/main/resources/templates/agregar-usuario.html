@@ -11,6 +11,11 @@
 	<nav th:replace="/fragments/navbar :: nav">
 		</nav>
 
+	<section >
+		<div th:replace="fragments/login :: div">
+		</div>
+	</section>
+
 	<section>
     	<div style="margin-top: 1%" class="text-center">
         	<form action="/usuario/agregar-usuario" enctype="multipart/form-data" method="POST">
