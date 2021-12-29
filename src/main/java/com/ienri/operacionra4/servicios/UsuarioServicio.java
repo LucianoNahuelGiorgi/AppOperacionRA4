@@ -115,7 +115,6 @@ public class UsuarioServicio implements UserDetailsService {
 		
 		return usuarioRepositorio.buscarPorNombre(nombre);
 	}
-
 	/**************/
 
 	/***************************************************************************************/
@@ -224,14 +223,6 @@ public class UsuarioServicio implements UserDetailsService {
 	public void validar(String nombre, String apellido, Integer dni, String nombreUsuario, String correo,
 			String contrasena, String verificarContrasena, String puesto, String rol) throws ErrorAviso {
 
-		if (usuarioRepositorio.buscarPorCorreo(correo) != null) {
-			throw new ErrorAviso("El mail ya fue utilizado.");
-		}
-
-		if (usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario) != null) {
-			throw new ErrorAviso("El nombre de usuario ya existe");
-		}
-
 		if (nombre == null || nombre.isEmpty()) {
 			throw new ErrorAviso("El nombre de usuario no puede quedar vacío");
 		}
@@ -240,7 +231,7 @@ public class UsuarioServicio implements UserDetailsService {
 			throw new ErrorAviso("El apellido de usuario no puede quedar vacío");
 		}
 
-		if (dni == null) {
+		if (dni.toString() == null || dni.toString().isEmpty()) {
 			throw new ErrorAviso("El DNI de usuario no puede quedar vacío");
 		}
 
@@ -248,17 +239,29 @@ public class UsuarioServicio implements UserDetailsService {
 			throw new ErrorAviso("El nombre de usuario no puede quedar vacío");
 		}
 
+		if (usuarioRepositorio.buscarPorNombreUsuario(nombreUsuario) != null) {
+			throw new ErrorAviso("El nombre de usuario ya existe");
+		}
+
 		if (correo == null || correo.isEmpty()) {
 			throw new ErrorAviso("El correo de usuario no puede quedar vacío");
 		}
 
+		if (usuarioRepositorio.buscarPorCorreo(correo) != null) {
+			throw new ErrorAviso("El mail ya fue utilizado.");
+		}
+
+		if ((contrasena == null || contrasena.isEmpty())) {
+			throw new ErrorAviso("La contraseña no puede quedar vacia");
+		}
+		
 		// Si las contraseñas son iguales guarda el ususario
 		if (!contrasena.equals(verificarContrasena)) {
 			throw new ErrorAviso("Las contraseñas no coinciden");
 		}
 
 		if (puesto == null || puesto.isEmpty()) {
-			throw new ErrorAviso("El puedto de usuario no puede quedar vacío");
+			throw new ErrorAviso("El puesto de usuario no puede quedar vacío");
 		}
 
 		if (rol == null || rol.isEmpty()) {

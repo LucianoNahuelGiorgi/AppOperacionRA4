@@ -81,228 +81,228 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Motivo </label>
-						<select class="form-select" aria-label="Default select example" name="motivo">
-							<option th:value="${seleccion}" th:text="@{Seleccionar motivo de la operación}" selected>
-							</option>
-							<option th:each="motivo : ${motivo}" th:value="${motivo}" th:text="${motivo}"></option>
-						</select>
-						<label> Scram </label>
-						<select class="form-select" aria-label="Default select example" name="scram">
-							<option th:value="${seleccion}" th:text="@{Seleccionar scram}" selected> </option>
-							<option th:each="scram : ${scram}" th:value="${scram}" th:text="${scram}"></option>
-						</select>
-					</div>
-					<div class="col">
-						<input type="checkbox" id="muestr" name="muestra"> <label for="muestra"> Muestra </label><br>
-					</div>
-					<div class="col">
-						<input type="checkbox" id="cbox1" name="cbox1"> <label for="cbox1"> Puerta consola </label><br>
-						<input type="checkbox" id="cbox2" name="cbox2"> <label for="cbox2"> Puerta reactor </label><br>
-						<input type="checkbox" id="cbox3" name="cbox3"> <label for="cbox3"> Experiencia potencia cero
-						</label><br>
-						<input type="checkbox" id="cbox4" name="cbox4"> <label for="cbox4"> Experiencia núcleo
-						</label><br>
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Temperatura Núcleo [°C] </label>
-						<br>
-						<input type="text" name="tempNucleo" placeholder="Temperatura Núcleo" />
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Posición de Fuente [cm] </label>
-						<br>
-						<input type="text" name="posFuente" placeholder="Posición de Fuente" />
-					</div>
-					<div class="col">
-						<label> Posición de Núcleo [cm] </label>
-						<br>
-						<input type="text" name="posNucleo" placeholder="Posición de Núcleo" />
-					</div>
-					<div class="col">
-						<label> Posición Barra de Control 1 [cm] </label>
-						<br>
-						<input type="text" name="posBC1" placeholder="Posición Barra de Control 1" />
-					</div>
-					<div class="col">
-						<label> Posición Barra de Control 2 [cm] </label>
-						<br>
-						<input type="text" name="posBC2" placeholder="Posición Barra de Control 2" />
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Escalímetro [2x10-1 min] </label>
-						<br>
-						<input type="text" name="escalimetro" placeholder="Escalímetro" />
-					</div>
-					<div class="col">
-						<label> Integrador Logarítmico [pulsos/min] </label>
-						<br>
-						<input type="text" name="intLogCA" placeholder="Integrador Logarítmico" />
-					</div>
-					<div class="col">
-						<label> Integrador Lineal [pulsos/seg] </label>
-						<br>
-						<input type="text" name="intLinCA" placeholder="Integrador Lineal" />
-					</div>
-					<div class="col">
-						<label> Lineal de potencia [A] </label>
-						<br>
-						<input type="text" name="intLinCP" placeholder="Lineal de potencia" />
-					</div>
-					<div class="col">
-						<label> Logarítmico de potencia [A] </label>
-						<br>
-						<input type="text" name="intLogCP" placeholder="Logarítmico de potencia" />
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Gamma consola [uSv/h] </label>
-						<br>
-						<input type="text" name="gammaConsola" placeholder="Gammas consola" />
-					</div>
-					<div class="col">
-						<label> Gamma reactor [uSv/h] </label>
-						<br>
-						<input type="text" name="gammaReactor" placeholder="Gamma reactor" />
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Potencia [mW] </label>
-						<br>
-						<input type="text" name="potencia" placeholder="Potencia" />
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Régimen (Arranque - Crítico) </label>
-						<br>
-						<select class="form-select" aria-label="Default select example" name="regimen">
-							<option value="arranque" text="arranque" selected> Arranque </option>
-							<option value="potencia" text="potencia"> Potencia </option>
-						</select>
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<label> Observaciones </label>
-						<br>
-						<textarea class="form-control" name="observaciones" aria-label="With textarea"></textarea>
-					</div>
-				</div>
-				<div class="row align-items-center">
-					<div class="col">
-						<div class="btn-group" role="group" aria-label="Basic example">
-							<a class="btn btn-light" href="/"> Volver </a>
-							<button class="btn btn-success"> Aceptar </button>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Motivo </label>
+							<select class="form-select" aria-label="Default select example" name="motivo">
+								<option th:value="${seleccion}" th:text="@{Seleccionar motivo de la operación}"
+									selected>
+								</option>
+								<option th:each="motivo : ${motivo}" th:value="${motivo}" th:text="${motivo}"></option>
+							</select>
+							<label> Scram </label>
+							<select class="form-select" aria-label="Default select example" name="scram">
+								<option th:value="${seleccion}" th:text="@{Seleccionar scram}" selected> </option>
+								<option th:each="scram : ${scram}" th:value="${scram}" th:text="${scram}"></option>
+							</select>
+						</div>
+						<div class="col">
+							<input type="checkbox" id="muestr" name="muestra"> <label for="muestra"> Muestra
+							</label><br>
+						</div>
+						<div class="col">
+							<input type="checkbox" id="cbox1" name="cbox1"> <label for="cbox1"> Puerta consola
+							</label><br>
+							<input type="checkbox" id="cbox2" name="cbox2"> <label for="cbox2"> Puerta reactor
+							</label><br>
+							<input type="checkbox" id="cbox3" name="cbox3"> <label for="cbox3"> Experiencia potencia
+								cero
+							</label><br>
+							<input type="checkbox" id="cbox4" name="cbox4"> <label for="cbox4"> Experiencia núcleo
+							</label><br>
 						</div>
 					</div>
-					<div class="col">
-						<div class="btn-group" role="group" aria-label="Basic example">
-							<button class="btn btn-danger"> Finalizar operación </button>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Temperatura Núcleo [°C] </label>
+							<br>
+							<input type="text" name="tempNucleo" placeholder="Temperatura Núcleo" />
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Posición de Fuente [cm] </label>
+							<br>
+							<input type="text" name="posFuente" placeholder="Posición de Fuente" />
+						</div>
+						<div class="col">
+							<label> Posición de Núcleo [cm] </label>
+							<br>
+							<input type="text" name="posNucleo" placeholder="Posición de Núcleo" />
+						</div>
+						<div class="col">
+							<label> Posición Barra de Control 1 [cm] </label>
+							<br>
+							<input type="text" name="posBC1" placeholder="Posición Barra de Control 1" />
+						</div>
+						<div class="col">
+							<label> Posición Barra de Control 2 [cm] </label>
+							<br>
+							<input type="text" name="posBC2" placeholder="Posición Barra de Control 2" />
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Escalímetro [2x10-1 min] </label>
+							<br>
+							<input type="text" name="escalimetro" placeholder="Escalímetro" />
+						</div>
+						<div class="col">
+							<label> Integrador Logarítmico [pulsos/min] </label>
+							<br>
+							<input type="text" name="intLogCA" placeholder="Integrador Logarítmico" />
+						</div>
+						<div class="col">
+							<label> Integrador Lineal [pulsos/seg] </label>
+							<br>
+							<input type="text" name="intLinCA" placeholder="Integrador Lineal" />
+						</div>
+						<div class="col">
+							<label> Lineal de potencia [A] </label>
+							<br>
+							<input type="text" name="intLinCP" placeholder="Lineal de potencia" />
+						</div>
+						<div class="col">
+							<label> Logarítmico de potencia [A] </label>
+							<br>
+							<input type="text" name="intLogCP" placeholder="Logarítmico de potencia" />
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Gamma consola [uSv/h] </label>
+							<br>
+							<input type="text" name="gammaConsola" placeholder="Gammas consola" />
+						</div>
+						<div class="col">
+							<label> Gamma reactor [uSv/h] </label>
+							<br>
+							<input type="text" name="gammaReactor" placeholder="Gamma reactor" />
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Potencia [mW] </label>
+							<br>
+							<input type="text" name="potencia" placeholder="Potencia" />
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Régimen (Arranque - Crítico) </label>
+							<br>
+							<select class="form-select" aria-label="Default select example" name="regimen">
+								<option value="arranque" text="arranque" selected> Arranque </option>
+								<option value="potencia" text="potencia"> Potencia </option>
+							</select>
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col">
+							<label> Observaciones </label>
+							<br>
+							<textarea class="form-control" name="observaciones" aria-label="With textarea"></textarea>
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col">
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<a class="btn btn-danger" onclick="return confirm('Desea cancelar la operación? (No se guardaran los cambios realizados)')" href="/"> Cancelar </a>
+								<button class="btn btn-success"> Aceptar </button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<a class="btn btn-danger" onclick="return confirm('Desea finalizar la operación?')" href="/operacion-general/apagado"> Finalizar operación </a>
+							</div>
 						</div>
 					</div>
 				</div>
-		</div>
-		</form>
+			</form>
 		</div>
 	</section>
-	<div class="row justify-content-center">
-		<div class="col-auto">
-			<table class="table table-striped table-responsive" enctype="multipart/form-data">
-				<thead>
-					<tr>
-						<th hidden> ID </th>
-						<th> Fecha y Hora </th>
-						<th> Temp. Núcleo [°C] </th>
-						<th> Pos. Fuente [cm] </th>
-						<th> Pos. Núcleo [cm] </th>
-						<th> Pos. BC 1 [cm] </th>
-						<th> Pos BC 2 [cm] </th>
-						<th> Escalímetro [2x10-1 min] </th>
-						<th> Int. Log. [pulsos/min] </th>
-						<th> Int. Lin. [pulsos/seg] </th>
-						<th> Lin. de potencia [A] </th>
-						<th> Log. de potencia [A] </th>
-						<th> Gamma consola [uSv/h] </th>
-						<th> Gamma reactor [uSv/h] </th>
-						<th> Potencia [mW] </th>
-						<th> Régimen (Arranque - Crítico) </th>
-						<th> Observaciones </th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="o : ${o}">
-						<td hidden class="text-white font-weight-bold text-left"></td>
-						<td th:text="${#dates.format(o.fechaHora, 'dd-MM-yyyy h:mm')}"
-							class="font-weight-bold text-left">
-						</td>
+	<section>
+		<div class="row justify-content-center">
+			<div class="col-auto">
+				<table class="table table-striped table-responsive" enctype="multipart/form-data">
+					<thead>
+						<tr>
+							<th hidden> ID </th>
+							<th> Fecha y Hora </th>
+							<th> Temp. Núcleo [°C] </th>
+							<th> Pos. Fuente [cm] </th>
+							<th> Pos. Núcleo [cm] </th>
+							<th> Pos. BC 1 [cm] </th>
+							<th> Pos BC 2 [cm] </th>
+							<th> Escalímetro [2x10-1 min] </th>
+							<th> Int. Log. [pulsos/min] </th>
+							<th> Int. Lin. [pulsos/seg] </th>
+							<th> Lin. de potencia [A] </th>
+							<th> Log. de potencia [A] </th>
+							<th> Gamma consola [uSv/h] </th>
+							<th> Gamma reactor [uSv/h] </th>
+							<th> Potencia [mW] </th>
+							<th> Régimen (Arranque - Crítico) </th>
+							<th> Observaciones </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="o : ${o}">
+							<td hidden class="text-white font-weight-bold text-left"></td>
+							<td th:text="${#dates.format(o.fechaHora, 'dd-MM-yyyy h:mm')}"
+								class="font-weight-bold text-left">
+							</td>
 
-						<td class="font-weight-bold text-left" th:text="${o.tempNucleo}"></td>
+							<td class="font-weight-bold text-left" th:text="${o.tempNucleo}"></td>
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.posFuente}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.posFuente}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.posNucleo}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.posNucleo}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.posBC1}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.posBC1}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.posBC2}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.posBC2}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.escalimetro}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.escalimetro}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.intLogCA}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.intLogCA}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.intLinCA}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.intLinCA}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.intLogCP}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.intLogCP}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.intLinCP}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.intLinCP}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.gammaConsola}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.gammaConsola}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.gammaReactor}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.gammaReactor}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.potencia}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.potencia}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.regimen}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.regimen}">
 
-						</td>
-						<td class="font-weight-bold text-left" th:text="${o.observaciones}">
+							</td>
+							<td class="font-weight-bold text-left" th:text="${o.observaciones}">
 
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="btn-group" role="group" aria-label="Basic example">
-				<a class="btn btn-light" href="/operacion-general/nueva"> Volver </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</div>
-	<section>
-
 	</section>
 
 	<footer th:replace="/fragments/footer :: footer">

@@ -19,15 +19,18 @@
 	<section>
     	<div style="margin-top: 1%" class="text-center">
         	<form action="/usuario/agregar-usuario" enctype="multipart/form-data" method="POST">
-                <input type="text" placeholder="Nombres" name="nombre">
+        	
+        		<p th:if="${error}" th:text="${error}" style="color: red"></p>
+        	
+                <input type="text" placeholder="Nombres" name="nombre" th:value="${nombre}">
                 <br>
-                <input type="text" placeholder="Apellidos" name="apellido">
+                <input type="text" placeholder="Apellidos" name="apellido" th:value="${apellido}">
                 <br>
-                <input type="number" placeholder="Documento Nacional de Identidad" name="dni">
+                <input type="number" placeholder="Documento Nacional de Identidad" name="dni" th:value="${dni}">
                 <br>
-                <input type="text" placeholder="Nombre de usuario" name="nombreUsuario">
+                <input type="text" placeholder="Nombre de usuario" name="nombreUsuario" th:value="${nombreUsuario}">
                 <br>
-                <input type="text" placeholder="Correo electrónico" name="correo">
+                <input type="text" placeholder="Correo electrónico" name="correo" th:value="${correo}">
                 <br>
                 <input type="text" placeholder="Contraseña" name="contrasena">
                 <br>

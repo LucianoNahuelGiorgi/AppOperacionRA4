@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.ienri.operacionra4.avisos.ErrorAviso;
 import com.ienri.operacionra4.entidades.Usuario;
@@ -100,13 +100,27 @@ public class UsuarioControlador {
 	}
 	
 	@PostMapping("/agregar-usuario")
-	public RedirectView agregarUsuario(@RequestParam(required = true) MultipartFile archivo, @RequestParam(required = true) String nombre, @RequestParam(required = true) String apellido, @RequestParam(required = true) Integer dni,
+	public String agregarUsuario(ModelMap modelo, @RequestParam(required = false) MultipartFile archivo, @RequestParam(required = true) String nombre, @RequestParam(required = true) String apellido, @RequestParam(required = true) Integer dni,
 										@RequestParam(required = true) String nombreUsuario, @RequestParam(required = true) String correo, @RequestParam(required = true) String contrasena, @RequestParam(required = true) String verificarContrasena,
 										@RequestParam(required = true) String puesto, @RequestParam(required = true) String rol) throws ErrorAviso {
 		
-		usuarioServicio.agregar(archivo, nombre, apellido, dni, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);
+		try {
+			usuarioServicio.agregar(archivo, nombre, apellido, dni, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);			
+		} catch (Exception e) {
+			List<String> puestos = puestoEnumeracionServicio.arregloPuesto();
+
+			modelo.put("puesto", puestos);
+			modelo.put("error", e.getMessage());
+			modelo.put("nombre", nombre);
+			modelo.put("apellido", apellido);
+			modelo.put("dni", dni);
+			modelo.put("nombreUsuario", nombreUsuario);
+			modelo.put("correo", correo);
+			
+			return "agregar-usuario";
+		}
 		
-		return new RedirectView("/inicio");
+		return "/inicio";
 	}
 	
 //	@PostMapping("/buscar")

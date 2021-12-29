@@ -37,7 +37,7 @@ public class IndexControlador {
 			modelo.put("logout", "Ha cerrado sesión exitosamente");
 		}
 		
-		return "ingresar.html";
+		return "ingresar";
 	}
 	
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")

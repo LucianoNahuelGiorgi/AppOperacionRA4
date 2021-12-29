@@ -147,7 +147,7 @@ public class OperacionGeneralControlador {
 		
 		procedimientoApagadoServicio.guardar(cbox1, cbox2, cbox3, cbox4, cbox5, cbox6, cbox7, cbox8, observaciones);
 		
-		return new RedirectView("/operacion-general/operacion");
+		return new RedirectView("/operacion-general/general");
 	}
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")

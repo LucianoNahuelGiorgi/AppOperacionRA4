@@ -316,10 +316,10 @@
                 <hr>
                 <!-- Botón -->
                 <div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn btn-light" href="/operacion-general/nueva"> Volver </a> 
+					<a class="btn btn-danger" onclick="return confirm('Desea cancelar la operación? (No se guardaran los cambios realizados)')" href="/operacion-general/nueva"> Cancelar </a> 
 				</div>
                 <div class="btn btn-light" role="group" aria-label="Basic example">
-                    <button type="submit" class="btn btn-primary"> Aceptar </button>
+                    <button type="submit" class="btn btn-success"> Aceptar </button>
                 </div>
         </form>
     </section>
