@@ -9,14 +9,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter{	
+public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
+
+	String[] staticResources = {"/css/**", "/img/**", "/fonts/**", "/scripts/**"};
+
 	@Override
-	protected void configure(HttpSecurity http) throws Exception{
+	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/*", "/img/*")
+			.antMatchers(staticResources)
 			.permitAll()
 		.and().formLogin()
-			.loginPage("/login")
+		.loginPage("/login")
 			.loginProcessingUrl("/logincheck")
 			.usernameParameter("correo")
 			.passwordParameter("contrasena")

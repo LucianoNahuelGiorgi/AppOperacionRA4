@@ -1,26 +1,43 @@
-<nav class="navbar navbar-expand-sm navbar navbar-light" style="background-color: white;">
+<nav class="navbar fix-top navbar-expand-sm navar-dark bg-dark">
+	<div class="container">
+		<a href="/" class="navbar-brand mb-0 h1">
+			<img class="d-inline-block align-top" src="img/logoCNEA.jpg" width="30" height="30" />
+			RA 4
+		</a>
 
-	<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse"
-    	data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+		<button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        	<li class="nav-item">
-            	<a class="nav-link active" aria-current="page" href="/usuario/jefe-reactor-activo"> Jefe de reactor </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/usuario/operador-activo"> Operador </a>
-            </li>
-            <li class="nav-item">
-            	<a class="nav-link active" aria-current="page" href="/usuario/oficial-activo"> Oficial de Radioprotección </a>
-          	</li>
-          	<li class="nav-item">
-            	<a class="nav-link active" aria-current="page" href="/operacion-general/general"> Operación general </a>
-            </li>
-        </ul>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link active" aria-current="page" href="/usuario/jefe-reactor-activo"> Jefe de reactor
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link active" aria-current="page" href="/usuario/operador-activo"> Operador </a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link active" aria-current="page" href="/usuario/oficial-activo"> Oficial de
+						Radioprotección </a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link active" aria-current="page" href="/operacion-general/general"> Operación general
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="d-flex">
+			<p th:if="${logeado == true}" th:text="${nombre + ' ' + apellido}" class="text-white"></p> -->
+			<a th:if="${admin == true}" class="btn btn-primary" href="/inicio"> Administrador </a>
+			<a th:if="${admin == false}" class="btn btn-primary" href="/inicio"> Usuario </a>
+			<a th:if="${(logeado == false) && (login != true)}" class="btn btn-primary" href="/login"> Ingresar </a>
+			<a th:if="${logeado == true}" class="btn btn-primary" href="/logout"> Cerrar sesión </a>
+			<!-- <a th:if="${session.usersession == null}" class="btn btn-primary" href="/login"> Ingresar </a>
+			<a th:if="${session.usersession != null}" class="btn btn-primary" href="/login"> Cerrar sesión </a>
+			<p th:if="${session.usersession != null}" th:text="${session.usersession.nombre + ' ' + session.usersession.apellido}" class="text-white"></p> -->
+		</div>
 	</div>
-
 </nav>

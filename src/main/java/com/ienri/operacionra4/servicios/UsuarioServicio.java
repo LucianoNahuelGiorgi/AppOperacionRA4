@@ -25,6 +25,7 @@ import com.ienri.operacionra4.avisos.ErrorAviso;
 import com.ienri.operacionra4.entidades.Foto;
 import com.ienri.operacionra4.entidades.Usuario;
 import com.ienri.operacionra4.repositorios.UsuarioRepositorio;
+import com.ienri.operacionra4.serviciosauxiliares.UsuarioAuxiliar;
 
 @Service
 public class UsuarioServicio implements UserDetailsService {
@@ -33,25 +34,33 @@ public class UsuarioServicio implements UserDetailsService {
 
 	@Autowired
 	private FotoServicio fotoServicio;
+	
+	@Autowired
+	private UsuarioAuxiliar usuarioAuxiliar;
 
 	/*******************************
 	 * Seguridad Spring
 	 *************************************/
 	@Override
 	public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
-		Usuario a = usuarioRepositorio.buscarPorCorreo(correo);
+		Usuario u = usuarioRepositorio.buscarPorCorreo(correo);
 
-		if (a != null) {
+		if (u != null) {
 			List<GrantedAuthority> permisos = new ArrayList<>();
 			GrantedAuthority activo = new SimpleGrantedAuthority("ROLE_ACTIVO");
 			permisos.add(activo);
 
-			User user = new User(a.getCorreo(), a.getContrasena(), permisos);
+			/* Codigo de prueba */
+			usuarioAuxiliar.setLogeado(true);
+			usuarioAuxiliar.setUsuario(u);
+			
+			User user = new User(u.getCorreo(), u.getContrasena(), permisos);
 
 			// Guardamos sus atributos
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 			HttpSession session = attr.getRequest().getSession(true);
-			session.setAttribute("usersession", a);
+			session.setAttribute("usersession", u);
+			
 			return user;
 		} else {
 			throw new UsernameNotFoundException("El usuario no fue encontrado");

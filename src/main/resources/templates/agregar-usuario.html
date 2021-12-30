@@ -16,7 +16,7 @@
 		</div>
 	</section>
 
-	<section>
+	<section th:if="${admin == true}">
     	<div style="margin-top: 1%" class="text-center">
         	<form action="/usuario/agregar-usuario" enctype="multipart/form-data" method="POST">
         	

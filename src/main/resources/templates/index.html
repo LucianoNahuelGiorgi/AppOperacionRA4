@@ -5,19 +5,21 @@
 </head>
 
 <body>
-	<header th:replace="/fragments/header :: header">
-	</header>
+	<!-- <header th:replace="/fragments/header :: header">
+	</header> -->
 
 	<nav th:replace="/fragments/navbar :: nav">
 	</nav>
 
-	<section>
+	<!-- <div class="container">
 		<div th:replace="fragments/login :: div">
 		</div>
-	</section>
+	</div> -->
 
-	<footer th:replace="/fragments/footer :: footer">
-	</footer>
+	<div class="container">
+		<footer th:replace="/fragments/footer :: footer">
+		</footer>
+	</div>
 
 	<script th:replace="/fragments/boostjs :: script">
 	</script>

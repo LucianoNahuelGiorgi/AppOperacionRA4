@@ -2,5 +2,7 @@
 	<h2 th:if="${session.usersession != null}"
 		th:text="${session.usersession.nombre + ' ' + session.usersession.apellido}"></h2>
 	<!--<img th:if="${perfil.foto != null}" alt="No se encontró la foto">-->
+	<a th:if="${admin == true}" class="btn btn-light" href="/inicio"> Administrador </a>
+	<a th:if="${admin == false}" class="btn btn-light" href="/inicio"> Usuario </a>
 	<a class="btn btn-light" href="/logout"> Cerrar sesión </a>
 </div>

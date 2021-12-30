@@ -26,7 +26,7 @@ public class Usuario {
 	@OneToOne
 	private Foto foto;
 	private String puesto;			// Puesto de trabajo
-	private String rol;				// Tipo de ususario, administrador/usuario
+	private String rol;				// Tipo de usuario, administrador/usuario
 	private Boolean alta;
 	
 	@Temporal(TemporalType.DATE)
