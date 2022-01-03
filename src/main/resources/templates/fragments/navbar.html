@@ -35,9 +35,6 @@
 			<a th:if="${admin == false}" class="btn btn-primary" href="/inicio"> Usuario </a>
 			<a th:if="${(logeado == false) && (login != true)}" class="btn btn-primary" href="/login"> Ingresar </a>
 			<a th:if="${logeado == true}" class="btn btn-primary" href="/logout"> Cerrar sesión </a>
-			<!-- <a th:if="${session.usersession == null}" class="btn btn-primary" href="/login"> Ingresar </a>
-			<a th:if="${session.usersession != null}" class="btn btn-primary" href="/login"> Cerrar sesión </a>
-			<p th:if="${session.usersession != null}" th:text="${session.usersession.nombre + ' ' + session.usersession.apellido}" class="text-white"></p> -->
 		</div>
 	</div>
 </nav>

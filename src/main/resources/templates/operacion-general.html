@@ -5,18 +5,11 @@
 </head>
 
 <body>
-	<header th:replace="/fragments/header :: header">
-	</header>
+	<!-- <header th:replace="/fragments/header :: header">
+	</header> -->
 
 	<nav th:replace="/fragments/navbar :: nav">
 	</nav>
-
-	<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div>
-
-	<section >
-		<div th:replace="fragments/login :: div">
-		</div>
-	</section>
 
 	<section>
 		<div class="container">

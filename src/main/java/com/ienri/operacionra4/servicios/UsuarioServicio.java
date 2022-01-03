@@ -34,7 +34,7 @@ public class UsuarioServicio implements UserDetailsService {
 
 	@Autowired
 	private FotoServicio fotoServicio;
-	
+
 	@Autowired
 	private UsuarioAuxiliar usuarioAuxiliar;
 
@@ -53,14 +53,14 @@ public class UsuarioServicio implements UserDetailsService {
 			/* Codigo de prueba */
 			usuarioAuxiliar.setLogeado(true);
 			usuarioAuxiliar.setUsuario(u);
-			
+
 			User user = new User(u.getCorreo(), u.getContrasena(), permisos);
 
 			// Guardamos sus atributos
 			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 			HttpSession session = attr.getRequest().getSession(true);
 			session.setAttribute("usersession", u);
-			
+
 			return user;
 		} else {
 			throw new UsernameNotFoundException("El usuario no fue encontrado");
@@ -118,13 +118,20 @@ public class UsuarioServicio implements UserDetailsService {
 
 		return separarNombreApellido(ofLista);
 	}
-	
+
 	@Transactional(readOnly = true)
 	public List<Usuario> buscarPorNombre(String nombre) throws ErrorAviso {
-		
+
 		return usuarioRepositorio.buscarPorNombre(nombre);
 	}
-	/**************/
+
+	@Transactional(readOnly = true)
+	public List<Usuario> buscarUsuarios() {
+
+		return usuarioRepositorio.findAll();
+	}
+
+	/***************************************************************************************/
 
 	/***************************************************************************************/
 	/*
@@ -186,8 +193,10 @@ public class UsuarioServicio implements UserDetailsService {
 		try {
 			Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
 			if (respuesta.isPresent()) {
-				Usuario u = new Usuario(id, nombre, apellido, dni, nombreUsuario, correo, contrasena, puesto, rol,
-						true);
+				Usuario u = new Usuario(id, nombre, apellido, dni, nombreUsuario, correo, puesto, rol, true);
+
+				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+				u.setContrasena(encoder.encode(contrasena));
 
 				String idFoto = null;
 				if (u.getFoto() != null) {
@@ -263,7 +272,7 @@ public class UsuarioServicio implements UserDetailsService {
 		if ((contrasena == null || contrasena.isEmpty())) {
 			throw new ErrorAviso("La contraseña no puede quedar vacia");
 		}
-		
+
 		// Si las contraseñas son iguales guarda el ususario
 		if (!contrasena.equals(verificarContrasena)) {
 			throw new ErrorAviso("Las contraseñas no coinciden");

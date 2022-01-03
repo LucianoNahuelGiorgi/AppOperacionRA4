@@ -11,52 +11,69 @@
 </head>
 
 <body>
-   	<header th:replace="/fragments/header :: header">
-   		</header>
+   	<!-- <header th:replace="/fragments/header :: header">
+   		</header> -->
 
 	<nav th:replace="/fragments/navbar :: nav">
 		</nav>
 
-	<section >
-		<div th:replace="fragments/login :: div">
+  	<section>
+   		<form>
+			<select class="select" name="buscador">
+            	<option value="barra-busqueda" text="Buscar por..." > </option>
+ 			</select>
+			<input name="titulo" type="text" class="buscador">
+        </form>
+   	</section>
+	
+	<div class="row justify-content-center">
+		<div class="col-auto">
+			<table class="table table-striped table-responsive" enctype="multipart/form-data">
+				<thead>
+					<tr>
+						<th hidden>ID</th>
+						<th>Foto</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>D.N.I.</th>
+						<th>Nombre de usuario</th>
+						<th>Correo</th>
+						<th>Puesto</th>
+						<th>Rol</th>
+						<th>Alta</th>
+						<th>Fecha de alta</th>
+						<th>Fecha de Baja</th>
+					</tr>
+				</thead>
+				<tbody enctype="multipart/form-data">
+					<tr th:each="u : ${u}" enctype="multipart/form-data">
+						<td hidden th:text="${u.id}" class="text-white font-weight-bold text-left"></td>
+						<td class="font-weight-bold text-left" enctype="multipart/form-data">
+							<img th:src="${u.foto}" alt="Not found">
+						</td>
+						<td th:text="${u.nombre}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.apellido}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.dni}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.nombreUsuario}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.correo}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.puesto}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.rol}" class="font-weight-bold text-left"></td>
+						<td th:text="${u.alta}" class="font-weight-bold text-left"></td>
+						<td th:text="${#dates.format(u.fechaAlta, 'dd-MM-yyyy')}" class="font-weight-bold text-left">
+						</td>
+						<td th:text="${#dates.format(u.fechaBaja, 'dd-MM-yyyy')}" class="font-weight-bold text-left">
+						</td>
+						<td class="font-weight-bold text-left">
+							<a th:if="${u.alta == true}" class="btn btn-danger" th:href="${'/usuario/editar-usuario/' + u.id}"> Editar </a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn-group" role="group" aria-label="Basic example">
+				<a class="btn btn-light" href="/"> Volver </a>
+			</div>
 		</div>
-	</section>
-    
-    <section>
-    	<div style="margin-top: 1%" class="text-center">
-        	<form action="/usuario/editar" enctype="multipart/form-data" method="POST">
-                <input type="text" placeholder="Nombres" name="nombre">
-                <br>
-                <input type="text" placeholder="Apellidos" name="apellido">
-                <br>
-                <input type="number" placeholder="Documento Nacional de Identidad" name="dni">
-                <br>
-                <input type="text" placeholder="Nombre de usuario" name="nombreUsuario">
-                <br>
-                <input type="text" placeholder="Correo electrónico" name="correo">
-                <br>
-                <input type="text" placeholder="Contraseña" name="contrasena">
-                <br>
-                <input type="text" placeholder="Repetir contraseña" name="verificarContrasena">
-                <br>
-                <input type="file" placeholder="Ingrese una foto" name="archivo">
-                <select class="form-select" aria-label="Default select example" name="puesto">
-  					<option th:value="${seleccion}" th:text="@{Seleccione un puesto}" selected> </option>
-  					<option th:each="puesto : ${puesto}" th:value="${puesto}" th:text="${puesto}"></option> 
-				</select>
-				<select class="form-select" aria-label="Default select example" name="rol">
-  					<option value="vacio" text="Seleccione un rol" selected> </option>
-  					<option value="administrador" text="Administrador"> Administrador </option>
-  					<option value="usuario" text="Usuario"> Usuario </option> 
-				</select>
-                <div style="margin-top: 1%"></div>
-            	<div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn btn-light" href="/inicio"> Volver </a>
-                	<input type="submit" class="btn btn-light" value="Editar">
-				</div>
-            </form>
-	    </div>
-	</section>
+	</div>
     
     <footer>
     </footer>

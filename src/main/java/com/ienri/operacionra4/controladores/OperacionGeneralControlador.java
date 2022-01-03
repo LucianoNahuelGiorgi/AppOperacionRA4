@@ -20,6 +20,7 @@ import com.ienri.operacionra4.servicios.ProcedimientoApagadoServicio;
 import com.ienri.operacionra4.servicios.ProcedimientoEncendidoServicio;
 import com.ienri.operacionra4.servicios.PruebaFuncionServicio;
 import com.ienri.operacionra4.servicios.UsuarioServicio;
+import com.ienri.operacionra4.serviciosauxiliares.UsuarioAuxiliar;
 
 @Controller
 @RequestMapping("/operacion-general")
@@ -43,12 +44,39 @@ public class OperacionGeneralControlador {
 	@Autowired
 	OperacionServicio operacionServicio;
 	
+	@Autowired
+	UsuarioAuxiliar usuarioAuxiliar;
+	
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/general")
 	public ModelAndView general() {
-		ModelAndView mav = new ModelAndView("operacion-general");
-		
-		return mav;
+		if(usuarioAuxiliar.getLogeado() == true) {
+			if (usuarioAuxiliar.getUsuario() != null && usuarioAuxiliar.getUsuario().getRol().equals("administrador")) {
+				ModelAndView mav = new ModelAndView("operacion-general");
+
+				mav.addObject("logeado", true);
+				mav.addObject("nombre", usuarioAuxiliar.getUsuario().getNombre());
+				mav.addObject("apellido", usuarioAuxiliar.getUsuario().getApellido());
+				mav.addObject("admin", true);
+				
+				return mav;
+			} else {
+				ModelAndView mav = new ModelAndView("operacion-general");
+				
+				mav.addObject("logeado", true);
+				mav.addObject("nombre", usuarioAuxiliar.getUsuario().getNombre());
+				mav.addObject("apellido", usuarioAuxiliar.getUsuario().getApellido());
+				mav.addObject("admin", false);
+				
+				return mav;
+			}
+		}else {
+			ModelAndView mav = new ModelAndView("operacion-general");
+			
+			mav.addObject("logeado", false);
+			
+			return mav;
+		}
 	}
 	
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")

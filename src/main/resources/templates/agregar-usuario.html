@@ -5,16 +5,11 @@
 	</head>
 
 <body>
-   	<header th:replace="/fragments/header :: header">
-   		</header>
+   	<!-- <header th:replace="/fragments/header :: header">
+   		</header> -->
 
 	<nav th:replace="/fragments/navbar :: nav">
 		</nav>
-
-	<section >
-		<div th:replace="fragments/login :: div">
-		</div>
-	</section>
 
 	<section th:if="${admin == true}">
     	<div style="margin-top: 1%" class="text-center">

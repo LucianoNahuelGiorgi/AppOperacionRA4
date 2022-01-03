@@ -50,14 +50,13 @@ public class Usuario {
 	}
 	
 	/* Constructor editar */
-	public Usuario(String id, String nombre, String apellido, Integer dni, String nombreUsuario, String correo, String contrasena, String puesto, String rol, Boolean alta) {
+	public Usuario(String id, String nombre, String apellido, Integer dni, String nombreUsuario, String correo, String puesto, String rol, Boolean alta) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.nombreUsuario = nombreUsuario;
 		this.correo = correo;
-		this.contrasena = contrasena;
 		this.puesto = puesto;
 		this.rol = rol;
 		this.alta = alta;

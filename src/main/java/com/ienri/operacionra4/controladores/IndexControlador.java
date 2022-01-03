@@ -19,19 +19,31 @@ public class IndexControlador {
 
 	@GetMapping("/")
 	public ModelAndView index() {
+
 		if (usuarioAuxiliar.getLogeado() == true) {
-			ModelAndView mav = new ModelAndView("index");
+			if (usuarioAuxiliar.getUsuario() != null && usuarioAuxiliar.getUsuario().getRol().equals("administrador")) {
+				ModelAndView mav = new ModelAndView("index");
+				mav.addObject("logeado", true);
+				mav.addObject("login", false);
+				mav.addObject("nombre", usuarioAuxiliar.getUsuario().getNombre());
+				mav.addObject("apellido", usuarioAuxiliar.getUsuario().getApellido());
+				mav.addObject("admin", true);
 
-			mav.addObject("logeado", true);
-			mav.addObject("login", false);
-			mav.addObject("nombre", usuarioAuxiliar.getUsuario().getNombre());
-			mav.addObject("apellido", usuarioAuxiliar.getUsuario().getApellido());
-
-			return mav;
+				return mav;
+			} else {
+				ModelAndView mav = new ModelAndView("inicio");
+				
+				mav.addObject("logeado", true);
+				mav.addObject("login", false);
+				mav.addObject("nombre", usuarioAuxiliar.getUsuario().getNombre());
+				mav.addObject("apellido", usuarioAuxiliar.getUsuario().getApellido());
+				mav.addObject("admin", false);
+				
+				return mav;
+			}
 		} else {
-			usuarioAuxiliar.setLogeado(false);
 			ModelAndView mav = new ModelAndView("index");
-
+			
 			mav.addObject("logeado", false);
 			mav.addObject("login", false);
 
@@ -46,7 +58,7 @@ public class IndexControlador {
 
 		if (error != null) {
 			usuarioAuxiliar.setLogeado(false);
-			
+
 			mav.addObject("logeado", false);
 			mav.addObject("login", true);
 			mav.addObject("error", "Nombre de usuario o clave incorrectos");
@@ -54,7 +66,7 @@ public class IndexControlador {
 
 		if (logout != null) {
 			usuarioAuxiliar.setLogeado(false);
-			
+
 			mav.addObject("logeado", false);
 			mav.addObject("login", true);
 			mav.addObject("logout", "Ha cerrado sesión exitosamente");
