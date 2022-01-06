@@ -32,9 +32,9 @@
 				<br>
 				<input type="text" th:value="${u.correo}" name="correo">
 				<br>
-				<input type="text" placeholder="Contraseña" name="contrasena">
+				<input type="password" placeholder="Contraseña" name="contrasena">
 				<br>
-				<input type="text" placeholder="Repetir contraseña" name="verificarContrasena">
+				<input type="password" placeholder="Repetir contraseña" name="verificarContrasena">
 				<br>
 				<input type="file" placeholder="Ingrese una foto" name="archivo">
 				<select class="form-select" aria-label="Default select example" name="puesto">
@@ -48,7 +48,7 @@
 				</select>
 				<div style="margin-top: 1%"></div>
 				<div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn btn-light" href="/inicio"> Volver </a>
+					<a class="btn btn-light" href="/usuario/editar"> Volver </a>
 					<input type="submit" class="btn btn-light" value="Editar">
 				</div>
 			</form>

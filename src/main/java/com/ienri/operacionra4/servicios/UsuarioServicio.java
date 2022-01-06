@@ -184,11 +184,11 @@ public class UsuarioServicio implements UserDetailsService {
 	}
 
 	@Transactional
-	public void editar(MultipartFile archivo, String id, String nombre, String apellido, Integer dni,
-			String nombreUsuario, String correo, String contrasena, String verificarContrasena, String puesto,
+	public void editar(MultipartFile archivo, String id, String nombre, String apellido, Integer dni, String nombreUsuario, String correo,
+			String contrasena, String verificarContrasena, String puesto,
 			String rol) throws ErrorAviso {
 
-		validar(nombre, apellido, dni, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);
+		validarEditar(nombre, apellido, dni, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);
 
 		try {
 			Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
@@ -266,6 +266,55 @@ public class UsuarioServicio implements UserDetailsService {
 		}
 
 		if (usuarioRepositorio.buscarPorCorreo(correo) != null) {
+			throw new ErrorAviso("El mail ya fue utilizado.");
+		}
+
+		if ((contrasena == null || contrasena.isEmpty())) {
+			throw new ErrorAviso("La contraseña no puede quedar vacia");
+		}
+
+		// Si las contraseñas son iguales guarda el ususario
+		if (!contrasena.equals(verificarContrasena)) {
+			throw new ErrorAviso("Las contraseñas no coinciden");
+		}
+
+		if (puesto == null || puesto.isEmpty()) {
+			throw new ErrorAviso("El puesto de usuario no puede quedar vacío");
+		}
+
+		if (rol == null || rol.isEmpty()) {
+			throw new ErrorAviso("El rol de usuario no puede quedar vacío");
+		}
+	}
+	
+	public void validarEditar(String nombre, String apellido, Integer dni, String nombreUsuario, String correo,
+			String contrasena, String verificarContrasena, String puesto, String rol) throws ErrorAviso {
+
+		if (nombre == null || nombre.isEmpty()) {
+			throw new ErrorAviso("El nombre de usuario no puede quedar vacío");
+		}
+
+		if (apellido == null || apellido.isEmpty()) {
+			throw new ErrorAviso("El apellido de usuario no puede quedar vacío");
+		}
+
+		if (dni.toString() == null || dni.toString().isEmpty()) {
+			throw new ErrorAviso("El DNI de usuario no puede quedar vacío");
+		}
+
+		if (nombreUsuario == null || nombreUsuario.isEmpty()) {
+			throw new ErrorAviso("El nombre de usuario no puede quedar vacío");
+		}
+
+		if (!usuarioRepositorio.buscarNombreUsuario(nombreUsuario).equals(nombreUsuario)) {
+			throw new ErrorAviso("El nombre de usuario ya existe");
+		}
+
+		if (correo == null || correo.isEmpty()) {
+			throw new ErrorAviso("El correo de usuario no puede quedar vacío");
+		}
+
+		if (usuarioRepositorio.buscarPorCorreo(correo).equals(correo)) {
 			throw new ErrorAviso("El mail ya fue utilizado.");
 		}
 
