@@ -12,7 +12,8 @@
 	</nav>
 
 	<section>
-		<form action="/operacion-general/prueba-funcion" onsubmit="return validacion()" method="POST">
+		<form onPaste="return true" action="/operacion-general/prueba-funcion" onsubmit="return validacionEnvio();"
+			method="POST">
 			<h1 class="text-center"> PRUEBA DE FUNCIÓN </h1>
 			<h2 th:text="@{N°: } + ${num}"></h2>
 			<h2> FUENTES DE ALTA TENSIÓN </h2>
@@ -22,7 +23,8 @@
 				</div>
 				<div>
 					<label for="indicacionFATCA"> Indicación </label>
-					<input type="text" name="indicadorFATCA" id="indicacionFATCA">
+					<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$"
+						name="indicadorFATCA" id="indicacionFATCA">
 					<label> V </label>
 				</div>
 			</div>
@@ -32,7 +34,8 @@
 				</div>
 				<div>
 					<label for="indicacionFATMG"> Indicación </label>
-					<input type="text" name="indicadorFATMG" id="indicacionFATMG">
+					<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$"
+						name="indicadorFATMG" id="indicacionFATMG">
 					<label> V </label>
 				</div>
 			</div>
@@ -42,7 +45,8 @@
 				</div>
 				<div>
 					<label for="indicacionFATCP"> Indicación </label>
-					<input type="text" name="indicadorFATCP" id="indicacionFATCP">
+					<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$"
+						name="indicadorFATCP" id="indicacionFATCP">
 					<label> V </label>
 				</div>
 			</div>
@@ -51,7 +55,8 @@
 			<div>
 				<div>
 					<label for="indicacionTN"> Indicación </label>
-					<input type="text" name="temperaturaN" id="temperaturaN">
+					<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+						value="" name="temperaturaN" id="temperaturaN">
 					<label> °C </label>
 				</div>
 			</div>
@@ -65,21 +70,24 @@
 							Escalímetro. Valor nominal: 1900.2x10-1 min
 						</div>
 						<div>
-							<input type="text" name="escalimetroTCUno">
+							<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$"
+								name="escalimetroTCUno">
 							<label for=""> ctas. </label>
 						</div>
 						<div>
 							Integrador lineal. Valor nominal: 60 s-1
 						</div>
 						<div>
-							<input type="text" name="indicadorIntLogaritmicoTCUno">
+							<input type="text" onkeypress="return validacionNumReal(event);"
+								pattern="^-?[0-9]+([\.,][0-9]+)?$" name="indicadorIntLogaritmicoTCUno">
 							<label for=""> s-1 </label>
 						</div>
 						<div>
 							Integrador lograítmico. Valor nominal: 4000 min-1
 						</div>
 						<div>
-							<input type="text" name="indicadorIntLinealTCUno">
+							<input type="text" onkeypress="return validacionNumReal(event);"
+								pattern="^-?[0-9]+([\.,][0-9]+)?$" name="indicadorIntLinealTCUno">
 							<label for=""> min-1 </label>
 						</div>
 					</div>
@@ -89,21 +97,24 @@
 							Escalímetro. Valor nominal: 1900.2x10-1 min
 						</div>
 						<div>
-							<input type="text" name="escalimetroTCDos">
+							<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$"
+								name="escalimetroTCDos">
 							<label for=""> ctas. </label>
 						</div>
 						<div>
 							Integrador lineal. Valor nominal: 60 s-1
 						</div>
 						<div>
-							<input type="text" name="indicadorIntLogaritmicoTCDos">
+							<input type="text" onkeypress="return validacionNumReal(event);"
+								pattern="^-?[0-9]+([\.,][0-9]+)?$" name="indicadorIntLogaritmicoTCDos">
 							<label for=""> s-1 </label>
 						</div>
 						<div>
 							Integrador logarítmico. Valor nominal: 4000 min-1
 						</div>
 						<div>
-							<input type="text" name="indicadorIntLinealTCDos">
+							<input type="text" onkeypress="return validacionNumReal(event);"
+								pattern="^-?[0-9]+([\.,][0-9]+)?$" name="indicadorIntLinealTCDos">
 							<label for=""> min-1 </label>
 						</div>
 					</div>
@@ -121,7 +132,8 @@
 			</div>
 			<div>
 				<label for="indicacionFlujoDB"> Indicación </label>
-				<input type="text" name="indicadorIntensidadFDB" id="indicacionFlujoDB">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="indicadorIntensidadFDB" id="indicacionFlujoDB">
 				<label> min-1 </label>
 			</div>
 			<div>
@@ -131,7 +143,8 @@
 				</div>
 				<div>
 					<label for="indicacionMultiDA"> Indicación </label>
-					<input type="text" name="indicadorIntensidadFDA" id="indicacionMultiDA">
+					<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+						name="indicadorIntensidadFDA" id="indicacionMultiDA">
 					<label> min-1 </label>
 				</div>
 			</div>
@@ -165,7 +178,7 @@
 			<hr>
 			<h2> CANAL DE POTENCIA </h2>
 			<div>
-				<input type="checkbox" name="selctor" value="selectr"> Selector de la fuente de corriente en PRUEBA
+				<input type="checkbox" name="selctor" value="selector"> Selector de la fuente de corriente en PRUEBA
 			</div>
 			<div>
 				<input type="checkbox" name="pulsador" value="pulsador"> Pulsador del conmutador en LOG
@@ -177,16 +190,19 @@
 			</div>
 			<div>
 				<label for="indicacion1"> Indicación </label>
-				<input type="text" name="indicadorDesconexionTC" id="indicacion1">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="indicadorDesconexionTC" id="indicacion1">
 				<label> A </label>
 				<label for="registrador1"> Registrador </label>
-				<input type="text" name="registradorDesconexionTC" id="registrador1">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="registradorDesconexionTC" id="registrador1">
 				<label> mW </label>
 			</div>
 			<hr>
 			<!-- Checkbox -->
 			<div>
-				<input type="checkbox" name="apagar" value="apagar"> Apagar FAT del Canal de Arranque
+				<input type="checkbox" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="apagar" value="apagar"> Apagar FAT del Canal de Arranque
 			</div>
 			<hr>
 			<div>
@@ -195,10 +211,12 @@
 						</b></label>
 				</div>
 				<label for="indicacion2"> Indicación </label>
-				<input type="text" name="indicadorConexionTC" id="indicacion2">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="indicadorConexionTC" id="indicacion2">
 				<label> A </label>
 				<label for="registrador2"> Registrador </label>
-				<input type="text" name="registradorConexionTC" id="registrador2">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="registradorConexionTC" id="registrador2">
 				<label> mW </label>
 			</div>
 			<div>
@@ -207,10 +225,12 @@
 							5x10-11A - 0,7mW </b></label>
 				</div>
 				<label for="indicacion3"> Indicación </label>
-				<input type="text" name="indicadorFDBCanalLog" id="indicacion3">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="indicadorFDBCanalLog" id="indicacion3">
 				<label> A </label>
 				<label for="registrador3"> Registrador </label>
-				<input type="text" name="registradorFDBCanalLog" id="registrador3">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="registradorFDBCanalLog" id="registrador3">
 				<label> mW </label>
 			</div>
 			<div>
@@ -219,10 +239,12 @@
 						</b></label>
 				</div>
 				<label for="indicacion4"> Indicación </label>
-				<input type="text" name="indicadorPreAlertaCanalLog" id="indicacion4">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="indicadorPreAlertaCanalLog" id="indicacion4">
 				<label> A </label>
 				<label for="registrador4"> Registrador </label>
-				<input type="text" name="registradorPreAlertaCanalLog" id="registrador4">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="registradorPreAlertaCanalLog" id="registrador4">
 				<label> mW </label>
 			</div>
 			<div>
@@ -231,10 +253,12 @@
 							1100mW </b></label>
 				</div>
 				<label for="indicacion5"> Indicación </label>
-				<input type="text" name="indicadorFDACanalLog" id="indicacion5">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="indicadorFDACanalLog" id="indicacion5">
 				<label> A </label>
 				<label for="registrador5"> Registrador </label>
-				<input type="text" name="registradorFDACanalLog" id="registrador5">
+				<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+					name="registradorFDACanalLog" id="registrador5">
 				<label> mW </label>
 			</div>
 			<hr>
@@ -249,10 +273,12 @@
 								escala en 3x10-8A </b></label>
 					</div>
 					<label for="indicacion6"> Indicación </label>
-					<input type="text" name="indicadorConmutarCanalLineal" id="indicacion6">
+					<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+						name="indicadorConmutarCanalLineal" id="indicacion6">
 					<label> A </label>
 					<label for="registrador6"> F.E. </label>
-					<input type="text" name="registradorCanalLineal" id="registrador6">
+					<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+						name="registradorCanalLineal" id="registrador6">
 					<label> % </label>
 				</div>
 				<div>
@@ -261,10 +287,12 @@
 								escala en 3x10-8 A </b></label>
 					</div>
 					<label for="indicacion7"> Indicación </label>
-					<input type="text" name="indicadorFDACanalLineal" id="indicacion7">
+					<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+						name="indicadorFDACanalLineal" id="indicacion7">
 					<label> A </label>
 					<label for="registrador7"> F.E. </label>
-					<input type="text" name="registradorFDACanalLineal" id="registrador7">
+					<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$"
+						name="registradorFDACanalLineal" id="registrador7">
 					<label> % </label>
 				</div>
 				<div>
@@ -303,13 +331,15 @@
 								μSv/h) </b></label>
 					</div>
 					<label for="indGammaMax"> Indicación </label>
-					<input type="text" name="indicadorDGammaAlta" id="indGammaMax">
+					<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$"
+						name="indicadorDGammaAlta" id="indGammaMax">
 					<label> min-1 </label>
 					<div>
 						<label><b> Falla del monitor gamma, h37 - Panel u19. (Valor de referencia: 3 min-1) </b></label>
 					</div>
 					<label for="indGammaMin"> Indicación </label>
-					<input type="text" name="indicadorFallaMG" id="indGammaMin">
+					<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$"
+						name="indicadorFallaMG" id="indGammaMin">
 					<label> min-1 </label>
 				</div>
 				<hr>
@@ -333,17 +363,7 @@
 	<footer th:replace="/fragments/footer :: footer">
 	</footer>
 
-	<script>
-		function validacion() {
-			valor = document.getElementById("indicacionFATCA").value;
-			if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
-				alert('[ERROR] El campo debe tener un valor de...');
-
-				return false;
-			}
-
-			return true;
-		}
+	<script src="/js/validaciones.js">
 	</script>
 
 	<script th:replace="/fragments/boostjs :: script">
