@@ -46,9 +46,29 @@ function validacionNumReal(evt) {
 	}
 }
 
-/*
 function validacionNotCientifica(evt) {
 	let charCode = (evt.which) ? evt.which : evt.keyCode;
+	let campo = document.getElementById("notCientificaCA");
+	cadena = campo.value;
 
+	if ((charCode == 46 && cadena == "") || (charCode == 69 && cadena == "") ||	(charCode == 101 && cadena == "") || (charCode == 45 && cadena == "")) {
+		return false;
+	} else {
+		if ((charCode > 47 && charCode < 58) || charCode == 46 || charCode == 69 || charCode == 101 || charCode == 45) {
+			if ((charCode == 46 && cadena.includes(".")) ||	
+				(charCode == 69 && cadena.includes("E")) || 
+				(charCode == 101 && cadena.includes("e")) || 
+				(charCode == 45 && cadena.includes("-"))) {
+				
+					return false;
+			}
+			else {
+				
+				return true;
+			}
+		} else {
+			
+			return false;
+		}
+	}
 }
-*/
