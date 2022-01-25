@@ -171,11 +171,11 @@ public class UsuarioControlador {
 		return mav;
 	}
 
-	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
+	//@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/agregar")
 	public ModelAndView agregar() throws ErrorAviso {
 		/* Carga Usuario administrador */
-//		usuarioServicio.agregar(null, "Luciano Nahuel", "Giorgi", 32908433, "lgiorgi", "lgiorgi@fceia.unr.edu.ar", "123456", "123456", "Operador", "administrador");
+		usuarioServicio.agregar(null, "Luciano Nahuel", "Giorgi", 32908433, "lgiorgi", "j@gmail.com", "123456", "123456", "Operador", "administrador");
 
 		if (usuarioAuxiliar.getLogeado() == true) {
 			if (usuarioAuxiliar.getUsuario() != null && usuarioAuxiliar.getUsuario().getRol().equals("administrador")) {
