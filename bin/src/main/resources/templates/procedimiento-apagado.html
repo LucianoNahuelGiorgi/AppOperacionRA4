@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head">
+</head>
+
+<body>
+	<!-- <header th:replace="/fragments/header :: header">
+	</header> -->
+
+	<nav th:replace="/fragments/navbar :: nav">
+	</nav>
+
+	<section>
+		<h2 th:text="@{Procedimiento apagado N°: } + ${num}"></h2>
+		<form action="/operacion-general/procedimiento-apagado" method="POST">
+			<div class="container">
+				<input type="checkbox" id="cbox1" name="cbox1"> <label for="cbox1"> 1. Apagar FAT canal de potencia
+				</label><br>
+				<input type="checkbox" id="cbox2" name="cbox2"> <label for="cbox2"> 2. Apagar FAT monitor gamma
+				</label><br>
+				<input type="checkbox" id="cbox3" name="cbox3"> <label for="cbox3"> 3. Apagar registradores
+				</label><br>
+				<input type="checkbox" id="cbox4" name="cbox4"> <label for="cbox4"> 4. Apagar FAT canal de arranque
+				</label><br>
+				<input type="checkbox" id="cbox5" name="cbox5"> <label for="cbox5"> 5. Apagar consola </label><br>
+				<input type="checkbox" id="cbox6" name="cbox6"> <label for="cbox6"> 6. Apagar monitores de área
+				</label><br>
+				<input type="checkbox" id="cbox7" name="cbox7"> <label for="cbox7"> 7. Apagar PC </label><br>
+				<input type="checkbox" id="cbox8" name="cbox8"> <label for="cbox8"> 8. Desenergizar la consola
+				</label><br>
+			</div>
+			<hr>
+			<h2> OBSERVACIONES </h2>
+			<div class="input-group">
+				<textarea class="form-control" name="observaciones" aria-label="With textarea"></textarea>
+			</div>
+			<hr>
+			<div>
+				<a class="btn btn-danger" onclick="return confirm('Desea cancelar la operación? (No se guardaran los cambios realizados)')" href="/operacion-general/nueva"> Cancelar </a>
+				<button class="btn btn-success"> Aceptar </button>
+			</div>
+		</form>
+	</section>
+
+	<footer th:replace="/fragments/footer :: footer">
+	</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+	</script>
+</body>
+
+</html>
