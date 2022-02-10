@@ -1,0 +1,13 @@
+.navi{
+    background-color: rgb(0, 132, 134,0.8)
+}
+.btn.botones {
+    background-color: rgba(54, 115, 165, 0.8);
+    color:white;
+    margin: 2px;
+}
+.btn.botones:hover {
+    background-color: rgba(66, 141, 202, 1);
+    color:white;
+   
+}

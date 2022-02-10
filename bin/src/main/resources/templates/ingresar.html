@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head">
+</head>
+
+<body>
+	<!-- <header th:replace="/fragments/header :: header">
+	</header> -->
+
+	<nav th:replace="/fragments/navbar :: nav">
+	</nav>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col align-self-center">
+					<div th:text="${error}" th:if="${error != null}" style="color: red"></div>
+					<div th:text="${logout}" th:if="${logout != null}" style="color: green"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col align-self-center">
+					<form action="/logincheck" method="POST">
+						<input type="mail" placeholder="Ingrese su correo" name="correo">
+						<input type="password" placeholder="Ingrese su contraseña" name="contrasena">
+						<button class="btn btn-success"> Aceptar </button>
+						<a class="btn btn-danger" href="/"> Volver </a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer th:replace="/fragments/footer :: footer">
+	</footer>
+
+	<script th:replace="/fragments/boostjs :: script">
+	</script>
+</body>
+
+</html>

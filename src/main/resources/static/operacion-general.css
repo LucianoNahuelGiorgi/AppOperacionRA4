@@ -1,0 +1,22 @@
+body{
+    background-image: url("img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+}
+
+.btn.botones {
+    background-color: rgba(54, 115, 165, 0.8);
+    color:white;
+    margin: 1px;
+}
+.btn.botones:hover {
+    background-color: rgba(66, 141, 202, 1);
+    color:white;
+   
+}
+.terjeta{
+    background-color: rgba(0, 132, 134,0.8);
+    color: white;
+    
+}

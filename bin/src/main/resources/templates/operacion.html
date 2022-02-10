@@ -3,7 +3,6 @@
 
 <head th:replace="/fragments/head :: head">
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <body>
 	<!-- <header th:replace="/fragments/header :: header">
@@ -24,7 +23,7 @@
 					<h2 th:text="@{Operación N°: } + ${num}"></h2>
 				</div>
 			</div>
-			<form onPaste="return false" action="/operacion-general/operacion" method="POST">
+			<form action="/operacion-general/operacion" method="POST">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col">
@@ -112,75 +111,75 @@
 						<div class="col">
 							<label> Temperatura Núcleo [°C] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="tempNucleo" placeholder="Temperatura Núcleo" />
+							<input type="text" name="tempNucleo" placeholder="Temperatura Núcleo" />
 						</div>
 					</div>
 					<div class="row align-items-center">
 						<div class="col">
 							<label> Posición de Fuente [cm] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="posFuente" placeholder="Posición de Fuente" />
+							<input type="text" name="posFuente" placeholder="Posición de Fuente" />
 						</div>
 						<div class="col">
 							<label> Posición de Núcleo [cm] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="posNucleo" placeholder="Posición de Núcleo" />
+							<input type="text" name="posNucleo" placeholder="Posición de Núcleo" />
 						</div>
 						<div class="col">
 							<label> Posición Barra de Control 1 [cm] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="posBC1" placeholder="Posición Barra de Control 1" />
+							<input type="text" name="posBC1" placeholder="Posición Barra de Control 1" />
 						</div>
 						<div class="col">
 							<label> Posición Barra de Control 2 [cm] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="posBC2" placeholder="Posición Barra de Control 2" />
+							<input type="text" name="posBC2" placeholder="Posición Barra de Control 2" />
 						</div>
 					</div>
 					<div class="row align-items-center">
 						<div class="col">
 							<label> Escalímetro [2x10-1 min] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumEntero(event);" patter="^\d+$" name="escalimetro" placeholder="Escalímetro" />
+							<input type="text" name="escalimetro" placeholder="Escalímetro" />
 						</div>
 						<div class="col">
 							<label> Integrador Logarítmico [pulsos/min] </label>
 							<br>
-							<input type="text" class="notCientificaCA" onkeypress="return validacionNotCientifica(event);" name="intLogCA" placeholder="Integrador Logarítmico" />
+							<input type="text" name="intLogCA" placeholder="Integrador Logarítmico" />
 						</div>
 						<div class="col">
 							<label> Integrador Lineal [pulsos/seg] </label>
 							<br>
-							<input type="text" id="notCientificaCA" onkeypress="return validacionNotCientifica(event);" name="intLinCA" placeholder="Integrador Lineal" />
+							<input type="text" name="intLinCA" placeholder="Integrador Lineal" />
 						</div>
 						<div class="col">
 							<label> Lineal de potencia [A] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="intLinCP" placeholder="Lineal de potencia" />
+							<input type="text" name="intLinCP" placeholder="Lineal de potencia" />
 						</div>
 						<div class="col">
 							<label> Logarítmico de potencia [A] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="intLogCP" placeholder="Logarítmico de potencia" />
+							<input type="text" name="intLogCP" placeholder="Logarítmico de potencia" />
 						</div>
 					</div>
 					<div class="row align-items-center">
 						<div class="col">
 							<label> Gamma consola [uSv/h] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="gammaConsola" placeholder="Gammas consola" />
+							<input type="text" name="gammaConsola" placeholder="Gammas consola" />
 						</div>
 						<div class="col">
 							<label> Gamma reactor [uSv/h] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" placeholder="Gamma reactor" />
+							<input type="text" name="gammaReactor" placeholder="Gamma reactor" />
 						</div>
 					</div>
 					<div class="row align-items-center">
 						<div class="col">
 							<label> Potencia [mW] </label>
 							<br>
-							<input type="text" onkeypress="return validacionNumReal(event);" pattern="^-?[0-9]+([\.,][0-9]+)?$" name="potencia" placeholder="Potencia" />
+							<input type="text" name="potencia" placeholder="Potencia" />
 						</div>
 					</div>
 					<div class="row align-items-center">
@@ -303,9 +302,6 @@
 
 	<footer th:replace="/fragments/footer :: footer">
 	</footer>
-	
-	<script src="/js/validaciones.js">
-	</script>
 
 	<script th:replace="/fragments/boostjs :: script">
 	</script>

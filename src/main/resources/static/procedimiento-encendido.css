@@ -1,0 +1,7 @@
+.estilotextarea {
+    border: 4px groove rgba(259, 250, 179, 0.8);
+    height: 180px;
+    width: 95%;
+    margin: 30px;
+    resize: none;
+}
