@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		
+			<link rel="stylesheet" th:href="@{/editar.css}">
 	<title> Editar </title>
 </head>
 
@@ -17,26 +19,27 @@
 	<nav th:replace="/fragments/navbar :: nav">
 	</nav>
 
-	<section>
-		<div style="margin-top: 1%" class="text-center">
-			<form action="/usuario/editar-usuario" enctype="multipart/form-data" method="POST">
+	<section >
+	
+		<div style="margin-top: 1%" class="text-center contenedor">
+			<form action="/usuario/editar-usuario" enctype="multipart/form-data" method="POST" class="row row-cols-1" >
 				<input hidden th:value="${u.id}" name="id">
-				<br>
-				<input type="text" th:value="${u.nombre}" name="nombre">
-				<br>
-				<input type="text" th:value="${u.apellido}" name="apellido">
-				<br>
-				<input type="number" th:value="${u.dni}" name="dni">
-				<br>
-				<input type="text" th:value="${u.nombreUsuario}" name="nombreUsuario">
-				<br>
-				<input type="text" th:value="${u.correo}" name="correo">
-				<br>
-				<input type="password" placeholder="Contraseña" name="contrasena">
-				<br>
-				<input type="password" placeholder="Repetir contraseña" name="verificarContrasena">
-				<br>
-				<input type="file" placeholder="Ingrese una foto" name="archivo">
+				
+				<input class="input col" type="text" th:value="${u.nombre}" name="nombre">
+				
+				<input class="input" type="text" th:value="${u.apellido}" name="apellido">
+				
+				<input class="input" type="number" th:value="${u.dni}" name="dni">
+				
+				<input class="input" type="text" th:value="${u.nombreUsuario}" name="nombreUsuario">
+				
+				<input class="input" type="text" th:value="${u.correo}" name="correo">
+				
+				<input class="input" type="password" placeholder="Contraseña" name="contrasena">
+				
+				<input class="input" type="password" placeholder="Repetir contraseña" name="verificarContrasena">
+				
+				<input class="input" type="file" placeholder="Ingrese una foto" name="archivo">
 				<select class="form-select" aria-label="Default select example" name="puesto">
 					<option th:value="${u.puesto}" th:text="${u.puesto}" selected> </option>
 					<option th:each="puesto : ${puesto}" th:value="${puesto}" th:text="${puesto}"></option>
@@ -48,8 +51,8 @@
 				</select>
 				<div style="margin-top: 1%"></div>
 				<div class="btn-group" role="group" aria-label="Basic example">
-					<a class="btn btn-light" href="/usuario/editar"> Volver </a>
-					<input type="submit" class="btn btn-light" value="Editar">
+					<a class="btn  botones " href="/usuario/editar"> Volver </a>
+					<input type="submit" class="btn  botones " value="Editar">
 				</div>
 			</form>
 		</div>

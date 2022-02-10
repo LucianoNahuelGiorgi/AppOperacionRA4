@@ -22,3 +22,17 @@ color: white;
     width: 200px;
     margin: 30px;
 }
+.conenedor-tubo-contenedor{
+    
+    text-align: left;
+    border: 3px white solid;
+    
+    margin: 15px;
+    
+}
+.centro-celectores{
+    text-align: left;
+    margin: auto;
+
+}
+

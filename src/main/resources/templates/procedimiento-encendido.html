@@ -3,6 +3,10 @@
 
 <head th:replace="/fragments/head :: head">
 </head>
+<link rel="stylesheet" th:href="@{/procedimiento-encendido.css}"> 
+<link rel="stylesheet" href="../static/procedimiento-encendido.css"> visual 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 
 <body>
 	<!-- <header th:replace="/fragments/header :: header">
@@ -13,67 +17,67 @@
 
 	<section>
 		<form action="/operacion-general/procedimiento-encendido" method="POST">
-			<div class="container">
+			<div class="container  form-switch">
 				<h2 th:text="@{Procedimiento encendido N°: } + ${num}"></h2>
 				<h2 th:text="@{Fecha y hora: } + ${#dates.format(fechaHoraInicio, 'dd-MM-yyyy h:mm')}"></h2>
-				<input type="checkbox" id="cbox1" name="cbox1"> <label for="cbox1"> 1. Energizar el sistema de control
+				<input type="checkbox" id="cbox1" name="cbox1" class="form-check-input"> <label for="cbox1"> 1. Energizar el sistema de control
 					desde el tablero eléctrico </label><br>
-				<input type="checkbox" id="cbox2" name="cbox2"> <label for="cbox2"> 2. Verificar que ninguno de los
-					puentes de anulación se encuentre colocado </label><br>
-				<input type="checkbox" id="cbox3" name="cbox3"> <label for="cbox3"> 3. Ajuste fino de la FAT canal de
+				<input type="checkbox" id="cbox2" name="cbox2" class="form-check-input"> <label for="cbox2"> 2. Verificar que ninguno de los
+					puentes de anulación se encuentre colocado  </label><br>
+				<input type="checkbox" id="cbox3" name="cbox3" class="form-check-input"> <label for="cbox3"> 3. Ajuste fino de la FAT canal de
 					potencia en 0 V </label><br>
-				<input type="checkbox" id="cbox4" name="cbox4"> <label for="cbox4"> 4. Verificar que este apagada la FAT
+				<input type="checkbox" id="cbox4" name="cbox4" class="form-check-input"> <label for="cbox4"> 4. Verificar que este apagada la FAT
 					canal de potencia </label><br>
-				<input type="checkbox" id="cbox5" name="cbox5"> <label for="cbox5"> 5. Selector de tensión de la FAT del
+				<input type="checkbox" id="cbox5" name="cbox5" class="form-check-input"> <label for="cbox5"> 5. Selector de tensión de la FAT del
 					canal de potencia en 0,6 kV </label><br>
-				<input type="checkbox" id="cbox6" name="cbox6"> <label for="cbox6"> 6. Selector de tensión de la FAT del
+				<input type="checkbox" id="cbox6" name="cbox6" class="form-check-input"> <label for="cbox6"> 6. Selector de tensión de la FAT del
 					monitor gamma en 650 V </label><br>
-				<input type="checkbox" id="cbox7" name="cbox7"> <label for="cbox7"> 7. Selector de la FC de control en
+				<input type="checkbox" id="cbox7" name="cbox7" class="form-check-input"> <label for="cbox7"> 7. Selector de la FC de control en
 					1x10-12 A </label><br>
-				<input type="checkbox" id="cbox8" name="cbox8"> <label for="cbox8"> 8. Ajuste fino de FC de control en 0
+				<input type="checkbox" id="cbox8" name="cbox8" class="form-check-input"> <label for="cbox8"> 8. Ajuste fino de FC de control en 0
 					% </label><br>
-				<input type="checkbox" id="cbox9" name="cbox9"> <label for="cbox9"> 9. Llave selectora en posición
+				<input type="checkbox" id="cbox9" name="cbox9" class="form-check-input"> <label for="cbox9"> 9. Llave selectora en posición
 					"OPERACION" </label><br>
-				<input type="checkbox" id="cbox10" name="cbox10"> <label for="cbox10"> 10. Selectora desactivada
+				<input type="checkbox" id="cbox10" name="cbox10"class="form-check-input"> <label for="cbox10"> 10. Selectora desactivada
 				</label><br>
-				<input type="checkbox" id="cbox11" name="cbox11"> <label for="cbox11"> 11. Verificar que esten apagados
+				<input type="checkbox" id="cbox11" name="cbox11"class="form-check-input"> <label for="cbox11"> 11. Verificar que esten apagados
 					los registradores </label><br>
-				<input type="checkbox" id="cbox12" name="cbox12"> <label for="cbox12"> 12. Selector conmutador canal
+				<input type="checkbox" id="cbox12" name="cbox12"class="form-check-input"> <label for="cbox12"> 12. Selector conmutador canal
 					lineal en 3x10-8 A </label><br>
-				<input type="checkbox" id="cbox13" name="cbox13"> <label for="cbox13"> 13. Selector Integrador Canal
+				<input type="checkbox" id="cbox13" name="cbox13"class="form-check-input"> <label for="cbox13"> 13. Selector Integrador Canal
 					Lineal de Arranque en 5x10+1 pulsos/seg </label><br>
-				<input type="checkbox" id="cbox14" name="cbox14"> <label for="cbox14"> 14. Selector Base de Tiempo
+				<input type="checkbox" id="cbox14" name="cbox14"class="form-check-input"> <label for="cbox14" > 14. Selector Base de Tiempo
 					Integrador Canal Lineal de Arranque en 4 seg </label><br>
-				<input type="checkbox" id="cbox15" name="cbox15"> <label for="cbox15"> 15. Selector posicionado en "Mess
+				<input type="checkbox" id="cbox15" name="cbox15"class="form-check-input"> <label for="cbox15" > 15. Selector posicionado en "Mess
 					operate" Integrador Logaritmico Canal de Arranque </label><br>
-				<input type="checkbox" id="cbox16" name="cbox16"> <label for="cbox16"> 16. Selector "Oszilloskop" en 2
+				<input type="checkbox" id="cbox16" name="cbox16"class="form-check-input"> <label for="cbox16" > 16. Selector "Oszilloskop" en 2
 				</label><br>
-				<input type="checkbox" id="cbox17" name="cbox17"> <label for="cbox17"> 17. Verificar que la FATCA este
+				<input type="checkbox" id="cbox17" name="cbox17"class="form-check-input"> <label for="cbox17" > 17. Verificar que la FATCA este
 					apagada </label><br>
-				<input type="checkbox" id="cbox18" name="cbox18"> <label for="cbox18"> 18. Selector "preset time" en
+				<input type="checkbox" id="cbox18" name="cbox18"class="form-check-input"> <label for="cbox18" > 18. Selector "preset time" en
 					x2x10+2 </label><br>
-				<input type="checkbox" id="cbox19" name="cbox19"> <label for="cbox19"> 19. Selector "Escalimetro" en
+				<input type="checkbox" id="cbox19" name="cbox19"class="form-check-input"> <label for="cbox19" > 19. Selector "Escalimetro" en
 					"Betrieb operation" </label><br>
-				<input type="checkbox" id="cbox20" name="cbox20"> <label for="cbox20"> 20. Selector "preset count" x2
+				<input type="checkbox" id="cbox20" name="cbox20"class="form-check-input"> <label for="cbox20" > 20. Selector "preset count" x2
 					infinito </label><br>
-				<input type="checkbox" id="cbox21" name="cbox21"> <label for="cbox21"> 21. Encender consola de control
+				<input type="checkbox" id="cbox21" name="cbox21"class="form-check-input"> <label for="cbox21" > 21. Encender consola de control
 				</label><br>
-				<input type="checkbox" id="cbox22" name="cbox22"> <label for="cbox22"> 22. Encender Monitores de área
+				<input type="checkbox" id="cbox22" name="cbox22"class="form-check-input"> <label for="cbox22" > 22. Encender Monitores de área
 				</label><br>
-				<input type="checkbox" id="cbox23" name="cbox23"> <label for="cbox23"> 23. Encender PC </label><br>
-				<input type="checkbox" id="cbox24" name="cbox24"> <label for="cbox24"> 24. Encender FAT Canal de
+				<input type="checkbox" id="cbox23" name="cbox23"class="form-check-input"> <label for="cbox23" > 23. Encender PC </label><br>
+				<input type="checkbox" id="cbox24" name="cbox24"class="form-check-input"> <label for="cbox24" > 24. Encender FAT Canal de
 					Arranque </label><br>
-				<input type="checkbox" id="cbox25" name="cbox25"> <label for="cbox25"> 25. Encender FAT Monitor gamma
+				<input type="checkbox" id="cbox25" name="cbox25"class="form-check-input"> <label for="cbox25" > 25. Encender FAT Monitor gamma
 				</label><br>
-				<input type="checkbox" id="cbox26" name="cbox26"> <label for="cbox26"> 26. Encender FAT Canal de
+				<input type="checkbox" id="cbox26" name="cbox26"class="form-check-input"> <label for="cbox26" > 26. Encender FAT Canal de
 					Potencia </label><br>
-				<input type="checkbox" id="cbox27"> <label for="cbox27"> 27. Espera de al menos 30 minutos para que
+				<input type="checkbox" id="cbox27" class="form-check-input"> <label for="cbox27"> 27. Espera de al menos 30 minutos para que
 					ingrese en regimen la instrumetnal de la consola </label><br>
 			</div>
 			<hr>
-			<h2> OBSERVACIONES </h2>
+			<h2 class="text-center"> OBSERVACIONES </h2>
 			<div class="input-group">
-				<textarea class="form-control" name="observaciones" aria-label="With textarea"></textarea>
+				<textarea class="estilotextarea" name="observaciones" aria-label="With textarea"></textarea>
 			</div>
 			<hr>
 			<div>
