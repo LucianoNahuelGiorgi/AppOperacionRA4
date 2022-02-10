@@ -4,57 +4,229 @@
 <head th:replace="/fragments/head :: head">
 	</head>
 
+<!-- <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RA 4</title>
+	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/estilos.css">
+</head> -->
+
 <body>
-   	<!-- <header th:replace="/fragments/header :: header">
+	<nav th:replace="/fragments/navbar :: nav">
+	</nav>
+
+	<main>
+		<form action="/usuario/agregar-usuario" class="formulario" id="formulario" enctype="multipart/form-data"
+			method="POST">
+			<p th:if="${error}" th:text="${error}" style="color: red"></p>
+			<!-- Grupo: Nombre -->
+			<div class="formulario__grupo" id="grupo__nombre">
+				<label for="nombre" class="formulario__label">Nombre</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombres">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El nombre solo puede contener
+					letras y un espacio.</p>
+			</div>
+
+			<!-- Grupo: Apellido -->
+			<div class="formulario__grupo" id="grupo__apellido">
+				<label for="apellido" class="formulario__label">Apellido</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="Apellidos">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El apellido solo puede contener
+					letras y un espacio.</p>
+			</div>
+
+			<!-- Grupo: DNI -->
+			<div class="formulario__grupo" id="grupo__dni">
+				<label for="dni" class="formulario__label">D.N.I.</label>
+				<div class="formulario__grupo-input">
+					<input type="number" class="formulario__input" name="dni" id="dni"
+						placeholder="Documento Naicional de Identidad">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El DNI solo puede contener números.</p>
+			</div>
+
+			<!-- Grupo: Teléfono -->
+			<div class="formulario__grupo" id="grupo__telefono">
+				<label for="telefono" class="formulario__label">Teléfono</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="4491234567">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.
+				</p>
+			</div>
+
+			<!-- Grupo: Usuario -->
+			<div class="formulario__grupo" id="grupo__usuario">
+				<label for="usuario" class="formulario__label">Usuario</label>
+				<div class="formulario__grupo-input">
+					<input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="john123">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener
+					numeros, letras y guion bajo.</p>
+			</div>
+
+			<!-- Grupo: Correo Electronico -->
+			<div class="formulario__grupo" id="grupo__correo">
+				<label for="correo" class="formulario__label">Correo Electrónico</label>
+				<div class="formulario__grupo-input">
+					<input type="email" class="formulario__input" name="correo" id="correo"
+						placeholder="correo@correo.com">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y
+					guion bajo.</p>
+			</div>
+
+			<!-- Grupo: Contraseña -->
+			<div class="formulario__grupo" id="grupo__password">
+				<label for="password" class="formulario__label">Contraseña</label>
+				<div class="formulario__grupo-input">
+					<input type="password" class="formulario__input" name="contrasena" id="contrasena">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+			</div>
+
+			<!-- Grupo: Contraseña 2 -->
+			<div class="formulario__grupo" id="grupo__password2">
+				<label for="password2" class="formulario__label">Repetir Contraseña</label>
+				<div class="formulario__grupo-input">
+					<input type="password" class="formulario__input" name="verificarContrasena" id="verificarContrasena">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+			</div>
+
+			<!-- Grupo: Puesto -->
+			<div class="formulario__grupo" id="grupo__puesto">
+				<label class="formulario__label">
+					<select class="formulario__grupo-input" aria-label="Default select example" name="puesto">
+						<option value="vacio" text="Seleccione un puesto" selected> Seleccione un puesto </option>
+						<option value="Jefe de Reactor" text="JefeReactor"> Jefe de Reactor </option>
+						<option value="Operador" text="Operador"> Operador </option>
+						<option value="Oficial de RP" text="OfiacialRP"> Oficial de RP </option>
+					</select>
+				</label>
+				<p class="formulario__input-error">Seleccione el puesto de trabajo.</p>
+			</div>
+
+			<!-- Grupo: Rol -->
+			<div class="formulario__grupo" id="grupo__rol">
+				<label class="formulario__label">
+					<select class="formulario__select" aria-label="Default select example" name="rol">
+						<option value="vacio" text="Seleccione un rol" selected> Seleccione un rol </option>
+						<option value="adm" text="Administrador"> Administrador </option>
+						<option value="us" text="Usuario"> Usuario </option>
+					</select>
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					<p class="formulario__input-error">Selecciones el rol.</p>
+				</label>
+			</div>
+
+			<!-- Grupo: Foto -->
+			<div class="formulario__grupo" id="grupo__foto">
+				<label for="foto" class="formulario__label">Foto</label>
+				<div class="formulario__grupo-input">
+					<input type="file" placeholder="Ingrese una foto" name="archivo">
+					<i class="formulario__validacion-estado fas fa-times-circle"></i>
+				</div>
+			</div>
+
+			<!-- Grupo: Terminos y Condiciones 
+			<div class="formulario__grupo" id="grupo__terminos">
+				<label class="formulario__label">
+					<input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+					Acepto los Terminos y Condiciones
+				</label>
+			</div> -->
+
+			<div class="formulario__mensaje" id="formulario__mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario
+					correctamente. </p>
+			</div>
+
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<button type="submit" class="formulario__btn">Enviar</button>
+				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+			</div>
+		</form>
+	</main>
+
+	<script src="/js/FormularioAgregar.js"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+
+	<!-- <header th:replace="/fragments/header :: header">
    		</header> -->
 
-	<nav th:replace="/fragments/navbar :: nav">
-		</nav>
+	<!-- <nav th:replace="/fragments/navbar :: nav">
+	</nav> -->
 
-	<section th:if="${admin == true}">
-    	<div style="margin-top: 1%" class="text-center">
-        	<form action="/usuario/agregar-usuario" enctype="multipart/form-data" method="POST">
-        	
-        		<p th:if="${error}" th:text="${error}" style="color: red"></p>
-        	
-                <input type="text" placeholder="Nombres" name="nombre" th:value="${nombre}">
-                <br>
-                <input type="text" placeholder="Apellidos" name="apellido" th:value="${apellido}">
-                <br>
-                <input type="number" placeholder="Documento Nacional de Identidad" name="dni" th:value="${dni}">
-                <br>
-                <input type="text" placeholder="Nombre de usuario" name="nombreUsuario" th:value="${nombreUsuario}">
-                <br>
-                <input type="text" placeholder="Correo electrónico" name="correo" th:value="${correo}">
-                <br>
-                <input type="password" placeholder="Contraseña" name="contrasena">
-                <br>
-                <input type="password" placeholder="Repetir contraseña" name="verificarContrasena">
-                <br>
-                <input type="file" placeholder="Ingrese una foto" name="archivo">
-                <select class="form-select" aria-label="Default select example" name="puesto">
-  					<option th:value="${seleccion}" th:text="@{Seleccione un puesto}" selected> </option>
-  					<option th:each="puesto : ${puesto}" th:value="${puesto}" th:text="${puesto}"></option> 
+	<!-- <section th:if="${admin == true}">
+		<div style="margin-top: 1%" class="text-center">
+			<form action="/usuario/agregar-usuario" class="formulario" id="formulario" enctype="multipart/form-data" method="POST">
+				<div class="formulario__grupo" id="grupo__usuario">
+					<laber for="usuario" class="formulario__label"> Usuario </laber>
+					<div class="formulario__grupo-input">
+						<input type="text" class="formulario__input" name="formulario" id="usuario" placeholder="Nombre de usuario" th:value="${nombreUsuario}">
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>						
+					</div>
+					<p class="formulario__input-error"> El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo </p>
+				</div>
+				<p th:if="${error}" th:text="${error}" style="color: red"></p>
+
+				<input type="text" placeholder="Nombres" name="nombre" th:value="${nombre}">
+				<br>
+				<input type="text" placeholder="Apellidos" name="apellido" th:value="${apellido}">
+				<br>
+				<input type="number" placeholder="Documento Nacional de Identidad" name="dni" th:value="${dni}">
+				<br>
+				
+				<br>
+				<input type="text" placeholder="Correo electrónico" name="correo" th:value="${correo}">
+				<br>
+				<input type="password" placeholder="Contraseña" name="contrasena">
+				<br>
+				<input type="password" placeholder="Repetir contraseña" name="verificarContrasena">
+				<br>
+				<input type="file" placeholder="Ingrese una foto" name="archivo">
+				<select class="form-select" aria-label="Default select example" name="puesto">
+					<option th:value="${seleccion}" th:text="@{Seleccione un puesto}" selected> </option>
+					<option th:each="puesto : ${puesto}" th:value="${puesto}" th:text="${puesto}"></option>
 				</select>
 				<select class="form-select" aria-label="Default select example" name="rol">
-  					<option value="vacio" text="Seleccione un rol" selected> </option>
-  					<option value="administrador" text="Administrador"> Administrador </option>
-  					<option value="usuario" text="Usuario"> Usuario </option> 
+					<option value="vacio" text="Seleccione un rol" selected> </option>
+					<option value="administrador" text="Administrador"> Administrador </option>
+					<option value="usuario" text="Usuario"> Usuario </option>
 				</select>
-                <div style="margin-top: 1%"></div>
-            	<div class="btn-group" role="group" aria-label="Basic example">
+				<div style="margin-top: 1%"></div>
+				<div class="btn-group" role="group" aria-label="Basic example">
 					<a class="btn btn-light" href="/inicio"> Volver </a>
-                	<input type="submit" class="btn btn-light" value="Agregar">
+					<input type="submit" class="btn btn-light" value="Agregar">
 				</div>
-            </form>
-	    </div>
+			</form>
+		</div>
 	</section>
 
 	<footer th:replace="/fragments/footer :: footer">
-		</footer>
-		
+	</footer>
+
+	<script th:replace="/fragments/formularioAgregar :: script">
+	</script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script th:replace="/fragments/boostjs :: script">
-		</script>
+	</script> -->
 </body>
 
 </html>

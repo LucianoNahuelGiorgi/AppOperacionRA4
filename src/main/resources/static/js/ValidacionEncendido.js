@@ -1,80 +1,6 @@
-function validacionEnvio() {
-	valor = document.getElementById("indicacionFATCA").value;
-	if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
-		alert('[ERROR] El campo debe tener un valor de...');
-
-		return false;
-	}
-
-	return true;
-}
-
-
-function validacionNumEntero(evt) {
-	var charCode = (evt.which) ? evt.which : evt.keyCode
-
-	if (charCode > 47 && charCode < 58)
-		return true;
-	else
-		console.log("Por favor, ingresar sólo números enteros");
-
-	return false;
-}
-
-function validacionNumReal(evt) {
-	let charCode = (evt.which) ? evt.which : evt.keyCode;
-	let campo = document.getElementById("temperaturaN");
-	let cadena = campo.value;
-	console.log(cadena);
-
-	if (charCode == 46 && campo.value == "") {
-
-		return false;
-	} else {
-		if ((charCode > 47 && charCode < 58) || charCode == 46) {
-			if ((charCode == 46) && (cadena.includes(".", 0))) {
-				return false;
-			}
-			else {
-				return true;
-			}
-		}
-		else {
-			console.log("Por favor, ingresar sólo números y/o un solo punto decimal");
-			return false;
-		}
-	}
-}
-
-function validacionNotCientifica(evt) {
-	let charCode = (evt.which) ? evt.which : evt.keyCode;
-	let campo = document.getElementById("notCientificaCA");
-	cadena = campo.value;
-
-	if ((charCode == 46 && cadena == "") || (charCode == 69 && cadena == "") || (charCode == 101 && cadena == "") || (charCode == 45 && cadena == "")) {
-		return false;
-	} else {
-		if ((charCode > 47 && charCode < 58) || charCode == 46 || charCode == 69 || charCode == 101 || charCode == 45) {
-			if ((charCode == 46 && cadena.includes(".")) ||
-				(charCode == 69 && cadena.includes("E")) ||
-				(charCode == 101 && cadena.includes("e")) ||
-				(charCode == 45 && cadena.includes("-"))) {
-
-				return false;
-			}
-			else {
-
-				return true;
-			}
-		} else {
-
-			return false;
-		}
-	}
-}
-
 function cargaProcEncendido() {
 	//console.log("OnLoad");
+	
 	let cbox1 = document.getElementById("cbox1");
 	cbox1.disabled = false;
 
@@ -253,50 +179,127 @@ function checkProcEncendido() {
 	if (cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox17.disabled = false;
 	}
-	
+
 	if (cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox18.disabled = false;
 	}
-	
+
 	if (cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox19.disabled = false;
 	}
-	
+
 	if (cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox20.disabled = false;
 	}
-	
+
 	if (cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox21.disabled = false;
 	}
-	
+
 	if (cbox21.checked && cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox22.disabled = false;
 	}
-	
+
 	if (cbox22.checked && cbox21.checked && cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox23.disabled = false;
 	}
-	
+
 	if (cbox23.checked && cbox22.checked && cbox21.checked && cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox24.disabled = false;
 	}
-	
+
 	if (cbox24.checked && cbox23.checked && cbox22.checked && cbox21.checked && cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox25.disabled = false;
 	}
-	
+
 	if (cbox25.checked && cbox24.checked && cbox23.checked && cbox22.checked && cbox21.checked && cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox26.disabled = false;
 	}
-	
+
 	if (cbox26.checked && cbox25.checked && cbox24.checked && cbox23.checked && cbox22.checked && cbox21.checked && cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		cbox27.disabled = false;
 	}
-	
+
 	if (cbox27.checked && cbox26.checked && cbox26.checked && cbox25.checked && cbox24.checked && cbox23.checked && cbox22.checked && cbox21.checked && cbox20.checked && cbox19.checked && cbox18.checked && cbox17.checked && cbox16.checked && cbox15.checked && cbox14.checked && cbox13.checked && cbox12.checked && cbox11.checked && cbox10.checked && cbox9.checked && cbox8.checked && cbox7.checked && cbox6.checked && cbox5.checked && cbox4.checked && cbox3.checked && cbox2.checked && cbox1.checked) {
 		btnAceptar.disabled = false;
-	}else{
+	} else {
 		btnAceptar.disabled = true;
 	}
 }
+
+/*function validacionEnvio() {
+	valor = document.getElementById("indicacionFATCA").value;
+	if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
+		alert('[ERROR] El campo debe tener un valor de...');
+
+		return false;
+	}
+
+	return true;
+}
+
+
+function entero(evt) {
+	var charCode = (evt.which) ? evt.which : evt.keyCode
+
+	if (charCode > 47 && charCode < 58)
+		return true;
+	else
+		console.log("Por favor, ingresar sólo números enteros");
+
+	return false;
+}
+
+function real(evt) {
+	let charCode = (evt.which) ? evt.which : evt.keyCode;
+	//	let regExp = /^(?:[1-9]\d{0,2}(?:,\d{3})*|0)(?:\.\d+)?$/;
+	//	let campo = document.getElementsByClassName("real")[0].value;
+	let campo = document.getElementById("real");
+	console.log(campo);
+
+	if (charCode == 46 && contPunto == 0) {
+		return false;
+	} else {
+		if ((charCode > 47 && charCode < 58) || charCode == 46) {
+			contPunto += contPunto;
+			if ((charCode == 46) && (cadena.includes(".", 0))) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		else {
+			console.log("Por favor, ingresar sólo números y/o un solo punto decimal");
+			return false;
+		}
+	}
+}
+
+function validacionNotCientifica(evt) {
+	let charCode = (evt.which) ? evt.which : evt.keyCode;
+	let campo = document.getElementById("notCientifica");
+	//let campo = document.getElementsByClassName('notCientificaCA');
+	cadena = campo.value;
+
+	if ((charCode == 46 && cadena == "") || (charCode == 69 && cadena == "") || (charCode == 101 && cadena == "") || (charCode == 45 && cadena == "")) {
+		return false;
+	} else {
+		if ((charCode > 47 && charCode < 58) || charCode == 46 || charCode == 69 || charCode == 101 || charCode == 45) {
+			if ((charCode == 46 && cadena.includes(".")) ||
+				(charCode == 69 && cadena.includes("E")) ||
+				(charCode == 101 && cadena.includes("e")) ||
+				(charCode == 45 && cadena.includes("-"))) {
+
+				return false;
+			}
+			else {
+
+				return true;
+			}
+		} else {
+
+			return false;
+		}
+	}
+}*/

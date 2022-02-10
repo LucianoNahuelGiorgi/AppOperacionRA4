@@ -175,7 +175,7 @@ public class UsuarioControlador {
 	@GetMapping("/agregar")
 	public ModelAndView agregar() throws ErrorAviso {
 		/* Carga Usuario administrador */
-//		usuarioServicio.agregar(null, "Luciano Nahuel", "Giorgi", 32908433, "lgiorgi", "lgiorgi@fceia.unr.edu.ar", "123456", "123456", "Operador", "administrador");
+//		usuarioServicio.agregar(null, "Luciano Nahuel", "Giorgi", 32908433, "123456789", "lgiorgi", "lgiorgi@fceia.unr.edu.ar", "123456", "123456", "Operador", "administrador");
 
 		if (usuarioAuxiliar.getLogeado() == true) {
 			if (usuarioAuxiliar.getUsuario() != null && usuarioAuxiliar.getUsuario().getRol().equals("administrador")) {
@@ -315,15 +315,15 @@ public class UsuarioControlador {
 	@PostMapping("/agregar-usuario")
 	public ModelAndView agregarUsuario(@RequestParam(required = false) MultipartFile archivo,
 			@RequestParam(required = true) String nombre, @RequestParam(required = true) String apellido,
-			@RequestParam(required = false) Integer dni, @RequestParam(required = true) String nombreUsuario,
-			@RequestParam(required = true) String correo, @RequestParam(required = true) String contrasena,
-			@RequestParam(required = true) String verificarContrasena, @RequestParam(required = true) String puesto,
-			@RequestParam(required = true) String rol) throws ErrorAviso {
+			@RequestParam(required = false) Integer dni, @RequestParam(required = true) String telefono, 
+			@RequestParam(required = true) String usuario, @RequestParam(required = true) String correo,
+			@RequestParam(required = true) String contrasena, @RequestParam(required = true) String verificarContrasena,
+			@RequestParam(required = true) String puesto, @RequestParam(required = true) String rol) throws ErrorAviso {
 
 		if (usuarioAuxiliar.getLogeado() == true) {
 			if (usuarioAuxiliar.getUsuario() != null && usuarioAuxiliar.getUsuario().getRol().equals("administrador")) {
 				try {
-					usuarioServicio.agregar(archivo, nombre, apellido, dni, nombreUsuario, correo, contrasena,
+					usuarioServicio.agregar(archivo, nombre, apellido, dni, telefono, usuario, correo, contrasena,
 							verificarContrasena, puesto, rol);
 				} catch (Exception e) {
 					ModelAndView mav = new ModelAndView("agregar-usuario");
@@ -334,7 +334,8 @@ public class UsuarioControlador {
 					mav.addObject("nombre", nombre);
 					mav.addObject("apellido", apellido);
 					mav.addObject("dni", dni);
-					mav.addObject("nombreUsuario", nombreUsuario);
+					mav.addObject("telefono", telefono);
+					mav.addObject("nombreUsuario", usuario);
 					mav.addObject("correo", correo);
 
 					return mav;

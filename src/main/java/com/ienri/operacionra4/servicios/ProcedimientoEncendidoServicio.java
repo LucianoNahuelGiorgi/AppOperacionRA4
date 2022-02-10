@@ -11,7 +11,15 @@ import com.ienri.operacionra4.repositorios.ProcedimientoEncendidoRepositorio;
 public class ProcedimientoEncendidoServicio {
 	@Autowired
 	ProcedimientoEncendidoRepositorio procedimientoEncendidoRepositorio;
+
+	@Transactional
+	public void guardar(Boolean realizado, String observacones) {
+		ProcedimientoEncendido pe = new ProcedimientoEncendido(realizado, observacones);
+		
+		procedimientoEncendidoRepositorio.save(pe);
+	}
 	
+	/*
 	@Transactional
 	public void guardar(Boolean check1, Boolean check2, Boolean check3, Boolean check4, Boolean check5, Boolean check6, Boolean check7, Boolean check8,
 			Boolean check9, Boolean check10, Boolean check11, Boolean check12, Boolean check13, Boolean check14, Boolean check15,
@@ -24,5 +32,5 @@ public class ProcedimientoEncendidoServicio {
 		
 		procedimientoEncendidoRepositorio.save(pe);
 	}
-
+	*/
 }

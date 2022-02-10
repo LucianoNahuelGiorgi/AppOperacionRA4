@@ -20,6 +20,7 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private Integer dni;
+	private String telefono;
 	private String nombreUsuario;
 	private String correo;
 	private String contrasena;
@@ -109,6 +110,14 @@ public class Usuario {
 
 	public void setDni(Integer dni) {
 		this.dni = dni;
+	}
+	
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public String getNombreUsuario() {

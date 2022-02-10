@@ -1,5 +1,6 @@
 package com.ienri.operacionra4.controladores;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -317,6 +318,15 @@ public class OperacionGeneralControlador {
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@PostMapping("/procedimiento-encendido")
+	public RedirectView checkListEncendido(Boolean realizado, String observaciones) {
+		procedimientoEncendidoServicio.guardar(realizado, observaciones);
+
+		return new RedirectView("/operacion-general/prueba-funcion");
+	}
+	
+	/*
+	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
+	@PostMapping("/procedimiento-encendido")
 	public RedirectView checkListEncendido(Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Boolean cbox5,
 			Boolean cbox6, Boolean cbox7, Boolean cbox8, Boolean cbox9, Boolean cbox10, Boolean cbox11, Boolean cbox12,
 			Boolean cbox13, Boolean cbox14, Boolean cbox15, Boolean cbox16, Boolean cbox17, Boolean cbox18,
@@ -329,13 +339,12 @@ public class OperacionGeneralControlador {
 
 		return new RedirectView("/operacion-general/prueba-funcion");
 	}
+	*/
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@PostMapping("/procedimiento-apagado")
-	public RedirectView checkListApagado(Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Boolean cbox5,
-			Boolean cbox6, Boolean cbox7, Boolean cbox8, String observaciones) {
-
-		procedimientoApagadoServicio.guardar(cbox1, cbox2, cbox3, cbox4, cbox5, cbox6, cbox7, cbox8, observaciones);
+	public RedirectView checkListApagado(Boolean realizado, String observaciones) {
+		procedimientoApagadoServicio.guardar(realizado, observaciones);
 
 		return new RedirectView("/operacion-general/general");
 	}
@@ -371,13 +380,21 @@ public class OperacionGeneralControlador {
 			String canalCentralHorizontal, String canalLateralSupHorizontal, String canalLateralInfHorizontal,
 			String canalCentralVertical, String canalLateralVertical, String motivo, String scram, Boolean muestra,
 			Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Double tempNucleo, Double posFuente,
-			Double posNucleo, Double posBC1, Double posBC2, Integer escalimetro, Double intLogCA, Double intLinCA,
+			Double posNucleo, Double posBC1, Double posBC2, Integer escalimetro, Double intLogCA, String intLinCA,
 			Double intLinCP, Double intLogCP, Double gammaConsola, Double gammaReactor, Double potencia, String regimen,
 			String observaciones) {
-
+		
+		String sintLinCA = String.valueOf(new BigDecimal(intLinCA));
+        System.out.println("numeroReal = " + sintLinCA);
+        
+        Double numeroReal = Double.parseDouble(sintLinCA);
+        System.out.println(numeroReal);
+//        DecimalFormat df = new DecimalFormat("0000.0");
+//        System.out.println("numeroReal=" + df.format(numeroReal));
+		
 		operacionServicio.guardar(jefeReactor, operador, oficialRP, canalCentralHorizontal, canalLateralSupHorizontal,
 				canalLateralInfHorizontal, canalCentralVertical, canalLateralVertical, motivo, scram, muestra, cbox1,
-				cbox2, cbox3, cbox4, tempNucleo, posFuente, posNucleo, posBC1, posBC2, escalimetro, intLogCA, intLinCA,
+				cbox2, cbox3, cbox4, tempNucleo, posFuente, posNucleo, posBC1, posBC2, escalimetro, intLogCA, numeroReal,
 				intLinCP, intLogCP, gammaConsola, gammaReactor, potencia, regimen, observaciones);
 
 		return new RedirectView("/operacion-general/operacion");

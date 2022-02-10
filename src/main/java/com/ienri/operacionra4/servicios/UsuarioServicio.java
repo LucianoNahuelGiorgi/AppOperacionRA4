@@ -155,16 +155,17 @@ public class UsuarioServicio implements UserDetailsService {
 	 */
 
 	@Transactional
-	public void agregar(MultipartFile archivo, String nombre, String apellido, Integer dni, String nombreUsuario,
+	public void agregar(MultipartFile archivo, String nombre, String apellido, Integer dni, String telefono, String nombreUsuario,
 			String correo, String contrasena, String verificarContrasena, String puesto, String rol) throws ErrorAviso {
 
-		validar(nombre, apellido, dni, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);
+		validar(nombre, apellido, dni, telefono, nombreUsuario, correo, contrasena, verificarContrasena, puesto, rol);
 
 		try {
 			Usuario u = new Usuario();
 			u.setNombre(nombre);
 			u.setApellido(apellido);
 			u.setDni(dni);
+			u.setTelefono(telefono);
 			u.setNombreUsuario(nombreUsuario);
 			u.setCorreo(correo);
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -238,7 +239,7 @@ public class UsuarioServicio implements UserDetailsService {
 		}
 	}
 
-	public void validar(String nombre, String apellido, Integer dni, String nombreUsuario, String correo,
+	public void validar(String nombre, String apellido, Integer dni, String telefono, String nombreUsuario, String correo,
 			String contrasena, String verificarContrasena, String puesto, String rol) throws ErrorAviso {
 
 		if (nombre == null || nombre.isEmpty()) {
@@ -251,6 +252,10 @@ public class UsuarioServicio implements UserDetailsService {
 
 		if (dni.toString() == null || dni.toString().isEmpty()) {
 			throw new ErrorAviso("El DNI de usuario no puede quedar vacío");
+		}
+		
+		if (telefono.toString() == null || telefono.toString().isEmpty()) {
+			throw new ErrorAviso("El telefono de usuario no puede quedar vacío");
 		}
 
 		if (nombreUsuario == null || nombreUsuario.isEmpty()) {

@@ -10,7 +10,6 @@ import com.ienri.operacionra4.entidades.Operacion;
 
 @Repository
 public interface OperacionRepositorio extends JpaRepository<Operacion, String> {
-	
 	@Query(value= "SELECT o FROM Operacion o ORDER BY o.fechaHora DESC")
 	public List<Operacion> operacionFechaDesc();
 }

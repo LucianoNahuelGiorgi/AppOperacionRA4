@@ -18,7 +18,8 @@ public class ProcedimientoEncendido {
 
 	@OneToMany
 	private List<Usuario> usuario;
-
+	
+	/*
 	private Boolean energizarConsola;	 // 1. Energizar el sistema de control utilizando el tablero eléctrico
 	private Boolean puentesNoColocados;	 // 2. Verificar que ninguno de los puentes de anulación se encuentre colocado
 	private Boolean ajusteFinoFATCP;	 // 3. Ajuste fino de la FAT canal de potencia en 0 V
@@ -46,48 +47,17 @@ public class ProcedimientoEncendido {
 	private Boolean encendidoFATMG; 			// 25. Encender FAT Monitor gamma
 	private Boolean encendidoFATCP; 			// 26. Encender FAT Canal de Potencia
 												// 27. Espera de al menos 30 minutos para que ingrese en regimen la instrumetnal de la consola
+	*/
 
+	private Boolean realizado;
 	private String observaciones;
 
 	/* Constructor */
 	public ProcedimientoEncendido() {
 	}
-
-	public ProcedimientoEncendido(Boolean energizarConsola, Boolean puentesNoColocados,
-			Boolean ajusteFinoFATCP, Boolean apagadoFATCP, Boolean selectorFATCP, Boolean selectorFATMG,
-			Boolean selectorFCControl, Boolean ajusteFinoFFControl, Boolean llaveOperacion,
-			Boolean selectoraDesactivada, Boolean apagadoRegistradores, Boolean selectorConmutadorCL,
-			Boolean selectorIntegradorLinCA, Boolean selectorBaseTiempoIntLinCA, Boolean selectorMessIntLogCA,
-			Boolean selectorOscilosocio, Boolean apagadoFATCA, Boolean presetTime, Boolean selectorEscalimetroReloj,
-			Boolean presetCount, Boolean encendidoConsola, Boolean encendidoMA, Boolean encendidoPC,
-			Boolean tensionFATCA, Boolean encendidoFATMG, Boolean encendidoFATCP, String observaciones) {
-
-		this.energizarConsola = energizarConsola;
-		this.puentesNoColocados = puentesNoColocados;
-		this.ajusteFinoFATCP = ajusteFinoFATCP;
-		this.apagadoFATCP = apagadoFATCP;
-		this.selectorFATCP = selectorFATCP;
-		this.selectorFATMG = selectorFATMG;
-		this.selectorFCControl = selectorFCControl;
-		this.ajusteFinoFFControl = ajusteFinoFFControl;
-		this.llaveOperacion = llaveOperacion;
-		this.selectoraDesactivada = selectoraDesactivada;
-		this.apagadoRegistradores = apagadoRegistradores;
-		this.selectorConmutadorCL = selectorConmutadorCL;
-		this.selectorIntegradorLinCA = selectorIntegradorLinCA;
-		this.selectorBaseTiempoIntLinCA = selectorBaseTiempoIntLinCA;
-		this.selectorMessIntLogCA = selectorMessIntLogCA;
-		this.selectorOscilosocio = selectorOscilosocio;
-		this.apagadoFATCA = apagadoFATCA;
-		this.presetTime = presetTime;
-		this.selectorEscalimetroReloj = selectorEscalimetroReloj;
-		this.presetCount = presetCount;
-		this.encendidoConsola = encendidoConsola;
-		this.encendidoMA = encendidoMA;
-		this.encendidoPC = encendidoPC;
-		this.tensionFATCA = tensionFATCA;
-		this.encendidoFATMG = encendidoFATMG;
-		this.encendidoFATCP = encendidoFATCP;
+	
+	public ProcedimientoEncendido(Boolean realizado, String observaciones) {
+		this.realizado = realizado;
 		this.observaciones = observaciones;
 	}
 
@@ -108,212 +78,12 @@ public class ProcedimientoEncendido {
 		this.usuario = usuario;
 	}
 
-	public Boolean getEnergizarConsola() {
-		return energizarConsola;
+	public Boolean getRealizado() {
+		return realizado;
 	}
 
-	public void setEnergizarConsola(Boolean energizarConsola) {
-		this.energizarConsola = energizarConsola;
-	}
-
-	public Boolean getPuentesNoColocados() {
-		return puentesNoColocados;
-	}
-
-	public void setPuentesNoColocados(Boolean puentesNoColocados) {
-		this.puentesNoColocados = puentesNoColocados;
-	}
-
-	public Boolean getAjusteFinoFATCP() {
-		return ajusteFinoFATCP;
-	}
-
-	public void setAjusteFinoFATCP(Boolean ajusteFinoFATCP) {
-		this.ajusteFinoFATCP = ajusteFinoFATCP;
-	}
-
-	public Boolean getApagadoFATCP() {
-		return apagadoFATCP;
-	}
-
-	public void setApagadoFATCP(Boolean apagadoFATCP) {
-		this.apagadoFATCP = apagadoFATCP;
-	}
-
-	public Boolean getSelectorFATCP() {
-		return selectorFATCP;
-	}
-
-	public void setSelectorFATCP(Boolean selectorFATCP) {
-		this.selectorFATCP = selectorFATCP;
-	}
-
-	public Boolean getSelectorFATMG() {
-		return selectorFATMG;
-	}
-
-	public void setSelectorFATMG(Boolean selectorFATMG) {
-		this.selectorFATMG = selectorFATMG;
-	}
-
-	public Boolean getSelectorFCControl() {
-		return selectorFCControl;
-	}
-
-	public void setSelectorFCControl(Boolean selectorFCControl) {
-		this.selectorFCControl = selectorFCControl;
-	}
-
-	public Boolean getAjusteFinoFFControl() {
-		return ajusteFinoFFControl;
-	}
-
-	public void setAjusteFinoFFControl(Boolean ajusteFinoFFControl) {
-		this.ajusteFinoFFControl = ajusteFinoFFControl;
-	}
-
-	public Boolean getLlaveOperacion() {
-		return llaveOperacion;
-	}
-
-	public void setLlaveOperacion(Boolean llaveOperacion) {
-		this.llaveOperacion = llaveOperacion;
-	}
-
-	public Boolean getSelectoraDesactivada() {
-		return selectoraDesactivada;
-	}
-
-	public void setSelectoraDesactivada(Boolean selectoraDesactivada) {
-		this.selectoraDesactivada = selectoraDesactivada;
-	}
-
-	public Boolean getApagadoRegistradores() {
-		return apagadoRegistradores;
-	}
-
-	public void setApagadoRegistradores(Boolean apagadoRegistradores) {
-		this.apagadoRegistradores = apagadoRegistradores;
-	}
-
-	public Boolean getSelectorConmutadorCL() {
-		return selectorConmutadorCL;
-	}
-
-	public void setSelectorConmutadorCL(Boolean selectorConmutadorCL) {
-		this.selectorConmutadorCL = selectorConmutadorCL;
-	}
-
-	public Boolean getSelectorIntegradorLinCA() {
-		return selectorIntegradorLinCA;
-	}
-
-	public void setSelectorIntegradorLinCA(Boolean selectorIntegradorLinCA) {
-		this.selectorIntegradorLinCA = selectorIntegradorLinCA;
-	}
-
-	public Boolean getSelectorBaseTiempoIntLinCA() {
-		return selectorBaseTiempoIntLinCA;
-	}
-
-	public void setSelectorBaseTiempoIntLinCA(Boolean selectorBaseTiempoIntLinCA) {
-		this.selectorBaseTiempoIntLinCA = selectorBaseTiempoIntLinCA;
-	}
-
-	public Boolean getSelectorMessIntLogCA() {
-		return selectorMessIntLogCA;
-	}
-
-	public void setSelectorMessIntLogCA(Boolean selectorMessIntLogCA) {
-		this.selectorMessIntLogCA = selectorMessIntLogCA;
-	}
-
-	public Boolean getSelectorOscilosocio() {
-		return selectorOscilosocio;
-	}
-
-	public void setSelectorOscilosocio(Boolean selectorOscilosocio) {
-		this.selectorOscilosocio = selectorOscilosocio;
-	}
-
-	public Boolean getApagadoFATCA() {
-		return apagadoFATCA;
-	}
-
-	public void setApagadoFATCA(Boolean apagadoFATCA) {
-		this.apagadoFATCA = apagadoFATCA;
-	}
-
-	public Boolean getPresetTime() {
-		return presetTime;
-	}
-
-	public void setPresetTime(Boolean presetTime) {
-		this.presetTime = presetTime;
-	}
-
-	public Boolean getSelectorEscalimetroReloj() {
-		return selectorEscalimetroReloj;
-	}
-
-	public void setSelectorEscalimetroReloj(Boolean selectorEscalimetroReloj) {
-		this.selectorEscalimetroReloj = selectorEscalimetroReloj;
-	}
-
-	public Boolean getPresetCount() {
-		return presetCount;
-	}
-
-	public void setPresetCount(Boolean presetCount) {
-		this.presetCount = presetCount;
-	}
-
-	public Boolean getEncendidoConsola() {
-		return encendidoConsola;
-	}
-
-	public void setEncendidoConsola(Boolean encendidoConsola) {
-		this.encendidoConsola = encendidoConsola;
-	}
-
-	public Boolean getEncendidoMA() {
-		return encendidoMA;
-	}
-
-	public void setEncendidoMA(Boolean encendidoMA) {
-		this.encendidoMA = encendidoMA;
-	}
-
-	public Boolean getEncendidoPC() {
-		return encendidoPC;
-	}
-
-	public void setEncendidoPC(Boolean encendidoPC) {
-		this.encendidoPC = encendidoPC;
-	}
-
-	public Boolean getTensionFATCA() {
-		return tensionFATCA;
-	}
-
-	public void setTensionFATCA(Boolean tensionFATCA) {
-		this.tensionFATCA = tensionFATCA;
-	}
-
-	public Boolean getEncendidoFATMG() {
-		return encendidoFATMG;
-	}
-
-	public void setEncendidoFATMG(Boolean encendidoFATMG) {
-		this.encendidoFATMG = encendidoFATMG;
-	}
-
-	public Boolean getEncendidoFATCP() {
-		return encendidoFATCP;
-	}
-
-	public void setEncendidoFATCP(Boolean encendidoFATCP) {
-		this.encendidoFATCP = encendidoFATCP;
+	public void setRealizado(Boolean realizado) {
+		this.realizado = realizado;
 	}
 
 	public String getObservaciones() {
@@ -326,18 +96,7 @@ public class ProcedimientoEncendido {
 
 	@Override
 	public String toString() {
-		return "ProcedimientoEncendido [id=" + id + ", usuario=" + usuario + ", energizarConsola=" + energizarConsola
-				+ ", puentesNoColocados=" + puentesNoColocados + ", ajusteFinoFATCP=" + ajusteFinoFATCP
-				+ ", apagadoFATCP=" + apagadoFATCP + ", selectorFATCP=" + selectorFATCP + ", selectorFATMG="
-				+ selectorFATMG + ", selectorFCControl=" + selectorFCControl + ", ajusteFinoFFControl="
-				+ ajusteFinoFFControl + ", llaveOperacion=" + llaveOperacion + ", selectoraDesactivada="
-				+ selectoraDesactivada + ", apagadoRegistradores=" + apagadoRegistradores + ", selectorConmutadorCL="
-				+ selectorConmutadorCL + ", selectorIntegradorLinCA=" + selectorIntegradorLinCA
-				+ ", selectorBaseTiempoIntLinCA=" + selectorBaseTiempoIntLinCA + ", selectorMessIntLogCA="
-				+ selectorMessIntLogCA + ", selectorOscilosocio=" + selectorOscilosocio + ", apagadoFATCA="
-				+ apagadoFATCA + ", presetTime=" + presetTime + ", selectorEscalimetroReloj=" + selectorEscalimetroReloj
-				+ ", presetCount=" + presetCount + ", encendidoConsola=" + encendidoConsola + ", encendidoMA="
-				+ encendidoMA + ", encendidoPC=" + encendidoPC + ", tensionFATCA=" + tensionFATCA + ", encendidoFATMG="
-				+ encendidoFATMG + ", encendidoFATCP=" + encendidoFATCP + ", observaciones=" + observaciones + "]";
+		return "ProcedimientoEncendido [id=" + id + ", usuario=" + usuario + ", realizado=" + realizado
+				+ ", observaciones=" + observaciones + "]";
 	}
 }
