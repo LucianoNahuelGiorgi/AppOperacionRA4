@@ -279,7 +279,7 @@ public class OperacionGeneralControlador {
 				mav.addObject("num", num);
 
 				mav.addObject("o", o);
-				
+
 				return mav;
 			} else {
 				ModelAndView mav = new ModelAndView("operacion");
@@ -323,23 +323,6 @@ public class OperacionGeneralControlador {
 
 		return new RedirectView("/operacion-general/prueba-funcion");
 	}
-	
-	/*
-	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
-	@PostMapping("/procedimiento-encendido")
-	public RedirectView checkListEncendido(Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Boolean cbox5,
-			Boolean cbox6, Boolean cbox7, Boolean cbox8, Boolean cbox9, Boolean cbox10, Boolean cbox11, Boolean cbox12,
-			Boolean cbox13, Boolean cbox14, Boolean cbox15, Boolean cbox16, Boolean cbox17, Boolean cbox18,
-			Boolean cbox19, Boolean cbox20, Boolean cbox21, Boolean cbox22, Boolean cbox23, Boolean cbox24,
-			Boolean cbox25, Boolean cbox26, String observaciones) {
-
-		procedimientoEncendidoServicio.guardar(cbox1, cbox2, cbox3, cbox4, cbox5, cbox6, cbox7, cbox8, cbox9, cbox10,
-				cbox11, cbox12, cbox13, cbox14, cbox15, cbox16, cbox17, cbox18, cbox19, cbox20, cbox21, cbox22, cbox23,
-				cbox24, cbox25, cbox26, observaciones);
-
-		return new RedirectView("/operacion-general/prueba-funcion");
-	}
-	*/
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@PostMapping("/procedimiento-apagado")
@@ -351,25 +334,62 @@ public class OperacionGeneralControlador {
 
 	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@PostMapping("/prueba-funcion")
-	public RedirectView valoresPruebaFuncion(Integer indicacionFATCA, Integer indicadorFATMG, Integer indicadorFATCP,
-			Double temperaturaN, Integer escalimetroTCUno, Double indicadorIntLogaritmicoTCUno,
-			Double indicadorIntLinealTCUno, Integer escalimetroTCDos, Double indicadorIntLogaritmicoTCDos,
-			Double indicadorIntLinealTCDos, Double indicadorIntensidadFDB, Double indicadorIntensidadFDA,
-			Double indicadorDesconexionTC, Double registradorDesconexionTC, Double indicadorConexionTC,
-			Double registradorConexionTC, Double indicadorFDBCanalLog, Double registradorFDBCanalLog,
-			Double indicadorPreAlertaCanalLog, Double registradorPreAlertaCanalLog, Double indicadorFDACanalLog,
-			Double registradorFDACanalLog, Double indicadorConmutarCanalLineal, Double registradorCanalLineal,
-			Double indicadorFDACanalLineal, Double registradorFDACanalLineal, Boolean fallaEquipoCL, Boolean fallaATCP,
-			Integer indicadorDGammaAlta, Integer indicadorFallaMG, String observaciones) {
+	public RedirectView valoresPruebaFuncion(Integer indicacion_01, Integer indicacion_02, Integer indicacion_03, Double indicacion_04,
+			Integer indicacion_05, String indicacion_06, String indicacion_07, Integer indicacion_08,
+			String indicacion_09, String indicacion_10, String indicacion_11, String indicacion_12,
+			String indicacion_13, Integer indicacion_14, String indicacion_15, Integer indicacion_16,
+			String indicacion_17, Integer indicacion_18, String indicacion_19, Integer indicacion_20,
+			String indicacion_21, Integer indicacion_22, String indicacion_23, Double indicacion_24,
+			String indicacion_25, Double indicacion_26, Boolean indicacion_27, Boolean indicacion_28,
+			Integer indicacion_29, Integer indicacion_30, String observaciones) {
 
-		pruebaFuncionServicio.guardar(indicacionFATCA, indicadorFATMG, indicadorFATCP, temperaturaN, escalimetroTCUno,
-				indicadorIntLogaritmicoTCUno, indicadorIntLinealTCUno, escalimetroTCDos, indicadorIntLogaritmicoTCDos,
-				indicadorIntLinealTCDos, indicadorIntensidadFDB, indicadorIntensidadFDA, indicadorDesconexionTC,
-				registradorDesconexionTC, indicadorConexionTC, registradorConexionTC, indicadorFDBCanalLog,
-				registradorFDBCanalLog, indicadorPreAlertaCanalLog, registradorPreAlertaCanalLog, indicadorFDACanalLog,
-				registradorFDACanalLog, indicadorConmutarCanalLineal, registradorCanalLineal, indicadorFDACanalLineal,
-				registradorFDACanalLineal, fallaEquipoCL, fallaATCP, indicadorDGammaAlta, indicadorFallaMG,
-				observaciones);
+		/* Conversion notación científica a Double CANAL DE ARRANQUE */
+		String sIndicacion_06 = String.valueOf(new BigDecimal(indicacion_06));
+		Double dIndicacion_06 = Double.parseDouble(sIndicacion_06);
+//		System.out.println("Integrador log TC Uno: " + sIndicacion_06);
+//		System.out.println(dIndicacion_06);
+		String sIndicacion_07 = String.valueOf(new BigDecimal(indicacion_07));
+		Double dIndicacion_07 = Double.parseDouble(sIndicacion_07);
+//		System.out.println("Integrador lineal TC Uno: " + sIndicacion_07);
+//		System.out.println(dIndicacion_07);
+		String sIndicacion_09 = String.valueOf(new BigDecimal(indicacion_09));
+		Double dIndicacion_09 = Double.parseDouble(sIndicacion_09);
+//		System.out.println("Integrador log TC Dos: " + sIndicacion_09);
+//		System.out.println(dIndicacion_09);
+		String sIndicacion_10 = String.valueOf(new BigDecimal(indicacion_10));
+		Double dIndicacion_10 = Double.parseDouble(sIndicacion_10);
+//		System.out.println("Integrador lineal TC Uno: " + sIndicacion_10);
+//		System.out.println(dIndicacion_10);
+		
+		/* INTEGRADOR LOGARÍTMICO DE ARRANQUE */
+		String sIndicacion_11 = String.valueOf(new BigDecimal(indicacion_11));
+		Double dIndicacion_11 = Double.parseDouble(sIndicacion_11);
+		String sIndicacion_12 = String.valueOf(new BigDecimal(indicacion_12));
+		Double dIndicacion_12 = Double.parseDouble(sIndicacion_12);
+
+		/* CANAL DE POTENCIA */
+		String sIndicacion_13 = String.valueOf(new BigDecimal(indicacion_13));
+		Double dIndicacion_13 = Double.parseDouble(sIndicacion_13);
+		String sIndicacion_15 = String.valueOf(new BigDecimal(indicacion_15));
+		Double dIndicacion_15 = Double.parseDouble(sIndicacion_15);
+		String sIndicacion_17 = String.valueOf(new BigDecimal(indicacion_17));
+		Double dIndicacion_17 = Double.parseDouble(sIndicacion_17);
+		String sIndicacion_19 = String.valueOf(new BigDecimal(indicacion_19));
+		Double dIndicacion_19 = Double.parseDouble(sIndicacion_19);
+		String sIndicacion_21 = String.valueOf(new BigDecimal(indicacion_21));
+		Double dIndicacion_21 = Double.parseDouble(sIndicacion_21);
+
+		/* AMPLIFICADOR LINEAL */
+		String sIndicacion_23 = String.valueOf(new BigDecimal(indicacion_23));
+		Double dIndicacion_23 = Double.parseDouble(sIndicacion_23);
+		String sIndicacion_25 = String.valueOf(new BigDecimal(indicacion_25));
+		Double dIndicacion_25 = Double.parseDouble(sIndicacion_25);
+
+		pruebaFuncionServicio.guardar(indicacion_01, indicacion_02, indicacion_03, indicacion_04, indicacion_05,
+				dIndicacion_06, dIndicacion_07, indicacion_08, dIndicacion_09, dIndicacion_10, dIndicacion_11, dIndicacion_12,
+				dIndicacion_13, indicacion_14, dIndicacion_15, indicacion_16, dIndicacion_17, indicacion_18, dIndicacion_19,
+				indicacion_20, dIndicacion_21, indicacion_22, dIndicacion_23, indicacion_24, dIndicacion_25, indicacion_26,
+				indicacion_27, indicacion_28, indicacion_29, indicacion_30, observaciones);
 
 		return new RedirectView("/operacion-general/operacion");
 	}
@@ -379,23 +399,23 @@ public class OperacionGeneralControlador {
 	public RedirectView valoresOperacion(String jefeReactor, String operador, String oficialRP,
 			String canalCentralHorizontal, String canalLateralSupHorizontal, String canalLateralInfHorizontal,
 			String canalCentralVertical, String canalLateralVertical, String motivo, String scram, Boolean muestra,
-			Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Double tempNucleo, Double posFuente,
+			Boolean cbox1, Boolean cbox2, Boolean cbox3, Boolean cbox4, Double tempNucleo, Boolean fuenteAdentro,
 			Double posNucleo, Double posBC1, Double posBC2, Integer escalimetro, Double intLogCA, String intLinCA,
 			Double intLinCP, Double intLogCP, Double gammaConsola, Double gammaReactor, Double potencia, String regimen,
 			String observaciones) {
-		
+
 		String sintLinCA = String.valueOf(new BigDecimal(intLinCA));
-        System.out.println("numeroReal = " + sintLinCA);
-        
-        Double numeroReal = Double.parseDouble(sintLinCA);
-        System.out.println(numeroReal);
+		System.out.println("numeroReal = " + sintLinCA);
+
+		Double numeroReal = Double.parseDouble(sintLinCA);
+		System.out.println(numeroReal);
 //        DecimalFormat df = new DecimalFormat("0000.0");
 //        System.out.println("numeroReal=" + df.format(numeroReal));
-		
+
 		operacionServicio.guardar(jefeReactor, operador, oficialRP, canalCentralHorizontal, canalLateralSupHorizontal,
 				canalLateralInfHorizontal, canalCentralVertical, canalLateralVertical, motivo, scram, muestra, cbox1,
-				cbox2, cbox3, cbox4, tempNucleo, posFuente, posNucleo, posBC1, posBC2, escalimetro, intLogCA, numeroReal,
-				intLinCP, intLogCP, gammaConsola, gammaReactor, potencia, regimen, observaciones);
+				cbox2, cbox3, cbox4, tempNucleo, fuenteAdentro, posNucleo, posBC1, posBC2, escalimetro, intLogCA,
+				numeroReal, intLinCP, intLogCP, gammaConsola, gammaReactor, potencia, regimen, observaciones);
 
 		return new RedirectView("/operacion-general/operacion");
 	}

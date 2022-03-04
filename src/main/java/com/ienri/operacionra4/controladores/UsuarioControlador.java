@@ -171,7 +171,7 @@ public class UsuarioControlador {
 		return mav;
 	}
 
-	//@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
+	@PreAuthorize("hasAnyRole('ROLE_ACTIVO')")
 	@GetMapping("/agregar")
 	public ModelAndView agregar() throws ErrorAviso {
 		/* Carga Usuario administrador */

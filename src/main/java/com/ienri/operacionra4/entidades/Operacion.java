@@ -16,55 +16,42 @@ public class Operacion {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
-	
+	/* PERSONAL A CARGO DE LA OPERACION */
 	private String jefeReactor;
 	private String operador;
 	private String oficialRP;
+	/* FACILIDAD PARA EXPERIMENTACION */
 	private String canalCentralHorizontal;
 	private String canalLateralSupHorizontal;
 	private String canalLateralInfHorizontal;
 	private String canalCentralVertical;
 	private String canalLateralVertical;
+	/* DATOS DE LA OPERACION */
 	private String motivo;
 	private String scram;
 	private Boolean muestra;
-
+	/* INHIBIDORES DE DISPARO */
 	private Boolean puertaConsola;
 	private Boolean puertaReactor;
 	private Boolean expPotenciaCero;
 	private Boolean expNucleo;
-
+	/* TOMA DE DATOS DE LA OPERACION */
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaHora;
-	
-	public Date getFechaHora() {
-		return fechaHora;
-	}
-
-	public void setFechaHora(Date fechaHora) {
-		this.fechaHora = fechaHora;
-	}
-
 	private Double tempNucleo;
-	
-	private Double posFuente;
+	private Boolean fuenteAdentro;
 	private Double posNucleo;
 	private Double posBC1;
 	private Double posBC2;
-	
 	private Integer escalimetro;
 	private Double intLogCA;
 	private Double intLinCA;
-	
 	private Double intLinCP;
 	private Double intLogCP;
-	
 	private Double gammaConsola;
 	private Double gammaReactor;
-	
 	private Double potencia;
 	private String regimen;
-	
 	private String observaciones;
 	
 	/* Constructor */
@@ -74,7 +61,7 @@ public class Operacion {
 	public Operacion(String jefeReactor, String operador, String oficialRP, String canalCentralHorizontal,
 			String canalLateralSupHorizontal, String canalLateralInfHorizontal, String canalCentralVertical,
 			String canalLateralVertical, String motivo, String scram, Boolean muestra, Boolean puertaConsola,
-			Boolean puertaReactor, Boolean expPotenciaCero, Boolean expNucleo, Date fechaHora, Double tempNucleo, Double posFuente,
+			Boolean puertaReactor, Boolean expPotenciaCero, Boolean expNucleo, Date fechaHora, Double tempNucleo, Boolean fuenteAdentro,
 			Double posNucleo, Double posBC1, Double posBC2, Integer escalimetro, Double intLogCA, Double intLinCA,
 			Double intLinCP, Double intLogCP, Double gammaConsola, Double gammaReactor, Double potencia, String regimen,
 			String observaciones) {
@@ -96,7 +83,7 @@ public class Operacion {
 		this.expNucleo = expNucleo;
 		this.fechaHora = fechaHora;
 		this.tempNucleo = tempNucleo;
-		this.posFuente = posFuente;
+		this.fuenteAdentro = fuenteAdentro;
 		this.posNucleo = posNucleo;
 		this.posBC1 = posBC1;
 		this.posBC2 = posBC2;
@@ -113,6 +100,13 @@ public class Operacion {
 	}
 
 	/* Getter, Setters y toString() */
+	public Date getFechaHora() {
+		return fechaHora;
+	}
+
+	public void setFechaHora(Date fechaHora) {
+		this.fechaHora = fechaHora;
+	}
 	
 	public String getId() {
 		return id;
@@ -250,12 +244,12 @@ public class Operacion {
 		this.tempNucleo = tempNucleo;
 	}
 
-	public Double getPosFuente() {
-		return posFuente;
+	public Boolean getPosFuente() {
+		return fuenteAdentro;
 	}
 
-	public void setPosFuente(Double posFuente) {
-		this.posFuente = posFuente;
+	public void setPosFuente(Boolean fuenteAdentro) {
+		this.fuenteAdentro = fuenteAdentro;
 	}
 
 	public Double getPosNucleo() {
@@ -371,7 +365,7 @@ public class Operacion {
 				+ ", motivo=" + motivo + ", scram=" + scram + ", muestra=" + muestra + ", puertaConsola="
 				+ puertaConsola + ", puertaReactor=" + puertaReactor + ", expPotenciaCero=" + expPotenciaCero
 				+ ", expNucleo=" + expNucleo + ", fechaHora=" + fechaHora + ", tempNucleo=" + tempNucleo
-				+ ", posFuente=" + posFuente + ", posNucleo=" + posNucleo + ", posBC1=" + posBC1 + ", posBC2=" + posBC2
+				+ ", posFuente=" + fuenteAdentro + ", posNucleo=" + posNucleo + ", posBC1=" + posBC1 + ", posBC2=" + posBC2
 				+ ", escalimetro=" + escalimetro + ", intLogCA=" + intLogCA + ", intLinCA=" + intLinCA + ", intLinCP="
 				+ intLinCP + ", intLogCP=" + intLogCP + ", gammaConsola=" + gammaConsola + ", gammaReactor="
 				+ gammaReactor + ", potencia=" + potencia + ", regimen=" + regimen + ", observaciones=" + observaciones

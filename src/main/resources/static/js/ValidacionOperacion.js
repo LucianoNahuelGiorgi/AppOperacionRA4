@@ -3,59 +3,67 @@ const inputs = document.querySelectorAll('#formulario input');
 const selects = document.querySelectorAll('#formulario select');
 
 const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	dni: /^\d{6,14}$/, // 6 a 14 numeros.
-	telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	contrasena: /^.{4,12}$/, // 4 a 12 digitos.
+	entero: /^\d{1,14}$/, // 1 a 14 numeros.
+	real: /^-?[0-9]+([\.,][0-9]+)?$/, // Numeros reales.
+	notacionCientifica: /[-]?\d{1,2}[.,]\d[eE][-]?\d{1,2}/ // Notacion cientifica con letra e ó E
 }
 
 const campos = {
-	nombre: false,
-	apellido: false,
-	dni: false,
-	telefono: false,
-	usuario: false,
-	correo: false,
-	contrasena: false,
-	puesto: false,
-	rol: false
+	temperaturaN: false,
+	poscFuente:false,
+	poscNucleo: false,
+	poscBC1: false,
+	poscBC2: false,
+	escalimetro: false,
+	intLogaritmico: false,
+	intLineal: false,
+	intLogPotencia: false,
+	intLinPotencia: false,
+	potencia: false,
+	gammaConsola: false,
+	gammaReactor: false,
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
+		case "temperaturaN":
+			validarCampo(expresiones.real, e.target, 'temperaturaN');
 			break;
-		case "apellido":
-			validarCampo(expresiones.apellido, e.target, 'apellido');
+		case "poscFuente":
+			validarCampo(expresiones.real, e.target, 'poscFuente');
 			break;
-		case "dni":
-			validarCampo(expresiones.dni, e.target, 'dni');
+		case "poscNucleo":
+			validarCampo(expresiones.real, e.target, 'poscNucleo');
 			break;
-		case "telefono":
-			validarCampo(expresiones.telefono, e.target, 'telefono');
+		case "poscBC1":
+			validarCampo(expresiones.real, e.target, 'poscBC1');
 			break;
-		case "usuario":
-			validarCampo(expresiones.usuario, e.target, 'usuario');
+		case "poscBC2":
+			validarCampo(expresiones.real, e.target, 'poscBC2');
 			break;
-		case "correo":
-			validarCampo(expresiones.correo, e.target, 'correo');
+		case "escalimetro":
+			validarCampo(expresiones.entero, e.target, 'escalimetro');
 			break;
-		case "contrasena":
-			validarCampo(expresiones.contrasena, e.target, 'contrasena');
-			validarPassword2();
+		case "intLogaritmico":
+			validarCampo(expresiones.notacionCientifica, e.target, 'intLogaritmico');
 			break;
-		case "verificarContrasena":
-			validarPassword2();
+		case "intLineal":
+			validarCampo(expresiones.notacionCientifica, e.target, 'intLineal');
 			break;
-		case "puesto":
-			validarSelect(e.target.value, 'puesto');
+		case "intLogPotencia":
+			validarCampo(expresiones.notacionCientifica, e.target, 'intLogPotencia');
 			break;
-		case "rol":
-			validarSelect(e.target.value, 'rol');
+		case "intLinPotencia":
+			validarCampo(expresiones.notacionCientifica, e.target, 'intLinPotencia');
+			break;
+		case "potencia":
+			validarCampo(expresiones.real, e.target, 'potencia');
+			break;
+		case "gammaConsola":
+			validarCampo(expresiones.real, e.target, 'gammaConsola');
+			break;
+		case "gammaReactor":
+			validarCampo(expresiones.real, e.target, 'gammaReactor');
 			break;
 	}
 }
@@ -78,44 +86,23 @@ const validarCampo = (expresion, input, campo) => {
 	}
 }
 
-const validarPassword2 = () => {
-	const inputPassword1 = document.getElementById('contrasena');
-	const inputPassword2 = document.getElementById('verificarContrasena');
-
-	if (inputPassword1.value !== inputPassword2.value) {
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.add('formulario__input-error-activo');
-		campos['contrasena'] = false;
-	} else {
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
-		campos['contrasena'] = true;
-	}
-}
-
 const validarSelect = (input, campo) => {
 	console.log("Estoy en validar select " + input);
 	if (input === "vacio") {
 		console.log("Estoy dentro del if " + input);
 		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
-//		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
-//		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
-//		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+		//		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+		//		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+		//		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
 		campos[campo] = false;
 	} else {
 		console.log("Estoy dentro del else " + input);
 		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
 		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
-//		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
-//		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
-//		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+		//		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+		//		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+		//		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
 		campos[campo] = true;
 	}
 }

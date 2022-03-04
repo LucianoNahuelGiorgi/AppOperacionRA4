@@ -5,16 +5,39 @@
 </head>
 
 <body>
-	<!-- <header th:replace="/fragments/header :: header">
-	</header> -->
+	<header th:replace="/fragments/header :: header">
+	</header>
 
-	<nav th:replace="/fragments/navbar :: nav">
-	</nav>
+	<!-- <nav th:replace="/fragments/navbar :: nav">
+	</nav> -->
 
-	<div class="container">
-		<footer th:replace="/fragments/footer :: footer">
-		</footer>
-	</div>
+	<section class="container">
+		<div class="row col-sm-12 nav g-0">
+			<nav class="d-flex menu col-sm-12">
+				<a href="/usuario/jefe-reactor-activo"
+					class="c flex-fill d-flex align-items-center text-center text-white text-decoration-none">
+					<div class="w-100">
+						<p>Jefe de Reactor</p>
+					</div>
+				</a>
+				<a href="/usuario/operador-activo" class="c flex-fill d-flex align-items-center text-center text-white text-decoration-none">
+					<div class="w-100">
+						<p>Operador</p>
+					</div>
+				</a>
+				<a href="/usuario/oficial-activo" class="c flex-fill d-flex align-items-center text-center text-white text-decoration-none">
+					<div class="w-100">
+						<p>Oficial de Radioprotección</p>
+					</div>
+				</a>
+				<a href="/operacion-general/general" class="c flex-fill d-flex align-items-center text-center text-white text-decoration-none">
+					<div class="w-100">
+						<p>Operación general</p>
+					</div>
+				</a>
+			</nav>
+		</div>
+	</section>
 
 	<script th:replace="/fragments/boostjs :: script">
 	</script>
