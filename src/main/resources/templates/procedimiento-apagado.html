@@ -11,11 +11,10 @@
 	<!-- <header th:replace="/fragments/header :: header">
 	</header> -->
 
-	<nav th:replace="/fragments/navbar :: nav">
-	</nav>
 
-	<section>
-		
+
+	<section class="container">
+		<h1> RA 4</h1>
 		<h2 th:text="@{Procedimiento apagado N°: } + ${num}"></h2>
 		<form action="/operacion-general/procedimiento-apagado" method="POST">
 			<div class="container  form-switch">
@@ -41,14 +40,12 @@
 			</div>
 			<hr>
 			<div>
-				<a class="btn btn-danger" onclick="return confirm('Desea cancelar la operación? (No se guardaran los cambios realizados)')" href="/operacion-general/nueva"> Cancelar </a>
 				<button class="btn btn-success" name="realizado" value="true" id="btnAceptar"> Aceptar </button>
 			</div>
 		</form>
 	</section>
 
-	<footer th:replace="/fragments/footer :: footer">
-	</footer>
+
 	
 	<script src="/js/ValidacionApagado.js">
 	</script>

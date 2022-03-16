@@ -12,26 +12,28 @@
 <!-- <link rel="stylesheet" href="../static/prueba-funcion.css"> visual -->
 
 <body>
-	<!-- <header th:replace="/fragments/header :: header">
-		</header> -->
 
-	<nav th:replace="/fragments/navbar :: nav">
-	</nav>
 
-	<section>
+
+
+	<section class="container">
 		<form onPaste="return true" action="/operacion-general/prueba-funcion" id="formulario" method="POST">
-			<h1 class="text-center"> PRUEBA DE FUNCIÓN </h1>
-			<h2 th:text="@{N°: } + ${num}"></h2>
+			<h1 class="text-center">RA 4</h1>
+			<div class="d-flex text-center justify-content-center">
+				<h2 class=" mx-1"> PRUEBA DE FUNCIÓN:</h2>
+				<h2 th:text="${num}"></h2>
+			</div>
 			<div class="text-center">
 				<!-- Grupo Fuentes de Alta Tensión -->
 				<h2> FUENTES DE ALTA TENSIÓN </h2>
 				<!-- indicacion_01 -->
 				<div class="formulario__grupo" id="grupo__indicacion_01">
 					<label class="texto"><b>Fuente de alta tensión Canal de Arranque. Selector en 1950V</b></label>
-					<label class="formulario__label" for="indicacion_01">Indicación</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_01" id="indicacion_01" />
-						<label class="formulario__label"> V </label>
+
+					<div class="formulario__grupo-input row justify-content-center my-2">
+						<label class="formulario__label col-1" for="indicacion_01">Indicación</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_01" id="indicacion_01" />
+						<label class="formulario__label col-1 text-start"> V </label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo solo puede tener de 1 a 14 numeros enteros.</p>
@@ -39,10 +41,11 @@
 				<!-- indicacion_02 -->
 				<div class="formulario__grupo" id="grupo__indicacion_02">
 					<label class="texto"><b>Fuente de alta tensión Monitor Gamma. Selector en 650V</b></label>
-					<label class="formulario__label" for="indicacion_02">Indicación</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_02" id="indicacion_02" />
-						<label class="formulario__label"> V </label>
+
+					<div class="formulario__grupo-input row justify-content-center my-2 ">
+						<label class="formulario__label col-1" for="indicacion_02">Indicación</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_02" id="indicacion_02" />
+						<label class="formulario__label col-1 text-start"> V </label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo solo puede tener de 1 a 14 numeros enteros.</p>
@@ -50,10 +53,11 @@
 				<!-- indicacion_03 -->
 				<div class="formulario__grupo" id="grupo__indicacion_03">
 					<label class="texto"><b>Fuente de alta tensión Canal de Potencia. Selector 600V</b></label>
-					<label class="formulario__label" for="indicacion_03">Indicación</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_03" id="indicacion_03" />
-						<label class="formulario__label"> V </label>
+
+					<div class="formulario__grupo-input row justify-content-center my-2">
+						<label class="formulario__label col-1" for="indicacion_03">Indicación</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_03" id="indicacion_03" />
+						<label class="formulario__label col-1 text-start"> V </label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo solo puede tener de 1 a 14 numeros enteros.</p>
@@ -64,10 +68,10 @@
 			<div class="text-center">
 				<h2> TEMPERATURA DEL NÚCLEO </h2>
 				<div class="formulario__grupo" id="grupo__indicacion_04">
-					<label class="formulario__label" for="indicacion_014">Indicación</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_04" id="indicacion_04">
-						<label class="formulario__label">°C</label>
+					<div class="formulario__grupo-input row justify-content-center my-2">
+						<label class="formulario__label col-1" for="indicacion_014">Indicación</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_04" id="indicacion_04">
+						<label class="formulario__label col-1 text-start">°C</label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo solo puede tener numeros reales.</p>
@@ -81,34 +85,37 @@
 					<div class="col-4 conenedor-tubo-contenedor">
 						<div><b> Tubo Contador 1 </b></div>
 						<!-- indicacion_05 -->
-						<label class="texto"><b>Escalímetro. Valor nominal: 1900.2x10-1 min</b></label>
-						<div class="formulario__grupo" id="grupo__indicacion_05">
+						<label class="texto mt-2"><b>Escalímetro. Valor nominal: 1900.2x10-1 min</b></label>
+						<div class="formulario__grupo " id="grupo__indicacion_05">
 							<label class="formulario__label" for="indicacion_05">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_05" id="indicacion_05">
-								<label class="formulario__label">ctas.</label>
+							<div class="formulario__grupo-input row ">
+								<input type="text" class="formulario__input col-8" name="indicacion_05"
+									id="indicacion_05">
+								<label class="formulario__label col-4">ctas.</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo solo puede tener de 1 a 14 numeros enteros.</p>
 						</div>
 						<!-- indicacion_06 -->
-						<label class="texto"><b>Integrador lineal. Valor nominal: 60 s-1</b></label>
+						<label class="texto  mt-2"><b>Integrador lineal. Valor nominal: 60 s-1</b></label>
 						<div class="formulario__grupo" id="grupo__indicacion_06">
 							<label class="formulario__label" for="indicacion_06">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_06" id="indicacion_06">
-								<label class="formulario__label">s-1</label>
+							<div class="formulario__grupo-input row">
+								<input type="text" class="formulario__input col-8" name="indicacion_06"
+									id="indicacion_06">
+								<label class="formulario__label col-4">s-1</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 						</div>
 						<!-- indicacion_07 -->
-						<label class="texto"><b>Integrador lograítmico. Valor nominal: 4000 min-1</b></label>
+						<label class="texto  mt-2"><b>Integrador lograítmico. Valor nominal: 4000 min-1</b></label>
 						<div class="formulario__grupo" id="grupo__indicacion_07">
 							<label class="formulario__label" for="indicacion_07">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_07" id="indicacion_07">
-								<label class="formulario__label">min-1</label>
+							<div class="formulario__grupo-input row">
+								<input type="text" class="formulario__input col-8" name="indicacion_07"
+									id="indicacion_07">
+								<label class="formulario__label col-4">min-1</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
@@ -117,40 +124,45 @@
 					<div class="col-4 conenedor-tubo-contenedor">
 						<div><b>Tubo Contador 2</b></div>
 						<!-- indicacion_08 -->
-						<label class="texto"><b>Escalímetro. Valor nominal: 1900.2x10-1 min</b></label>
+						<label class="texto  mt-2"><b>Escalímetro. Valor nominal: 1900.2x10-1 min</b></label>
 						<div class="formulario__grupo" id="grupo__indicacion_08">
 							<label class="formulario__label" for="indicacion_08">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_08" id="indicacion_08">
-								<label class="formulario__label">ctas.</label>
+							<div class="formulario__grupo-input row">
+								<input type="text" class="formulario__input col-8" name="indicacion_08"
+									id="indicacion_08">
+								<label class="formulario__label col-4">ctas.</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo solo puede tener de 1 a 14 numeros enteros.</p>
 						</div>
 						<!-- indicacion_09 -->
-						<label class="texto"><b>Integrador lineal. Valor nominal: 60 s-1</b></label>
+						<label class="texto  mt-2"><b>Integrador lineal. Valor nominal: 60 s-1</b></label>
 						<div class="formulario__grupo" id="grupo__indicacion_09">
 							<label class="formulario__label" for="indicacion_09">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_09" id="indicacion_09">
-								<label class="formulario__label">s-1</label>
+							<div class="formulario__grupo-input row">
+								<input type="text" class="formulario__input col-8" name="indicacion_09"
+									id="indicacion_09">
+								<label class="formulario__label col-4">s-1</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 						</div>
 						<!-- indicacion_10 -->
-						<label class="texto"><b>Integrador lograítmico. Valor nominal: 4000 min-1</b></label>
+						<label class="texto  mt-2"><b>Integrador lograítmico. Valor nominal: 4000 min-1</b></label>
 						<div class="formulario__grupo" id="grupo__indicacion_10">
 							<label class="formulario__label" for="indicacion_10">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_10" id="indicacion_10">
-								<label class="formulario__label">min-1</label>
+							<div class="formulario__grupo-input row">
+								<input type="text" class="formulario__input col-8" name="indicacion_10"
+									id="indicacion_10">
+								<label class="formulario__label col-4">min-1</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 						</div>
 					</div>
 				</div>
+				
+				<hr>
 				<div class="text-center">
 					<input type="checkbox"> Tubo contador 2 seleccionado
 				</div>
@@ -158,6 +170,7 @@
 
 			<!-- INTEGRADOR LOGARÍTMICO DE ARRANQUE -->
 			<hr>
+			<div>
 			<div class="text-center">
 				<h2> INTEGRADOR LOGARÍTMICO DE ARRANQUE </h2>
 				<h3> PRUEBA DE LOS VALORES LÍMITES </h3>
@@ -165,10 +178,11 @@
 				<label class="texto"><b>Intensidad de fuente o flujo demasiado baja, h26 - Panel u19. Valor de
 						referencia: 1000 min-1</b></label>
 				<div class="formulario__grupo" id="grupo__indicacion_11">
-					<label class="formulario__label" for="indicacion_11">Indicación</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_11" id="indicacion_11">
-						<label class="formulario__label">min-1</label>
+					
+					<div class="formulario__grupo-input row justify-content-center text-start  my-2">
+					<label class="formulario__label col-1" for="indicacion_11">Indicación</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_11" id="indicacion_11">
+						<label class="formulario__label col-1">min-1</label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
@@ -177,10 +191,11 @@
 				<label class="texto"><b>Multiplicación demasiado alta, h27 - Panel u19.(Valor de referencia: 2x105
 						min-1)</b></label>
 				<div class="formulario__grupo" id="grupo__indicacion_12">
-					<label class="formulario__label" for="indicacion_12">Indicación</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_12" id="indicacion_12">
-						<label class="formulario__label">min-1</label>
+					
+					<div class="formulario__grupo-input row justify-content-center text-start">
+					<label class="formulario__label col-1" for="indicacion_12">Indicación</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_12" id="indicacion_12">
+						<label class="formulario__label col-1">min-1</label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
@@ -190,10 +205,10 @@
 			<hr>
 			<div class="text-center">
 				<h2> REGISTRADORES </h2>
-				<h6> De potencia </h6>
-				<div class="centro-celectores container col-5">
+				<h6 class=" my-2"> De potencia </h6>
+				<div class="centro-celectores container col-5 text-start">
 					<div class=" form-switch ">
-						<input class="form-check-input" type="checkbox">Registrador de	Potencia encendido
+						<input class="form-check-input" type="checkbox">Registrador de Potencia encendido
 					</div>
 					<div class=" form-switch">
 						<input class="form-check-input" type="checkbox">Registrador de Potencia funcionando
@@ -201,9 +216,12 @@
 					<div class=" form-switch">
 						<input class="form-check-input" type="checkbox">Registrador de Potencia con suficiente tinta
 					</div>
-					<h6> Conmutable </h6>
+				</div>
+				<h6 class=" my-2"> Conmutable </h6>
+				<div class="centro-celectores container col-5 text-start">
 					<div class=" form-switch">
-						<input class="form-check-input" type="checkbox">Registrador Conmutable encendido (75mm/h - Registrierung 1)
+						<input class="form-check-input" type="checkbox">Registrador Conmutable encendido (75mm/h -
+						Registrierung 1)
 					</div>
 					<div class=" form-switch">
 						<input class="form-check-input" type="checkbox">Registrador Conmutable funcionando
@@ -213,36 +231,45 @@
 					</div>
 				</div>
 			</div>
+			</div>
+
 			<!-- CANAL DE POTENCIA -->
 			<hr>
 			<div class="text-center">
 				<h2> CANAL DE POTENCIA </h2>
-				<div class=" form-switch texto centro-celectores col-12">
-					<input class="form-check-input" type="checkbox">Selector de la fuente de corriente en PRUEBA
+
+				<div class="centro-celectores container col-5 text-start">
+					<div class=" form-switch">
+						<input class="form-check-input" type="checkbox">Selector de la fuente de corriente en PRUEBA
+					</div>
+					<div class=" form-switch">
+						<input class="form-check-input texto" type="checkbox">Pulsador del conmutador en LOG
+					</div>
 				</div>
-				<div class=" form-switch centro-celectores col-12">
-					<input class="form-check-input texto" type="checkbox">Pulsador del conmutador en LOG
-				</div>
+
+<hr>
+
 				<h3 class="texto">AMPLIFICADOR LOGARÍTMICO</h3>
 				<h4 class="texto">PRUEBA DE LOS VALORES LÍMITES</h4>
 				<!-- indicacion_13 -->
 				<label class="texto"><b>Desconectar tensión contador, h29 - Panel u18. Valor nominal: 3x10-10A -
 						1,7mW</b></label>
 				<div class="formulario__grupo" id="grupo__indicacion_13">
-					<label class="formulario__label" for="indicacion_13">Indicación</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_13" id="indicacion_13">
-						<label class="formulario__label">A</label>
+					<div class="formulario__grupo-input row justify-content-center text-start  my-2">
+						<label class="formulario__label col-1" for="indicacion_13">Indicación</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_13" id="indicacion_13">
+						<label class="formulario__label col-1">A</label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 				</div>
 				<!-- indicacion_14 -->
 				<div class="formulario__grupo" id="grupo__indicacion_14">
-					<label class="formulario__label" for="indicacion_1">Registrador</label>
-					<div class="formulario__grupo-input">
-						<input type="text" class="formulario__input" name="indicacion_14" id="indicacion_14">
-						<label class="formulario__label">mW</label>
+
+					<div class="formulario__grupo-input row justify-content-center text-start  my-2">
+						<label class="formulario__label col-1 margen-left-registrador" for="indicacion_1">Registrador</label>
+						<input type="text" class="formulario__input col-3" name="indicacion_14" id="indicacion_14">
+						<label class="formulario__label col-1">mW</label>
 						<i class="formulario__validacion-estado fas fa-times-circle"></i>
 					</div>
 					<p class="formulario__input-error">El campo se completa con numero entero.</p>
@@ -258,52 +285,59 @@
 			<div class="text-center ">
 				<div>
 					<div>
-					<!-- indicacion_15 -->
-						<label class="texto"><b> Conectar tensión contador, h28 - Panel u18. Valor de referencia: 2x10-10A - 1,5mW
+						<!-- indicacion_15 -->
+						<label class="texto"><b> Conectar tensión contador, h28 - Panel u18. Valor de referencia:
+								2x10-10A - 1,5mW
 							</b></label>
 					</div>
 					<div class="formulario__grupo" id="grupo__indicacion_15">
-						<label class="formulario__label" for="indicacion_15">Indicación</label>
-						<div class="formulario__grupo-input">
-							<input type="text" class="formulario__input" name="indicacion_15" id="indicacion_15">
-							<label class="formulario__label">A</label>
+
+						<div class="formulario__grupo-input row justify-content-center text-start my-2">
+							<label class="formulario__label col-1" for="indicacion_15">Indicación</label>
+							<input type="text" class="formulario__input col-3" name="indicacion_15" id="indicacion_15">
+							<label class="formulario__label col-1">A</label>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 						</div>
 						<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 					</div>
 					<!-- indicacion_16 -->
 					<div class="formulario__grupo" id="grupo__indicacion_16">
-						<label class="formulario__label" for="indicacion_16">Registrador</label>
-						<div class="formulario__grupo-input">
-							<input type="text" class="formulario__input" name="indicacion_16" id="indicacion_16">
-							<label class="formulario__label">mW</label>
+						<div class="formulario__grupo-input row justify-content-center text-start my-2">
+
+							<label class="formulario__label col-1 margen-left-registrador" for="indicacion_16">Registrador</label>
+							<input type="text" class="formulario__input col-3" name="indicacion_16" id="indicacion_16">
+							<label class="formulario__label col-1">mW</label>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 						</div>
 						<p class="formulario__input-error">El campo se completa con numero entero.</p>
 					</div>
 					<div>
 						<div>
-						<!-- indicacion_17 -->
+							<!-- indicacion_17 -->
 							<label class="texto"><b> Intensidad de fuente o flujo demasiado baja, h26 - Panel u19. Valor
 									de
 									referencia:
 									5x10-11A - 0,7mW </b></label>
 						</div>
 						<div class="formulario__grupo" id="grupo__indicacion_17">
-							<label class="formulario__label" for="indicacion_17">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_17" id="indicacion_17">
-								<label class="formulario__label">A</label>
+
+							<div class="formulario__grupo-input row justify-content-center text-start my-2">
+								<label class="formulario__label col-1" for="indicacion_17">Indicación</label>
+								<input type="text" class="formulario__input col-3" name="indicacion_17"
+									id="indicacion_17">
+								<label class="formulario__label col-1">A</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 						</div>
 						<!-- indicacion_18 -->
 						<div class="formulario__grupo" id="grupo__indicacion_18">
-							<label class="formulario__label" for="indicacion_18">Registrador</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_18" id="indicacion_18">
-								<label class="formulario__label">mW</label>
+
+							<div class="formulario__grupo-input row justify-content-center text-start my-2">
+								<label class="formulario__label col-1 margen-left-registrador" for="indicacion_18">Registrador</label>
+								<input type="text" class="formulario__input col-3" name="indicacion_18"
+									id="indicacion_18">
+								<label class="formulario__label col-1">mW</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con numero entero.</p>
@@ -311,27 +345,31 @@
 					</div>
 					<div>
 						<div>
-						<!-- indicacion_19 -->
+							<!-- indicacion_19 -->
 							<label class="texto"><b> Pre-alerta canal logarítmnico, h30 - Panel u18. Valor de
 									referencia:
 									4x10-9A - 25mW
 								</b></label>
 						</div>
-						<div class="formulario__grupo" id="grupo__indicacion_19">
-							<label class="formulario__label" for="indicacion_19">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_19" id="indicacion_19">
-								<label class="formulario__label">A</label>
+						<div class="formulario__grupo " id="grupo__indicacion_19">
+
+							<div class="formulario__grupo-input row justify-content-center text-start my-2">
+								<label class="formulario__label col-1" for="indicacion_19">Indicación</label>
+								<input type="text" class="formulario__input col-3" name="indicacion_19"
+									id="indicacion_19">
+								<label class="formulario__label col-1">A</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 						</div>
 						<!-- indicacion_20 -->
 						<div class="formulario__grupo" id="grupo__indicacion_20">
-							<label class="formulario__label" for="indicacion_20">Registrador</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_20" id="indicacion_20">
-								<label class="formulario__label">mW</label>
+
+							<div class="formulario__grupo-input row justify-content-center text-start my-2">
+								<label class="formulario__label col-1 margen-left-registrador" for="indicacion_20">Registrador</label>
+								<input type="text" class="formulario__input col-3" name="indicacion_20"
+									id="indicacion_20">
+								<label class="formulario__label col-1">mW</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con numero entero.</p>
@@ -339,26 +377,30 @@
 					</div>
 					<div>
 						<div>
-						<!-- indicacion_21 -->
+							<!-- indicacion_21 -->
 							<label class="texto"><b> Canal logarít. - Flujo demasiado alto, h31 - Panel u19. Valor de
 									referencia: 2x10-7A -
 									1100mW </b></label>
 						</div>
 						<div class="formulario__grupo" id="grupo__indicacion_21">
-							<label class="formulario__label" for="indicacion_21">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_21" id="indicacion_21">
-								<label class="formulario__label">A</label>
+
+							<div class="formulario__grupo-input  row justify-content-center text-start my-2">
+								<label class="formulario__label col-1" for="indicacion_21">Indicación</label>
+								<input type="text" class="formulario__input col-3" name="indicacion_21"
+									id="indicacion_21">
+								<label class="formulario__label col-1">A</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 						</div>
 						<!-- indicacion_22 -->
 						<div class="formulario__grupo" id="grupo__indicacion_22">
-							<label class="formulario__label" for="indicacion_2">Registrador</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_22" id="indicacion_22">
-								<label class="formulario__label">mW</label>
+
+							<div class="formulario__grupo-input  row justify-content-center text-start">
+								<label class="formulario__label col-1 margen-left-registrador" for="indicacion_2">Registrador</label>
+								<input type="text" class="formulario__input col-3" name="indicacion_22"
+									id="indicacion_22">
+								<label class="formulario__label col-1">mW</label>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							</div>
 							<p class="formulario__input-error">El campo se completa con numero entero.</p>
@@ -371,30 +413,35 @@
 						<div class=" form-switch">
 							<input class="form-check-input texto" type="checkbox">Botón del conmutador en LINEAL
 						</div>
+						<hr>
 						<h4 class="texto"> PRUEBA DE LOS VALORES LÍMITES </h4>
 						<div>
 							<div>
-							<!-- indicacion_23 -->
+								<!-- indicacion_23 -->
 								<label><b> Conmutar canal lineal, h34 - Panel u18. Valor de referencia: 70% F.E. -
 										2,1x10-8A
 										con
 										escala en 3x10-8A </b></label>
 							</div>
 							<div class="formulario__grupo" id="grupo__indicacion_23">
-								<label class="formulario__label" for="indicacion_23">Indicación</label>
-								<div class="formulario__grupo-input">
-									<input type="text" class="formulario__input" name="indicacion_23" id="indicacion_23">
-									<label class="formulario__label">A</label>
+
+								<div class="formulario__grupo-input row justify-content-center text-start my-2">
+									<label class="formulario__label col-1" for="indicacion_23">Indicación</label>
+									<input type="text" class="formulario__input col-3" name="indicacion_23"
+										id="indicacion_23">
+									<label class="formulario__label col-1">A</label>
 									<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								</div>
 								<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 							</div>
 							<!-- indicacion_24 -->
 							<div class="formulario__grupo" id="grupo__indicacion_24">
-								<label class="formulario__label" for="indicacion_24">F.E.</label>
-								<div class="formulario__grupo-input">
-									<input type="text" class="formulario__input" name="indicacion_24" id="indicacion_24">
-									<label class="formulario__label">%</label>
+
+								<div class="formulario__grupo-input row justify-content-center text-start my-2">
+									<label class="formulario__label col-1" for="indicacion_24">F.E.</label>
+									<input type="text" class="formulario__input col-3" name="indicacion_24"
+										id="indicacion_24">
+									<label class="formulario__label col-1">%</label>
 									<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								</div>
 								<p class="formulario__input-error">El campo se completa con un numero real.</p>
@@ -402,132 +449,149 @@
 						</div>
 						<div>
 							<div>
-							<!-- indicacion_25 -->
+								<!-- indicacion_25 -->
 								<label class="texto"><b> Flujo demasiado alto, h36 - Panel u19. Valor de referencia:
 										100%
 										F.E. - 3x10-8A con
 										escala en 3x10-8 A </b></label>
 							</div>
 							<div class="formulario__grupo" id="grupo__indicacion_25">
-								<label class="formulario__label" for="indicacion_25">Indicación</label>
-								<div class="formulario__grupo-input">
-									<input type="text" class="formulario__input" name="indicacion_25" id="indicacion_25">
-									<label class="formulario__label">A</label>
+
+								<div class="formulario__grupo-input row justify-content-center text-start my-2">
+									<label class="formulario__label col-1" for="indicacion_25">Indicación</label>
+									<input type="text" class="formulario__input col-3" name="indicacion_25"
+										id="indicacion_25">
+									<label class="formulario__label col-1">A</label>
 									<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								</div>
 								<p class="formulario__input-error">El campo se completa con notacion cientifica.</p>
 							</div>
 							<!-- indicacion_26 -->
 							<div class="formulario__grupo" id="grupo__indicacion_26">
-								<label class="formulario__label" for="indicacion_26">F.E.</label>
-								<div class="formulario__grupo-input">
-									<input type="text" class="formulario__input" name="indicacion_26"
+								<div class="formulario__grupo-input row justify-content-center text-start my-2">
+									<label class="formulario__label col-1" for="indicacion_26">F.E.</label>
+									<input type="text" class="formulario__input col-3" name="indicacion_26"
 										id="indicacion_26">
-									<label class="formulario__label">%</label>
+									<label class="formulario__label col-1">%</label>
 									<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								</div>
 								<p class="formulario__input-error">El campo se completa con un numero real.</p>
 							</div>
 						</div>
-						<div class=" form-switch">
-							<input class="form-check-input texto" type="checkbox">Selector de la fuente de control en OPERACIÓN
-						</div>
-						<div class=" form-switch texto">
-							<input class="form-check-input texto" type="checkbox">Conmutador en CORTE
-						</div>
-				</div>
-				<!-- PRUEBA DE LOS DISPAROS DE SEGURIDAD -->
-				<hr>
-				<div class="text-center ">
-					<div class="container  ">
-						<h2> PRUEBA DE LOS DISPAROS DE SEGURIDAD </h2>
-						<div class="text-start centro">
-							<div class=" form-switch">
-								<input class="form-check-input texto" type="checkbox"> Fuente de Alta
-								Tensión
-								(u7) en posición "0"
-							</div>
-							<!-- indicacion_27 -->
-							<div class="form-switch ">
-								<input class="form-check-input texto" type="checkbox" name="indicacion_27">Indicación Falla de equipo Canal lineal (h33 - Panel u19) encendida
-							</div>
-							<!-- indicacion_28 -->
-							<div class="form-switch ">
-								<input class="form-check-input texto" type="checkbox" name="indicacion_28">Indicación Falla de alta tensión (h32 - Panel u19) encendida
-							</div>
-							<div class="form-switch ">
-								<input class="form-check-input texto" type="checkbox">Fuente de Alta Tensión (u7) en posición "I"
-							</div>
-							<div class="form-switch ">
-								<input class="form-check-input texto" type="checkbox">Encender fuente de alta tensión del canal de arranque - Tensión: 1950V
-							</div>
-						</div>
-					</div>
-				</div>
+						<hr>
 
-				<!-- MONITOR GAMMA -->
-				<hr>
-				<div class="text-center ">
-					<h2 class="texto"> MONITOR GAMMA </h2>
-					<h3 class="texto"> PRUEBA DE LOS VALORES LÍMITES </h3>
+
+						<div class="centro-celectores container col-5 text-start">
+							<div class=" form-switch">
+								<input class="form-check-input texto" type="checkbox">Selector de la fuente de control
+								en OPERACIÓN
+							</div>
+							<div class=" form-switch texto">
+								<input class="form-check-input texto" type="checkbox">Conmutador en CORTE
+							</div>
+						</div>
+
+
+
+			</di>
+			<!-- PRUEBA DE LOS DISPAROS DE SEGURIDAD -->
+			<hr>
+			<div class="centro-celectores container col-6 text-start">
+			<div class="text-center ">
+				<div class="container  ">
+					<h2> PRUEBA DE LOS DISPAROS DE SEGURIDAD </h2>
+					<div class="text-start centro">
+						<div class=" form-switch">
+							<input class="form-check-input texto" type="checkbox"> Fuente de Alta
+							Tensión
+							(u7) en posición "0"
+						</div>
+						<!-- indicacion_27 -->
+						<div class="form-switch ">
+							<input class="form-check-input texto" type="checkbox" name="indicacion_27">Indicación Falla
+							de equipo Canal lineal (h33 - Panel u19) encendida
+						</div>
+						<!-- indicacion_28 -->
+						<div class="form-switch ">
+							<input class="form-check-input texto" type="checkbox" name="indicacion_28">Indicación Falla
+							de alta tensión (h32 - Panel u19) encendida
+						</div>
+						<div class="form-switch ">
+							<input class="form-check-input texto" type="checkbox">Fuente de Alta Tensión (u7) en
+							posición "I"
+						</div>
+						<div class="form-switch ">
+							<input class="form-check-input texto" type="checkbox">Encender fuente de alta tensión del
+							canal de arranque - Tensión: 1950V
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<!-- MONITOR GAMMA -->
+			<hr>
+			<div class="text-center ">
+				<h2 class="texto"> MONITOR GAMMA </h2>
+				<h3 class="texto"> PRUEBA DE LOS VALORES LÍMITES </h3>
+				<div>
 					<div>
-						<div>
 						<!-- indicacion_29 -->
-							<label class="texto"><b> Dosis gamma demasiado alta, h38 - Panel u19. (Valor de referencia:
-									100
-									min-1, ≈ 10
-									μSv/h) </b></label>
-						</div>
-						<div class="formulario__grupo" id="grupo__indicacion_29">
-							<label class="formulario__label" for="indicacion_29">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_29" id="indicacion_29">
-								<label class="formulario__label">min-1</label>
-								<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							</div>
-							<p class="formulario__input-error">El campo se completa con numero entero.</p>
-						</div>
-						<div>
-						<!-- indicacion_30 -->
-							<label class="texto"><b> Falla del monitor gamma, h37 - Panel u19. (Valor de referencia: 3
-									min-1) </b></label>
-						</div>
-						<div class="formulario__grupo" id="grupo__indicacion_30">
-							<label class="formulario__label" for="indicacion_30">Indicación</label>
-							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="indicacion_30" id="indicacion_30">
-								<label class="formulario__label">min-1</label>
-								<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							</div>
-							<p class="formulario__input-error">El campo se completa con numero entero.</p>
-						</div>
+						<label class="texto"><b> Dosis gamma demasiado alta, h38 - Panel u19. (Valor de referencia:
+								100
+								min-1, ≈ 10
+								μSv/h) </b></label>
 					</div>
-					<hr>
-				</div>
-				<div class="text-center ">
-					<h2> OBSERVACIONES </h2>
-					<div class="input-group">
-						<textarea class="form-control estilotextarea" aria-label="With textarea"
-							name="observaciones"></textarea>
+					<div class="formulario__grupo" id="grupo__indicacion_29">
+						
+						<div class="formulario__grupo-input row justify-content-center text-start my-2">
+						<label class="formulario__label col-1" for="indicacion_29">Indicación</label>
+							<input type="text" class="formulario__input col-3" name="indicacion_29" id="indicacion_29">
+							<label class="formulario__label col-1">min-1</label>
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El campo se completa con numero entero.</p>
+					</div>
+					<div>
+						<!-- indicacion_30 -->
+						<label class="texto"><b> Falla del monitor gamma, h37 - Panel u19. (Valor de referencia: 3
+								min-1) </b></label>
+					</div>
+					<div class="formulario__grupo" id="grupo__indicacion_30">
+						
+						<div class="formulario__grupo-input row justify-content-center text-start my-2">
+						<label class="formulario__label col-1" for="indicacion_30">Indicación</label>
+							<input type="text" class="formulario__input col-3" name="indicacion_30" id="indicacion_30">
+							<label class="formulario__label col-1">min-1</label>
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El campo se completa con numero entero.</p>
 					</div>
 				</div>
 				<hr>
-				<!-- Botón -->
-				<div class="text-center ">
-					<div class="btn-group" role="group" aria-label="Basic example">
-						<a class="btn btn-danger"
-							onclick="return confirm('Desea cancelar la operación? (No se guardaran los cambios realizados)')"
-							href="/operacion-general/nueva"> Cancelar </a>
-					</div>
-					<div class="btn" role="group" aria-label="Basic example">
-						<button type="submit" class="btn btn-success"> Aceptar </button>
-					</div>
+			</div>
+			<div class="text-center ">
+				<h2> OBSERVACIONES </h2>
+				<div class="input-group">
+					<textarea class="form-control estilotextarea" aria-label="With textarea"
+						name="observaciones"></textarea>
 				</div>
+			</div>
+			<hr>
+			<!-- Botón -->
+			<div class="text-center ">
+				<div class="btn-group" role="group" aria-label="Basic example">
+					<a class="btn btn-danger"
+						onclick="return confirm('Desea cancelar la operación? (No se guardaran los cambios realizados)')"
+						href="/operacion-general/nueva"> Cancelar </a>
+				</div>
+				<div class="btn" role="group" aria-label="Basic example">
+					<button type="submit" class="btn btn-success"> Aceptar </button>
+				</div>
+			</div>
 		</form>
 	</section>
 
-	<footer th:replace="/fragments/footer :: footer">
-	</footer>
+
 
 	<script src="/js/ValidacionPruebaFuncion.js">
 	</script>

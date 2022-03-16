@@ -3,12 +3,12 @@ const inputs = document.querySelectorAll('#ingreso input');
 
 const expresiones = {
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	password: /^.{4,12}$/, // 4 a 12 digitos.
+	contrasena: /^.{4,12}$/, // 4 a 12 digitos.
 };
 
 const campos = {
 	correo: false,
-	password: false,
+	contrasena: false,
 };
 
 const validarFormulario = (e) => {
@@ -16,8 +16,8 @@ const validarFormulario = (e) => {
 		case "correo":
 			validarCampo(expresiones.correo, e.target, 'correo');
 			break;
-		case "password":
-			validarCampo(expresiones.password, e.target, 'password');
+		case "contrasena":
+			validarCampo(expresiones.contrasena, e.target, 'contrasena');
 			break;
 	}
 };

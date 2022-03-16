@@ -10,15 +10,13 @@
 
 
 <body onload="cargaProcEncendido()">
-	<!-- <header th:replace="/fragments/header :: header">
-	</header> -->
-
-	<nav th:replace="/fragments/navbar :: nav">
-	</nav>
+	
+	
 
 	<section>
 		<form action="/operacion-general/procedimiento-encendido" method="POST">
 			<div class="container  form-switch">
+			<h1>RA 4</h1>
 				<h2 th:text="@{Procedimiento encendido N°: } + ${num}"></h2>
 				<h2 th:text="@{Fecha y hora: } + ${#dates.format(fechaHoraInicio, 'dd-MM-yyyy h:mm')}"></h2>
 				<input type="checkbox" onclick="checkProcEncendido()" id="cbox1" class="form-check-input"> <label
@@ -136,7 +134,7 @@
 			</div>
 			<hr>
 			<div>
-				<a class="btn btn-danger"
+				<a class="btn btn-danger me-5"
 					onclick="return confirm('Desea cancelar la operación? (No se guardaran los cambios realizados)')"
 					href="/operacion-general/nueva"> Cancelar </a>
 				<button class="btn btn-success" name="realizado" value="true" id="btnAceptar"> Aceptar </button>

@@ -8,41 +8,28 @@
 </head>
 
 <body>
-	<!-- <header th:replace="/fragments/header :: header">
-	</header> -->
-
-	<nav th:replace="/fragments/navbar :: nav">
-	</nav>
-
+	<header th:replace="/fragments/header :: header">
+	</header> 
 	<section>
 		<div class="container">
-			<div class="row align-items-start">
-				<div class="col ">
-					<div class="m-0 vh-100 row align-items-center justify-content-center">
-					<div class="card terjeta " style="width: 18rem;">
-						<img src="./img/usuarios.jpg" class="card-img-top" alt="No se encuentra la imagen" />
+			<div class="row align-items-center">
+				<div class="col text-center">
+					<div class="  row align-items-center justify-content-center">
+					<div class="card terjeta col-md-4 col-sm-12">
 						<div class="card-body">
 							<h5 class="card-title"> Nueva operación </h5>
-							<a class="btn botones" href="/"> Volver </a>
-							<a href="/operacion-general/nueva" class="btn botones"> Nueva </a>
-							<a href="/operacion-general/busca" class="btn botones"> Buscar </a>
+							<a class="btn btn-danger col-3" href="/"> Volver </a>
+							<a href="/operacion-general/nueva" class="btn btn-success col-3 "> Nueva </a>
+							
+							<buttom>	<a href="/operacion-general/busca" class="btn btn-success col-3 "style= "pointer-events: none"> Buscar </a></buttom>
 							
 						</div>
-						
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<section>
-		<hr>
-	
-	</section>
-
-	<footer th:replace="/fragments/footer :: footer">
-	</footer>
 
 	<script th:replace="/fragments/boostjs :: script">
 	</script>

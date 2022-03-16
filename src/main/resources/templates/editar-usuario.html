@@ -11,21 +11,13 @@
 </head>
 
 <body>
-   	<!-- <header th:replace="/fragments/header :: header">
-   		</header> -->
+   	<header th:replace="/fragments/header :: header">
+   		</header> 
 
-	<nav th:replace="/fragments/navbar :: nav">
-		</nav>
-
-  	<section>
-   		<form>
-			<select class="select" name="buscador">
-            	<option value="barra-busqueda" text="Buscar por..." > </option>
- 			</select>
-			<input name="titulo" type="text" class="buscador">
-        </form>
-   	</section>
 	
+
+  
+<div class="container">
 	<div class="row justify-content-center">
 		<div class="col-auto">
 			<table class="table table-striped table-responsive" enctype="multipart/form-data">
@@ -70,14 +62,11 @@
 				</tbody>
 			</table>
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<a class="btn btn-light" href="/inicio"> Volver </a>
+				<a class="btn btn-danger col-3" href="/inicio"> Volver </a>
 			</div>
 		</div>
 	</div>
-    
-    <footer>
-    </footer>
-
+</div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>

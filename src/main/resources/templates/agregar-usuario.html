@@ -2,16 +2,17 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="/fragments/head :: head">
-	</head>
-
+</head>
+<link rel="stylesheet" th:href="@{/css/estilo-form-ingresar.css}">
 <body>
-	<nav th:replace="/fragments/navbar :: nav">
-	</nav>
+	
+ <header th:replace="/fragments/header :: header">
+		</header> 
 
 	<main>
+	<p th:if="${error}" th:text="${error}" style="color: red"></p>
 		<form action="/usuario/agregar-usuario" class="formulario" id="formulario" enctype="multipart/form-data"
 			method="POST">
-			<p th:if="${error}" th:text="${error}" style="color: red"></p>
 			<!-- Grupo: Nombre -->
 			<div class="formulario__grupo" id="grupo__nombre">
 				<label for="nombre" class="formulario__label">Nombre</label>
@@ -126,7 +127,7 @@
 			</div>
 
 			<!-- Grupo: Foto -->
-			<div class="formulario__grupo" id="grupo__foto">
+			<div class="formulario__grupo " id="grupo__foto">
 				<label for="foto" class="formulario__label">Foto</label>
 				<div class="formulario__grupo-input">
 					<input type="file" placeholder="Ingrese una foto" name="archivo">
@@ -147,10 +148,14 @@
 					correctamente. </p>
 			</div>
 
-			<div class="formulario__grupo formulario__grupo-btn-enviar">
-				<button type="submit" class="formulario__btn">Enviar</button>
+			
+			<div class="formulario__grupo-btn-enviar row justify-content-around my-3">
+				<div class="row justify-content-around">
+				<a class="btn btn-danger col-3" href="/inicio"> Volver </a>
+				<button class="btn btn-success col-3"> Enviar </button>
 				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
-			</div>
+				</div>
+		</div>
 		</form>
 	</main>
 
